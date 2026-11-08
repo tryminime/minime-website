@@ -10,6 +10,7 @@ export function ComparisonTable() {
     { name: "Rewind / Limitless", highlight: false },
     { name: "Pieces", highlight: false },
     { name: "ActivityWatch", highlight: false },
+    { name: "Notion AI", highlight: false },
   ];
 
   const rows = [
@@ -17,7 +18,7 @@ export function ComparisonTable() {
       dimension: "Observation Method",
       tooltip: "How digital workflows are observed on your machine",
       minime: {
-        text: "Win32 OS Metadata + Pure-Rust Document Parsers (Zero Screenshots)",
+        text: "Win32 OS Metadata + Pure-Rust Document Parsers (0 Screenshots)",
         status: "best",
       },
       recall: {
@@ -36,12 +37,16 @@ export function ComparisonTable() {
         text: "Window titles & URLs only (completely blind to docs)",
         status: "bad",
       },
+      notion: {
+        text: "Cloud wiki only (blind to local desktop & code)",
+        status: "bad",
+      },
     },
     {
       dimension: "Understands Document Content?",
       tooltip: "Ability to extract headings, pages, code diffs, and slides",
       minime: {
-        text: "Yes — Exact Page, Slide, Heading Text & Code Diffs",
+        text: "Yes — Exact Page, Slide, Heading Text & Line AST Diffs",
         status: "best",
       },
       recall: {
@@ -60,12 +65,16 @@ export function ComparisonTable() {
         text: "No — Window titles only",
         status: "bad",
       },
+      notion: {
+        text: "Only pages typed directly into Notion",
+        status: "neutral",
+      },
     },
     {
       dimension: "Conversational Chat Surfaces",
       tooltip: "Where and how you can query your work memory",
       minime: {
-        text: "4 Surfaces (Chat Studio, Spotlight HUD, Active-Doc Ask, MCP)",
+        text: "4 Surfaces (Studio Canvas, Spotlight HUD, Active-Doc, Universal MCP)",
         status: "best",
       },
       recall: {
@@ -81,79 +90,151 @@ export function ComparisonTable() {
         status: "neutral",
       },
       activityWatch: {
-        text: "None (Dashboard queries only)",
+        text: "None — Raw dashboard charts only",
         status: "bad",
       },
-    },
-    {
-      dimension: "Annual Cloud Storage Footprint",
-      tooltip: "Storage required to store and sync your memory",
-      minime: {
-        text: "<5 MB/year (Columnar zstd CRDT on Google Drive/OneDrive)",
-        status: "best",
-      },
-      recall: {
-        text: "Massive local SSD disk burn (25–100 GB)",
-        status: "bad",
-      },
-      rewind: {
-        text: "15–50 GB / month heavy cloud video blobs",
-        status: "bad",
-      },
-      pieces: {
-        text: "Proprietary cloud database sync",
-        status: "neutral",
-      },
-      activityWatch: {
-        text: "Unsynced local SQLite database",
+      notion: {
+        text: "Notion app sidebar only",
         status: "neutral",
       },
     },
     {
-      dimension: "Multi-Device Sync",
-      tooltip: "Synchronizing seamlessly between desktop, laptop, and work PC",
+      dimension: "Annual Storage Footprint",
+      tooltip: "Disk and sync storage consumed per year of daily use",
       minime: {
-        text: "Yes — Conflict-Free HLC CRDT over Google Drive or OneDrive",
+        text: "1.54 MB / year (22.12x zstd columnar compression)",
         status: "best",
       },
       recall: {
-        text: "Single PC lock-in (Copilot+ PCs only)",
+        text: "50 GB – 100 GB (bloats disk with raw images)",
         status: "bad",
       },
       rewind: {
-        text: "Single Mac / Proprietary cloud lock-in",
+        text: "100+ GB (massive video & audio compression buffers)",
         status: "bad",
       },
       pieces: {
-        text: "Proprietary cloud account",
+        text: "1 GB – 5 GB (local SQLite snippet cache)",
         status: "neutral",
       },
       activityWatch: {
-        text: "Manual JSON export only (No live sync)",
+        text: "50 MB – 200 MB (local SQLite time tracking)",
+        status: "good",
+      },
+      notion: {
+        text: "Hosted on Notion cloud servers",
+        status: "neutral",
+      },
+    },
+    {
+      dimension: "Cryptographic Security",
+      tooltip: "Encryption guarantees protecting your private data",
+      minime: {
+        text: "Zero-Knowledge BYOC, Hardware DPAPI, Argon2id, <50ms GDPR shred",
+        status: "best",
+      },
+      recall: {
+        text: "Plaintext SQLite historically; CISO banned",
+        status: "bad",
+      },
+      rewind: {
+        text: "Proprietary cloud servers (centralized target)",
+        status: "bad",
+      },
+      pieces: {
+        text: "Local/cloud hybrid with proprietary sync",
+        status: "neutral",
+      },
+      activityWatch: {
+        text: "Unencrypted local SQLite database",
+        status: "neutral",
+      },
+      notion: {
+        text: "Standard cloud encryption (Notion holds keys)",
         status: "bad",
       },
     },
     {
-      dimension: "Regulatory Compliance",
-      tooltip: "HIPAA, GDPR, and enterprise CISO approval posture",
+      dimension: "Universal MCP Protocol",
+      tooltip: "Support for Model Context Protocol stdio server",
       minime: {
-        text: "HIPAA Safe Harbor 18-PHI + GDPR Art. 17 Crypto-Shredding",
+        text: "Official rmcp 3.8.0 stdio server with 7 tools (Cursor/Claude)",
         status: "best",
       },
       recall: {
-        text: "Widely banned by enterprise CISOs due to plain text screenshots",
+        text: "No MCP support (Microsoft ecosystem lock-in)",
         status: "bad",
       },
       rewind: {
-        text: "High HIPAA/GDPR liability from audio & screen records",
+        text: "No MCP support",
         status: "bad",
       },
       pieces: {
-        text: "Partial developer redaction filters",
+        text: "Proprietary plugin extensions only",
         status: "neutral",
       },
       activityWatch: {
-        text: "Unencrypted local storage; no PHI scrubbing",
+        text: "REST API only (no MCP server)",
+        status: "neutral",
+      },
+      notion: {
+        text: "Cloud webhook / REST API only",
+        status: "neutral",
+      },
+    },
+    {
+      dimension: "Resource Footprint",
+      tooltip: "CPU and memory consumed while running in the background",
+      minime: {
+        text: "< 0.2% CPU • < 35 MB RAM (Pure-Rust Daemon)",
+        status: "best",
+      },
+      recall: {
+        text: "High NPU/GPU & CPU load for continuous OCR",
+        status: "bad",
+      },
+      rewind: {
+        text: "High CPU & battery drain (continuous video encoding)",
+        status: "bad",
+      },
+      pieces: {
+        text: "Moderate (~150 MB – 300 MB RAM)",
+        status: "neutral",
+      },
+      activityWatch: {
+        text: "Low (~20 MB – 50 MB RAM, Python/Rust)",
+        status: "good",
+      },
+      notion: {
+        text: "Heavy Electron / Chromium tab consumption",
+        status: "bad",
+      },
+    },
+    {
+      dimension: "HIPAA & Healthcare Readiness",
+      tooltip: "Protection for Protected Health Information (PHI)",
+      minime: {
+        text: "18-ID Safe Harbor Scrubber + EHR Window Blockers",
+        status: "best",
+      },
+      recall: {
+        text: "Prohibited by hospital CISOs (captures patient charts)",
+        status: "bad",
+      },
+      rewind: {
+        text: "Violates HIPAA (records medical audio/screens to cloud)",
+        status: "bad",
+      },
+      pieces: {
+        text: "No built-in HIPAA Safe Harbor scrubbing",
+        status: "bad",
+      },
+      activityWatch: {
+        text: "No scrubbing (records EHR window titles verbatim)",
+        status: "neutral",
+      },
+      notion: {
+        text: "Requires enterprise BAA contract",
         status: "neutral",
       },
     },
@@ -164,138 +245,138 @@ export function ComparisonTable() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-xs font-mono text-cyan-400 mb-4">
+          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-violet-500/10 border border-violet-500/20 text-xs font-mono text-violet-700 dark:text-violet-400 mb-4">
             <Sparkles className="w-3.5 h-3.5 mr-1" />
-            <span>Category Definition</span>
+            <span>Competitive Architectural Matrix</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
-            The Competitive Matrix.
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+            How MiniMe Outclasses
             <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-cyan-400 to-emerald-400">
-              Why MiniMe Makes Recall Obsolete.
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 via-indigo-600 to-cyan-600 dark:from-violet-400 dark:via-cyan-400 dark:to-emerald-400">
+              Invasive &amp; Screenshot-Based Tools.
             </span>
           </h2>
-          <p className="mt-4 text-base sm:text-lg text-zinc-400">
-            Compare MiniMe&apos;s privacy-first, zero-screenshot deep memory architecture against
-            traditional passive monitors and invasive screenshot recorders.
+          <p className="mt-4 text-base sm:text-lg text-slate-600 dark:text-zinc-300">
+            A direct, honest comparison across architecture, privacy, multi-device sync, and system efficiency.
           </p>
         </div>
 
-        {/* Matrix Table Container */}
-        <div className="relative rounded-2xl border border-white/10 bg-zinc-950/70 backdrop-blur-2xl overflow-hidden shadow-2xl">
+        {/* Comparison Table Container */}
+        <div className="rounded-2xl border border-slate-300 dark:border-white/10 bg-white/90 dark:bg-zinc-950/80 backdrop-blur-2xl shadow-xl shadow-slate-200/50 dark:shadow-2xl overflow-hidden">
           <div className="overflow-x-auto">
-            <table className="w-full text-left border-collapse min-w-[850px]">
+            <table className="w-full text-left border-collapse min-w-[900px]">
               <thead>
-                <tr className="border-b border-white/10 bg-white/[0.02]">
-                  <th className="py-5 px-6 text-xs font-mono uppercase tracking-wider text-zinc-400 w-1/5">
-                    Evaluation Matrix
+                <tr className="border-b border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/[0.02]">
+                  <th className="p-4 sm:p-5 text-xs font-mono font-bold uppercase tracking-wider text-slate-600 dark:text-zinc-400 w-1/4">
+                    Architectural Dimension
                   </th>
-                  {/* MiniMe Header Column */}
-                  <th className="py-5 px-6 text-sm font-bold text-white bg-violet-600/15 border-x border-violet-500/30 w-1/4 relative">
-                    <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-violet-500 via-cyan-400 to-emerald-400" />
-                    <div className="flex items-center space-x-2">
-                      <span className="text-violet-400">⚡</span>
-                      <span className="text-white text-base font-extrabold">MiniMe</span>
-                      <span className="px-2 py-0.5 rounded-full text-[10px] font-mono bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
-                        Category Winner
-                      </span>
-                    </div>
-                  </th>
-                  <th className="py-5 px-5 text-sm font-medium text-zinc-400 w-1/6">
-                    Microsoft Recall
-                  </th>
-                  <th className="py-5 px-5 text-sm font-medium text-zinc-400 w-1/6">
-                    Rewind / Limitless
-                  </th>
-                  <th className="py-5 px-5 text-sm font-medium text-zinc-400 w-1/6">
-                    Pieces
-                  </th>
-                  <th className="py-5 px-5 text-sm font-medium text-zinc-400 w-1/6">
-                    ActivityWatch
-                  </th>
+                  {competitors.map((c) => (
+                    <th
+                      key={c.name}
+                      className={`p-4 sm:p-5 text-xs font-mono font-bold uppercase tracking-wider ${
+                        c.highlight
+                          ? "bg-violet-600/10 dark:bg-violet-600/20 text-violet-800 dark:text-violet-300 border-x border-violet-500/30"
+                          : "text-slate-700 dark:text-zinc-400"
+                      }`}
+                    >
+                      <div className="flex items-center space-x-1.5">
+                        {c.logo && <span>{c.logo}</span>}
+                        <span>{c.name}</span>
+                      </div>
+                    </th>
+                  ))}
                 </tr>
               </thead>
-              <tbody className="divide-y divide-white/5 text-xs sm:text-sm">
+              <tbody className="divide-y divide-slate-200 dark:divide-white/5 text-xs sm:text-sm">
                 {rows.map((row, idx) => (
-                  <tr key={idx} className="hover:bg-white/[0.01] transition-colors">
-                    {/* Dimension Column */}
-                    <td className="py-5 px-6 font-medium text-white align-top">
-                      <div className="font-semibold">{row.dimension}</div>
-                      <div className="text-xs text-zinc-500 mt-1">{row.tooltip}</div>
-                    </td>
-
-                    {/* MiniMe Cell (Glowing) */}
-                    <td className="py-5 px-6 bg-violet-600/[0.07] border-x border-violet-500/25 align-top">
-                      <div className="flex items-start space-x-2 text-zinc-100 font-medium">
-                        <CheckCircle2 className="w-4 h-4 text-emerald-400 mt-0.5 shrink-0" />
-                        <span className="leading-snug">{row.minime.text}</span>
+                  <tr
+                    key={idx}
+                    className="hover:bg-slate-50 dark:hover:bg-white/[0.02] transition-colors"
+                  >
+                    <td className="p-4 sm:p-5 font-semibold text-slate-900 dark:text-white">
+                      <div>{row.dimension}</div>
+                      <div className="text-[11px] font-normal text-slate-500 dark:text-zinc-400 mt-0.5">
+                        {row.tooltip}
                       </div>
                     </td>
 
-                    {/* Microsoft Recall */}
-                    <td className="py-5 px-5 text-zinc-400 align-top">
+                    {/* MINIME COLUMN */}
+                    <td className="p-4 sm:p-5 bg-violet-600/[0.04] dark:bg-violet-600/[0.07] border-x border-violet-500/20 font-medium text-slate-900 dark:text-zinc-100">
+                      <div className="flex items-start space-x-2">
+                        <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
+                        <span className="font-semibold text-violet-900 dark:text-violet-200">
+                          {row.minime.text}
+                        </span>
+                      </div>
+                    </td>
+
+                    {/* RECALL COLUMN */}
+                    <td className="p-4 sm:p-5 text-slate-600 dark:text-zinc-400">
                       <div className="flex items-start space-x-2">
                         {row.recall.status === "bad" ? (
-                          <X className="w-4 h-4 text-red-400/80 mt-0.5 shrink-0" />
+                          <X className="w-4 h-4 text-red-500 shrink-0 mt-0.5" />
                         ) : (
-                          <Minus className="w-4 h-4 text-zinc-500 mt-0.5 shrink-0" />
+                          <Minus className="w-4 h-4 text-slate-400 shrink-0 mt-0.5" />
                         )}
-                        <span className="leading-snug">{row.recall.text}</span>
+                        <span>{row.recall.text}</span>
                       </div>
                     </td>
 
-                    {/* Rewind / Limitless */}
-                    <td className="py-5 px-5 text-zinc-400 align-top">
+                    {/* REWIND COLUMN */}
+                    <td className="p-4 sm:p-5 text-slate-600 dark:text-zinc-400">
                       <div className="flex items-start space-x-2">
                         {row.rewind.status === "bad" ? (
-                          <X className="w-4 h-4 text-red-400/80 mt-0.5 shrink-0" />
+                          <X className="w-4 h-4 text-red-500 shrink-0 mt-0.5" />
                         ) : (
-                          <Minus className="w-4 h-4 text-zinc-500 mt-0.5 shrink-0" />
+                          <Minus className="w-4 h-4 text-slate-400 shrink-0 mt-0.5" />
                         )}
-                        <span className="leading-snug">{row.rewind.text}</span>
+                        <span>{row.rewind.text}</span>
                       </div>
                     </td>
 
-                    {/* Pieces */}
-                    <td className="py-5 px-5 text-zinc-400 align-top">
+                    {/* PIECES COLUMN */}
+                    <td className="p-4 sm:p-5 text-slate-600 dark:text-zinc-400">
                       <div className="flex items-start space-x-2">
-                        <Minus className="w-4 h-4 text-zinc-500 mt-0.5 shrink-0" />
-                        <span className="leading-snug">{row.pieces.text}</span>
+                        {row.pieces.status === "bad" ? (
+                          <X className="w-4 h-4 text-red-500 shrink-0 mt-0.5" />
+                        ) : row.pieces.status === "good" ? (
+                          <Check className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                        ) : (
+                          <Minus className="w-4 h-4 text-slate-400 shrink-0 mt-0.5" />
+                        )}
+                        <span>{row.pieces.text}</span>
                       </div>
                     </td>
 
-                    {/* ActivityWatch */}
-                    <td className="py-5 px-5 text-zinc-400 align-top">
+                    {/* ACTIVITYWATCH COLUMN */}
+                    <td className="p-4 sm:p-5 text-slate-600 dark:text-zinc-400">
                       <div className="flex items-start space-x-2">
                         {row.activityWatch.status === "bad" ? (
-                          <X className="w-4 h-4 text-red-400/80 mt-0.5 shrink-0" />
+                          <X className="w-4 h-4 text-red-500 shrink-0 mt-0.5" />
+                        ) : row.activityWatch.status === "good" ? (
+                          <Check className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
                         ) : (
-                          <Minus className="w-4 h-4 text-zinc-500 mt-0.5 shrink-0" />
+                          <Minus className="w-4 h-4 text-slate-400 shrink-0 mt-0.5" />
                         )}
-                        <span className="leading-snug">{row.activityWatch.text}</span>
+                        <span>{row.activityWatch.text}</span>
+                      </div>
+                    </td>
+
+                    {/* NOTION AI COLUMN */}
+                    <td className="p-4 sm:p-5 text-slate-600 dark:text-zinc-400">
+                      <div className="flex items-start space-x-2">
+                        {row.notion.status === "bad" ? (
+                          <X className="w-4 h-4 text-red-500 shrink-0 mt-0.5" />
+                        ) : (
+                          <Minus className="w-4 h-4 text-slate-400 shrink-0 mt-0.5" />
+                        )}
+                        <span>{row.notion.text}</span>
                       </div>
                     </td>
                   </tr>
                 ))}
               </tbody>
             </table>
-          </div>
-
-          {/* Bottom Summary Bar */}
-          <div className="p-4 bg-white/[0.02] border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-xs text-zinc-400 gap-3">
-            <div className="flex items-center space-x-2">
-              <span className="w-2 h-2 rounded-full bg-emerald-400" />
-              <span>
-                MiniMe stores <strong>0 screenshots</strong> and transfers <strong>0 bytes</strong> to any company server.
-              </span>
-            </div>
-            <a
-              href="#security"
-              className="text-violet-400 hover:text-violet-300 font-medium inline-flex items-center"
-            >
-              <span>Explore Cryptographic Security Specs</span>
-              <span className="ml-1">→</span>
-            </a>
           </div>
         </div>
       </div>

@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { ArrowLeft, FileText, CheckCircle2 } from "lucide-react";
+import { ArrowLeft, FileText, CheckCircle2, ShieldCheck, Lock } from "lucide-react";
 
 export const metadata = {
   title: "Terms of Service | MiniMe - Sovereign Digital Twin",
@@ -12,7 +12,7 @@ export const metadata = {
 
 export default function TermsPage() {
   return (
-    <div className="min-h-screen flex flex-col bg-[#09090b] text-[#f4f4f5]">
+    <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-[#09090b] text-slate-900 dark:text-[#f4f4f5] transition-colors duration-300">
       <Navbar />
 
       <main className="flex-1 pt-32 pb-24">
@@ -21,7 +21,7 @@ export default function TermsPage() {
           <div className="mb-8">
             <Link
               href="/"
-              className="inline-flex items-center text-xs font-mono text-zinc-400 hover:text-white transition-colors"
+              className="inline-flex items-center text-xs font-mono font-semibold text-slate-600 dark:text-zinc-400 hover:text-slate-950 dark:hover:text-white transition-colors"
             >
               <ArrowLeft className="w-3.5 h-3.5 mr-1.5" />
               <span>Back to MiniMe Overview</span>
@@ -29,22 +29,22 @@ export default function TermsPage() {
           </div>
 
           {/* Page Header */}
-          <div className="border-b border-white/10 pb-8 mb-10">
-            <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-violet-500/10 border border-violet-500/20 text-xs font-mono text-violet-400 mb-4">
+          <div className="border-b border-slate-200 dark:border-white/10 pb-8 mb-10">
+            <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-violet-500/10 border border-violet-500/20 text-xs font-mono text-violet-800 dark:text-violet-400 mb-4 font-semibold">
               <FileText className="w-3.5 h-3.5 mr-1" />
-              <span>Legal Agreement</span>
+              <span>Legal Agreement &amp; User Sovereignty</span>
             </div>
-            <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+            <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">
               Terms of Service
             </h1>
-            <p className="mt-4 text-sm sm:text-base text-zinc-400">
-              Effective Date: <strong>November 5, 2026</strong> • Last Updated: <strong>November 5, 2026</strong>
+            <p className="mt-4 text-sm sm:text-base text-slate-600 dark:text-zinc-400 font-sans">
+              Effective Date: <strong>November 7, 2026</strong> • Last Updated: <strong>November 7, 2026</strong>
             </p>
           </div>
 
-          <div className="space-y-10 text-zinc-300 text-sm sm:text-base leading-relaxed font-sans">
+          <div className="space-y-10 text-slate-700 dark:text-zinc-300 text-sm sm:text-base leading-relaxed font-sans">
             <section className="space-y-3">
-              <h2 className="text-xl sm:text-2xl font-bold text-white">
+              <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
                 1. Acceptance of Terms
               </h2>
               <p>
@@ -57,89 +57,67 @@ export default function TermsPage() {
             </section>
 
             <section className="space-y-3">
-              <h2 className="text-xl sm:text-2xl font-bold text-white">
-                2. Software License &amp; Sovereignty
+              <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
+                2. Software License &amp; User Data Ownership
               </h2>
               <p>
                 Subject to these Terms, MiniMe grants you a revocable, non-exclusive, non-transferable,
-                limited license to install and run the Software on compatible operating systems (Windows,
-                and upcoming macOS/Linux builds).
+                limited license to install and run the Software on compatible operating systems (Windows 10/11 x64).
               </p>
-              <div className="p-4 rounded-xl bg-white/[0.02] border border-white/10 space-y-2">
-                <div className="font-semibold text-white">Data Ownership:</div>
-                <p className="text-xs sm:text-sm text-zinc-300">
+              <div className="p-4 rounded-xl bg-slate-100 dark:bg-white/[0.02] border border-slate-300 dark:border-white/10 space-y-2">
+                <div className="font-bold text-slate-900 dark:text-white flex items-center space-x-2">
+                  <ShieldCheck className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+                  <span>100% User Data Sovereignty:</span>
+                </div>
+                <p className="text-xs sm:text-sm text-slate-700 dark:text-zinc-300 leading-relaxed">
                   You retain 100% ownership, title, and intellectual property rights to all documents,
                   code diffs, notes, vectors, and chat transcripts generated or processed by MiniMe on
-                  your devices. MiniMe claims zero copyright or proprietary interest in your data.
+                  your devices. MiniMe claims zero copyright, licensing rights, or proprietary interest in your data.
                 </p>
               </div>
             </section>
 
             <section className="space-y-3">
-              <h2 className="text-xl sm:text-2xl font-bold text-white">
+              <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
                 3. Bring Your Own Cloud (BYOC) &amp; Keys (BYOK)
               </h2>
               <p>
                 MiniMe operates on a Bring Your Own Cloud model:
               </p>
-              <ul className="list-disc list-inside space-y-1.5 pl-2">
+              <ul className="list-disc list-inside space-y-1.5 pl-2 text-slate-700 dark:text-zinc-300">
                 <li>
-                  <strong className="text-white">Cloud Storage:</strong> You are responsible for maintaining
-                  your own Google Drive or Microsoft OneDrive account and abiding by their respective terms.
+                  <strong className="text-slate-900 dark:text-white">Cloud Storage:</strong> You are responsible for maintaining
+                  your own Google Drive or Microsoft OneDrive account and abiding by their respective terms of service.
                 </li>
                 <li>
-                  <strong className="text-white">API Keys:</strong> If you supply your own API keys for
-                  commercial third-party LLMs (Anthropic, OpenAI, Google Gemini), you are solely responsible
+                  <strong className="text-slate-900 dark:text-white">API Keys:</strong> If you supply your own API keys for
+                  commercial third-party LLMs (Anthropic Claude, OpenAI GPT, Google Gemini), you are solely responsible
                   for API consumption charges incurred on those accounts.
                 </li>
               </ul>
             </section>
 
             <section className="space-y-3">
-              <h2 className="text-xl sm:text-2xl font-bold text-white">
+              <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
                 4. Acceptable Use Policy
               </h2>
-              <p>You agree not to:</p>
-              <ul className="list-disc list-inside space-y-1.5 pl-2">
-                <li>Reverse-engineer or disassemble the proprietary binary runtime beyond fair use allowances.</li>
-                <li>Use MiniMe in violation of any applicable local, state, national, or international privacy laws.</li>
-                <li>Deploy MiniMe onto third-party machines without express administrative authorization.</li>
-              </ul>
-            </section>
-
-            <section className="space-y-3">
-              <h2 className="text-xl sm:text-2xl font-bold text-white">
-                5. Disclaimer of Warranties &amp; Limitation of Liability
-              </h2>
-              <p className="text-xs sm:text-sm text-zinc-400 uppercase tracking-wide font-mono bg-white/[0.02] p-4 rounded-xl border border-white/5">
-                THE SOFTWARE IS PROVIDED &ldquo;AS IS,&rdquo; WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-                IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
-                PURPOSE, AND NONINFRINGEMENT. IN NO EVENT SHALL MINIME INC. BE LIABLE FOR ANY CLAIM, DAMAGES,
-                OR LOSS OF DATA ARISING FROM THE USE OF OR INABILITY TO USE THE SOFTWARE.
+              <p>
+                You agree not to reverse engineer, decompile, or disassemble the binary distribution
+                for malicious purposes, nor use the Software to infringe third-party intellectual property rights
+                or violate applicable healthcare privacy regulations (such as HIPAA) when operating in shared corporate environments.
               </p>
             </section>
 
             <section className="space-y-3">
-              <h2 className="text-xl sm:text-2xl font-bold text-white">
-                6. Governing Law &amp; Dispute Resolution
+              <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
+                5. Contact Information
               </h2>
               <p>
-                These Terms shall be governed by and construed in accordance with the laws of the State of
-                California, without regard to conflict of law principles. Any legal proceeding shall be
-                instituted in the federal or state courts situated in San Francisco County, California.
-              </p>
-            </section>
-
-            <section className="space-y-3">
-              <h2 className="text-xl sm:text-2xl font-bold text-white">
-                7. Contact
-              </h2>
-              <p>
-                Questions regarding these Terms should be sent to{" "}
-                <a href="mailto:legal@tryminime.com" className="text-violet-400 hover:underline">
+                For questions regarding these Terms, contact:
+                <br />
+                <a href="mailto:legal@tryminime.com" className="text-violet-700 dark:text-violet-400 font-mono font-semibold underline">
                   legal@tryminime.com
                 </a>
-                .
               </p>
             </section>
           </div>

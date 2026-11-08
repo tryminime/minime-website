@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { ThemeProvider } from "@/context/ThemeContext";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.tryminime.com"),
@@ -17,11 +18,25 @@ export const metadata: Metadata = {
     "HIPAA Safe Harbor",
     "GDPR Compliant",
     "Workstream Intelligence",
+    "Model Context Protocol",
+    "MCP Server",
+    "FastEmbed ONNX",
+    "Personalized PageRank",
   ],
   authors: [{ name: "MiniMe Team" }],
-  creator: "MiniMe",
+  creator: "MiniMe Inc.",
   publisher: "MiniMe Inc.",
-  robots: "index, follow",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   icons: {
     icon: [
       { url: "/favicon.ico" },
@@ -56,28 +71,116 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://www.tryminime.com/#software",
+      "name": "MiniMe",
+      "operatingSystem": "Windows 10, Windows 11 (x64)",
+      "applicationCategory": "ProductivityApplication",
+      "downloadUrl": "https://www.tryminime.com/download",
+      "softwareVersion": "v0.1.0-beta",
+      "offers": [
+        {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD",
+          "name": "Sovereign Free Tier"
+        },
+        {
+          "@type": "Offer",
+          "price": "8",
+          "priceCurrency": "USD",
+          "name": "Pro BYOC"
+        },
+        {
+          "@type": "Offer",
+          "price": "20",
+          "priceCurrency": "USD",
+          "name": "Enterprise Governance"
+        }
+      ],
+      "description":
+        "Privacy-first conversational digital twin and deep document memory engine for Windows. Zero screenshots, zero keyloggers, 100% zero-knowledge encrypted.",
+      "featureList": [
+        "Pure-Rust Compressed Sparse Row (CSR) Personalized PageRank (< 1ms)",
+        "Zero-Knowledge BYOC Cloud Sync with zstd compression (1.54 MB/year)",
+        "Int8 FastEmbed ONNX Vector Quantization (>99.5% fidelity)",
+        "Tri-Modal TD-RRF Retrieval (BM25 + Int8 Cosine + CSR PPR)",
+        "Universal rmcp 3.8.0 Model Context Protocol stdio server",
+        "Hardware DPAPI Keychain & 18-ID HIPAA Safe Harbor Scrubber"
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://www.tryminime.com/#organization",
+      "name": "MiniMe Inc.",
+      "url": "https://www.tryminime.com",
+      "logo": "https://www.tryminime.com/app-icon.png",
+      "sameAs": ["https://twitter.com/tryminime", "https://github.com/tryminime"]
+    }
+  ]
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark scroll-smooth">
+    <html lang="en" suppressHydrationWarning className="dark scroll-smooth">
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" href="/favicon.png" type="image/png" />
         <link rel="apple-touch-icon" href="/app-icon.png" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  const stored = localStorage.getItem('minime_theme');
+                  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                  if (stored === 'dark' || (!stored && prefersDark)) {
+                    document.documentElement.classList.add('dark');
+                    document.documentElement.classList.remove('light');
+                  } else {
+                    document.documentElement.classList.remove('dark');
+                    document.documentElement.classList.add('light');
+                  }
+                } catch (e) {}
+              })();
+            `,
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </head>
-      <body className="min-h-screen bg-[#09090b] text-[#f4f4f5] antialiased selection:bg-violet-600/30 selection:text-white relative">
-        {/* Ambient cybernetic background glow */}
-        <div className="fixed inset-0 pointer-events-none -z-10 overflow-hidden">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-gradient-to-b from-violet-600/15 via-cyan-500/5 to-transparent blur-[120px]" />
-          <div className="absolute top-[800px] -left-40 w-[600px] h-[600px] bg-violet-900/10 blur-[140px]" />
-          <div className="absolute top-[1800px] -right-40 w-[600px] h-[600px] bg-cyan-900/10 blur-[140px]" />
-          <div className="absolute top-[2800px] left-1/3 w-[800px] h-[600px] bg-emerald-950/10 blur-[160px]" />
-        </div>
+      <body className="min-h-screen bg-slate-50 dark:bg-[#09090b] text-slate-900 dark:text-[#f4f4f5] antialiased selection:bg-violet-600/30 selection:text-white relative transition-colors duration-300">
+        <ThemeProvider>
+          {/* Ambient background glow for Light & Dark modes */}
+          <div className="fixed inset-0 pointer-events-none -z-10 overflow-hidden">
+            {/* Dark mode glow */}
+            <div className="hidden dark:block">
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-gradient-to-b from-violet-600/15 via-cyan-500/5 to-transparent blur-[120px]" />
+              <div className="absolute top-[800px] -left-40 w-[600px] h-[600px] bg-violet-900/10 blur-[140px]" />
+              <div className="absolute top-[1800px] -right-40 w-[600px] h-[600px] bg-cyan-900/10 blur-[140px]" />
+              <div className="absolute top-[2800px] left-1/3 w-[800px] h-[600px] bg-emerald-950/10 blur-[160px]" />
+            </div>
+            {/* Light mode glow */}
+            <div className="block dark:hidden">
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-gradient-to-b from-violet-200/50 via-cyan-100/40 to-transparent blur-[100px]" />
+              <div className="absolute top-[800px] -left-40 w-[600px] h-[600px] bg-indigo-100/40 blur-[120px]" />
+              <div className="absolute top-[1800px] -right-40 w-[600px] h-[600px] bg-cyan-100/40 blur-[120px]" />
+              <div className="absolute top-[2800px] left-1/3 w-[800px] h-[600px] bg-emerald-100/30 blur-[140px]" />
+            </div>
+          </div>
 
-        {children}
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

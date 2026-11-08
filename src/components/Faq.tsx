@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import { ChevronDown, HelpCircle } from "lucide-react";
+import { ChevronDown, HelpCircle, Sparkles } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface FaqItem {
   question: string;
@@ -13,44 +14,54 @@ export function Faq() {
 
   const faqs: FaqItem[] = [
     {
-      question: "How is MiniMe fundamentally different from Microsoft Recall?",
+      question: "1. How is MiniMe fundamentally different from Microsoft Recall?",
       answer:
-        "Microsoft Recall takes continuous screenshots every 3 to 5 seconds and runs OCR over raw desktop pixels—which consumes massive disk space (up to 100 GB), risks recording passwords or private messages, and has been widely banned by enterprise CISOs. In contrast, MiniMe is an Anti-Recall architecture: it takes zero screenshots, zero video recordings, and zero keylogs. Instead, it extracts structured text directly from opened files (PDFs, Word documents, PowerPoint decks, spreadsheets, and 45+ code languages) via pure-Rust parsers and dwell-gated accessibility readers, storing 100% zero-knowledge encrypted chunks.",
+        "Microsoft Recall takes continuous screenshots every 3 to 5 seconds and runs OCR over raw desktop pixels—which consumes massive disk space (up to 100 GB), risks recording passwords or private messages, and has been widely banned by enterprise CISOs. In contrast, MiniMe is a Zero-Pixel architecture: it takes 0 screenshots, records 0 video frames, and installs 0 keyloggers. Instead, it extracts structured text directly from opened files (PDFs, Word documents, PowerPoint decks, spreadsheets, and 45+ code languages) via pure-Rust parsers and dwell-gated accessibility readers, storing 100% zero-knowledge encrypted chunks while consuming < 0.2% CPU and < 35 MB RAM.",
     },
     {
-      question: "Does MiniMe store any of my documents, code, or chats on your company servers?",
+      question: "2. Does MiniMe store any of my documents, code, or chats on company servers?",
       answer:
         "No. MiniMe has zero centralized databases. We do not store, host, or relay your personal documents or chats. When you enable multi-device sync, your encrypted .mmz backup bundles sync directly into an isolated, sandboxed application folder on your own personal Google Drive (drive.appdata) or Microsoft OneDrive (approot). We cannot read, inspect, sell, or subpoena your data even if ordered to do so.",
     },
     {
-      question: "How can multi-device sync take under 5 MB per year when syncing everything?",
+      question: "3. How can multi-device sync take only 1.54 MB/year when syncing everything?",
       answer:
-        "MiniMe achieves this through three core breakthroughs: (1) BLAKE3 content-addressed deduplication, which ensures a document or code hunk is stored once no matter how many times you open it; (2) Zstandard (zstd) columnar dictionary compression, delivering 18.2x compression ratios over text deltas; and (3) zero raw vector sync. Embedding vectors are regenerated locally on-device on each peer device, so heavy float matrices never touch the network.",
+        "MiniMe achieves a projected 1.54 MB/year footprint (well below our < 5 MB/year requirement) through three core breakthroughs: (1) BLAKE3 content-addressed deduplication, which ensures a document or code hunk is stored once no matter how many times you open it; (2) Columnar string-interning with Zstandard (zstd) level 7/9 compression, delivering a verified 22.12x compression ratio over text deltas; and (3) Zero raw vector sync: embedding vectors are regenerated locally on-device on each peer device, so heavy float matrices never touch the network.",
     },
     {
-      question: "Can MiniMe work completely offline with no internet connection?",
+      question: "4. What is Compressed Sparse Row (CSR) Personalized PageRank and why does it matter?",
       answer:
-        "Yes, 100%. MiniMe includes a built-in Offline Extractive RAG Synthesizer that ranks and surfaces exact document passages, code diffs, and page citations with zero external network connectivity. You can also connect auto-discovered local Ollama or LM Studio models (like qwen2.5:3b or llama3.2:3b) for full conversational intelligence at $0 cost without a single packet leaving your device.",
+        "MiniMe maintains an in-memory graph of relationships between documents, functions, authors, Git commits, and focus sessions. Using Compressed Sparse Row (CSR) storage, pure-Rust forward power iterations execute in just 837.4µs on 25,000 nodes & 75,000 edges (< 1ms). This allows MiniMe to prioritize what is actually relevant to your current task based on structural proximity rather than relying solely on naive keyword search.",
     },
     {
-      question: "Does MiniMe take screenshots or record audio from my microphone?",
+      question: "5. What is LongCite sentence grounding and how does it prevent hallucinations?",
       answer:
-        "Never. MiniMe contains zero screen capture APIs, zero video codecs, and zero audio recording libraries. We believe desktop intelligence should be non-invasive and respect human privacy unconditionally.",
+        "MiniMe evaluates every generated response against real document byte coordinates using sentence attribution scoring (γ=0.65 ROUGE-1 recall + semantic cosine similarity). Sentences falling below a strict threshold (τ_attr=0.72) are flagged, and their citation tags are automatically stripped during Stage 1 drafting. Exact quotes (|Q| ≥ 24 chars) are anchored to precise document byte offsets, guaranteeing verifiable provenance.",
     },
     {
-      question: "How does MiniMe extract text from PDFs, Word docs, and code files?",
+      question: "6. Can MiniMe work completely offline with no internet connection?",
       answer:
-        "When an active window has been focused for at least 5 seconds, MiniMe resolves the file path through native Win32 window handles, OS shell link history (%APPDATA%\\Recent\\*.lnk), or IDE metadata. A high-performance pure-Rust ingestor parses the local file into structured text chunks (headings, pages, slide notes, sheet cells, and AST code functions) with sub-millisecond execution.",
+        "Yes, 100%. MiniMe includes a built-in Offline Extractive RAG Synthesizer that ranks and surfaces exact document passages, code diffs, and page citations in < 15ms Time-To-First-Token (TTFT) with zero network connectivity. You can also connect auto-discovered local Ollama or LM Studio models (like qwen2.5:3b or llama3.2:3b) for full conversational intelligence at $0 cost without a single packet leaving your PC.",
     },
     {
-      question: "Is MiniMe compliant with HIPAA, GDPR, and enterprise CISO policies?",
+      question: "7. How does the Universal MCP Server integrate with Cursor, Claude Desktop, and Windsurf?",
       answer:
-        "Yes. MiniMe features an automated 18-identifier HIPAA Safe Harbor de-identification engine that redacts names, MRNs, SSNs, and dates before any data is embedded or written to disk. It also provides GDPR Article 17 cryptographic shredding (<50ms instantaneous key destruction), Article 20 data export, and a SOC 2 BLAKE3 Merkle-chained tamper-evident local audit ledger.",
+        "MiniMe ships with an official rmcp 3.8.0 stdio server binary (minime-mcp.exe). When added to your MCP config file (e.g. ~/.cursor/mcp.json or claude_desktop_config.json), coding agents gain access to 7 standard tools: ask_memory, search_workstream, search_documents, get_document_chunks, get_daily_standup, get_project_context, and get_active_context. All tool outputs are automatically sanitized through a 5-stage secret scrubber and 18-PHI redaction filter.",
     },
     {
-      question: "Which AI models can I use with MiniMe?",
+      question: "8. How does MiniMe protect confidential medical, legal, or financial information?",
       answer:
-        "MiniMe operates on a 3-Tier Zero-Dead-End model: (1) Local On-Device: Ollama or LM Studio running models such as Qwen 2.5, Llama 3.2, DeepSeek, or Mistral; (2) Governed BYOK Cloud: your own API keys for Anthropic Claude 3.7, OpenAI GPT-4.5, or Google Gemini 2.0 Pro with automatic PHI scrubbing; and (3) Offline Extractive RAG: pure rule-based semantic synthesis without any LLM configured.",
+        "MiniMe enforces enterprise cryptography: master keys are derived via Argon2id (m=64MiB, t=3, p=4) and wrapped in native Windows DPAPI. Local databases and sync archives are encrypted with XChaCha20-Poly1305. When your workstation is locked (Win + L), volatile RAM is wiped via Rust Zeroizing<T>. For clinical compliance, an automated 18-identifier HIPAA Safe Harbor scrubber redacts MRNs, names, and dates, while EHR window blockers immediately suppress capture for Epic, Cerner, and AthenaHealth.",
+    },
+    {
+      question: "9. What happens if I want to delete my data under GDPR Article 17?",
+      answer:
+        "MiniMe executes GDPR Article 17 Cryptographic Shredding in < 50ms. Instead of slow and incomplete row-by-row deletes, MiniMe securely overwrites and destroys the symmetric Data Encryption Keys (DEKs). Without the DEKs, every historical SQLite block and remote .mmz cloud backup bundle is instantly and irreversibly rendered into undecodable cryptographic noise.",
+    },
+    {
+      question: "10. What are the system requirements and resource impact on Windows?",
+      answer:
+        "MiniMe runs natively on 64-bit Windows 10 and Windows 11. Built entirely in pure-Rust with no heavy Electron or Python runtimes, MiniMe consumes less than 0.2% CPU at idle and maintains a resident memory footprint of under 35 MB RAM. It runs silently alongside intensive IDEs, compile loops, and CAD tools with zero impact on system responsiveness.",
     },
   ];
 
@@ -63,53 +74,62 @@ export function Faq() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-xs font-mono text-cyan-400 mb-4">
+          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-xs font-mono text-cyan-700 dark:text-cyan-400 mb-4">
             <HelpCircle className="w-3.5 h-3.5 mr-1" />
             <span>Frequently Asked Questions</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
-            Clear Answers.
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+            Transparent Answers.
             <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-cyan-400 to-emerald-400">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 via-indigo-600 to-cyan-600 dark:from-violet-400 dark:via-cyan-400 dark:to-emerald-400">
               Zero Marketing Fluff.
             </span>
           </h2>
-          <p className="mt-4 text-base sm:text-lg text-zinc-400">
-            Everything you need to know about how MiniMe safeguards your operating system memory.
+          <p className="mt-4 text-base sm:text-lg text-slate-600 dark:text-zinc-300">
+            Everything you need to know about MiniMe&apos;s privacy, local-first engine, and sync protocols.
           </p>
         </div>
 
-        {/* FAQ Accordion List */}
-        <div className="space-y-4">
+        {/* Accordion FAQ Items */}
+        <div className="space-y-3.5">
           {faqs.map((faq, idx) => {
             const isOpen = openIndex === idx;
             return (
               <div
                 key={idx}
-                className="rounded-2xl border border-white/10 bg-white/[0.02] backdrop-blur-xl overflow-hidden transition-all duration-200 hover:border-violet-500/30"
+                className="rounded-2xl border border-slate-300 dark:border-white/10 bg-white/90 dark:bg-zinc-950/80 backdrop-blur-xl overflow-hidden shadow-sm transition-all"
               >
                 <button
                   onClick={() => toggle(idx)}
-                  className="w-full py-5 px-6 flex items-center justify-between text-left focus:outline-none"
+                  className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 focus:outline-none"
                   aria-expanded={isOpen}
                 >
-                  <span className="text-base sm:text-lg font-semibold text-white pr-4">
+                  <span className="text-sm sm:text-base font-bold text-slate-900 dark:text-white">
                     {faq.question}
                   </span>
                   <div
-                    className={`w-8 h-8 rounded-full bg-white/5 flex items-center justify-center shrink-0 transition-transform duration-300 ${
-                      isOpen ? "rotate-180 bg-violet-600/20 text-violet-400" : "text-zinc-400"
+                    className={`p-1 rounded-lg bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-600 dark:text-zinc-400 shrink-0 transition-transform duration-200 ${
+                      isOpen ? "rotate-180 text-violet-600 dark:text-violet-400" : ""
                     }`}
                   >
                     <ChevronDown className="w-4 h-4" />
                   </div>
                 </button>
 
-                {isOpen && (
-                  <div className="px-6 pb-6 text-sm text-zinc-300 leading-relaxed font-sans border-t border-white/5 pt-4">
-                    {faq.answer}
-                  </div>
-                )}
+                <AnimatePresence>
+                  {isOpen && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <div className="px-5 sm:px-6 pb-6 pt-1 text-xs sm:text-sm text-slate-700 dark:text-zinc-300 leading-relaxed font-sans border-t border-slate-100 dark:border-white/5">
+                        {faq.answer}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
             );
           })}

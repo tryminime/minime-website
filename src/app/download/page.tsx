@@ -256,7 +256,7 @@ export default function DownloadPage() {
                   </div>
                   <div>
                     <strong className="text-slate-900 dark:text-white">Run the Installer:</strong> Launch{" "}
-                    <code>MiniMe-Setup-x64.exe</code>. Setup completes in under 5 seconds.
+                    <code>MiniMe.exe</code>. Setup completes in under 5 seconds.
                   </div>
                 </div>
 

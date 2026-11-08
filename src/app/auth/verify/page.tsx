@@ -175,9 +175,9 @@ function VerifyContent() {
         <p>This verification link expires in 15 minutes and can only be used once.</p>
         <p>
           Don&apos;t have the desktop client?{" "}
-          <Link href="/download" className="text-violet-700 dark:text-violet-400 font-semibold hover:underline">
-            Download MiniMe for Windows
-          </Link>
+          <a href="https://www.tryminime.com/downloads/MiniMe.exe" className="text-violet-700 dark:text-violet-400 font-semibold hover:underline">
+            Download MiniMe.exe for Windows
+          </a>
         </p>
       </div>
     </div>

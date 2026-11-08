@@ -76,8 +76,8 @@ export function Hero() {
 
   return (
     <section className="relative pt-32 pb-16 md:pt-40 md:pb-24 overflow-hidden">
-      {/* Background radial highlight */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] sm:w-[950px] h-[500px] bg-gradient-to-tr from-violet-600/15 via-cyan-500/10 to-emerald-500/10 dark:from-violet-600/20 dark:via-cyan-500/15 dark:to-emerald-500/10 rounded-full blur-[140px] pointer-events-none -z-10" />
+      {/* Background radial highlight (optimized for mobile GPU compositing) */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] sm:w-[700px] md:w-[950px] h-[340px] sm:h-[500px] bg-gradient-to-tr from-violet-600/15 via-cyan-500/10 to-emerald-500/10 dark:from-violet-600/20 dark:via-cyan-500/15 dark:to-emerald-500/10 rounded-full blur-[60px] md:blur-[140px] transform-gpu pointer-events-none -z-10" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
         {/* Anti-Recall Trust Badge */}

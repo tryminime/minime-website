@@ -161,21 +161,21 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen bg-slate-50 dark:bg-[#09090b] text-slate-900 dark:text-[#f4f4f5] antialiased selection:bg-violet-600/30 selection:text-white relative transition-colors duration-300">
         <ThemeProvider>
-          {/* Ambient background glow for Light & Dark modes */}
-          <div className="fixed inset-0 pointer-events-none -z-10 overflow-hidden">
+          {/* Ambient background glow for Light & Dark modes (optimized for mobile performance) */}
+          <div className="absolute inset-0 pointer-events-none -z-10 overflow-hidden">
             {/* Dark mode glow */}
             <div className="hidden dark:block">
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-gradient-to-b from-violet-600/15 via-cyan-500/5 to-transparent blur-[120px]" />
-              <div className="absolute top-[800px] -left-40 w-[600px] h-[600px] bg-violet-900/10 blur-[140px]" />
-              <div className="absolute top-[1800px] -right-40 w-[600px] h-[600px] bg-cyan-900/10 blur-[140px]" />
-              <div className="absolute top-[2800px] left-1/3 w-[800px] h-[600px] bg-emerald-950/10 blur-[160px]" />
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] md:w-[1000px] h-[350px] md:h-[500px] bg-gradient-to-b from-violet-600/15 via-cyan-500/5 to-transparent blur-[60px] md:blur-[120px] transform-gpu" />
+              <div className="hidden md:block absolute top-[800px] -left-40 w-[600px] h-[600px] bg-violet-900/10 blur-[140px] transform-gpu" />
+              <div className="hidden md:block absolute top-[1800px] -right-40 w-[600px] h-[600px] bg-cyan-900/10 blur-[140px] transform-gpu" />
+              <div className="hidden md:block absolute top-[2800px] left-1/3 w-[800px] h-[600px] bg-emerald-950/10 blur-[160px] transform-gpu" />
             </div>
             {/* Light mode glow */}
             <div className="block dark:hidden">
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-gradient-to-b from-violet-200/50 via-cyan-100/40 to-transparent blur-[100px]" />
-              <div className="absolute top-[800px] -left-40 w-[600px] h-[600px] bg-indigo-100/40 blur-[120px]" />
-              <div className="absolute top-[1800px] -right-40 w-[600px] h-[600px] bg-cyan-100/40 blur-[120px]" />
-              <div className="absolute top-[2800px] left-1/3 w-[800px] h-[600px] bg-emerald-100/30 blur-[140px]" />
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] md:w-[1000px] h-[350px] md:h-[500px] bg-gradient-to-b from-violet-200/50 via-cyan-100/40 to-transparent blur-[50px] md:blur-[100px] transform-gpu" />
+              <div className="hidden md:block absolute top-[800px] -left-40 w-[600px] h-[600px] bg-indigo-100/40 blur-[120px] transform-gpu" />
+              <div className="hidden md:block absolute top-[1800px] -right-40 w-[600px] h-[600px] bg-cyan-100/40 blur-[120px] transform-gpu" />
+              <div className="hidden md:block absolute top-[2800px] left-1/3 w-[800px] h-[600px] bg-emerald-100/30 blur-[140px] transform-gpu" />
             </div>
           </div>
 

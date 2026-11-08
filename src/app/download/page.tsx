@@ -110,12 +110,11 @@ export default function DownloadPage() {
 
               <div>
                 <a
-                  href="/MiniMe-Setup-x64.exe"
-                  download
-                  className="w-full inline-flex items-center justify-center py-4 px-6 rounded-xl text-base font-semibold text-white bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 shadow-xl shadow-violet-600/30 border border-violet-400/30 transition-all group mb-4"
+                  href="https://www.tryminime.com/downloads/MiniMe.exe"
+                  className="w-full inline-flex items-center justify-center py-4 px-6 rounded-xl text-base font-semibold text-white bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 shadow-xl shadow-violet-600/30 border border-violet-400/30 transition-all group mb-4 whitespace-nowrap"
                 >
                   <Download className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
-                  <span>Download MiniMe-Setup-x64.exe</span>
+                  <span>Download MiniMe.exe (x64)</span>
                 </a>
 
                 {/* SHA-256 Checksum Box */}

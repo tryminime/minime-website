@@ -111,12 +111,12 @@ export function Pricing() {
             </div>
 
             <div className="mt-8 pt-4">
-              <Link
-                href="/download"
-                className="w-full inline-flex items-center justify-center px-4 py-3 text-xs sm:text-sm font-semibold text-slate-800 dark:text-zinc-200 bg-slate-100 dark:bg-white/5 hover:bg-slate-200 dark:hover:bg-white/10 rounded-xl border border-slate-300 dark:border-white/10 transition-colors"
+              <a
+                href="https://www.tryminime.com/downloads/MiniMe.exe"
+                className="w-full inline-flex items-center justify-center px-4 py-3 text-xs sm:text-sm font-semibold text-slate-800 dark:text-zinc-200 bg-slate-100 dark:bg-white/5 hover:bg-slate-200 dark:hover:bg-white/10 rounded-xl border border-slate-300 dark:border-white/10 transition-colors whitespace-nowrap"
               >
                 <span>Download Sovereign Free</span>
-              </Link>
+              </a>
             </div>
           </div>
 

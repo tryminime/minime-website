@@ -31,7 +31,7 @@ export function McpIntegrationDemo() {
         {
           mcpServers: {
             minime: {
-              command: "C:\\Users\\mufak\\AppData\\Local\\MiniMe\\minime-mcp.exe",
+              command: "C:\\Users\\<username>\\AppData\\Local\\MiniMe\\minime-mcp.exe",
               args: ["--stdio"],
               env: {
                 MINIME_VAULT: "personal",
@@ -50,7 +50,7 @@ export function McpIntegrationDemo() {
         {
           mcpServers: {
             minime: {
-              command: "C:\\Users\\mufak\\AppData\\Local\\MiniMe\\minime-mcp.exe",
+              command: "C:\\Users\\<username>\\AppData\\Local\\MiniMe\\minime-mcp.exe",
               args: ["--stdio"],
             },
           },
@@ -65,7 +65,7 @@ export function McpIntegrationDemo() {
         {
           mcpServers: {
             minime: {
-              command: "C:\\Users\\mufak\\AppData\\Local\\MiniMe\\minime-mcp.exe",
+              command: "C:\\Users\\<username>\\AppData\\Local\\MiniMe\\minime-mcp.exe",
               args: ["--stdio"],
             },
           },

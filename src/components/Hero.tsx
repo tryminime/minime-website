@@ -138,29 +138,37 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto sm:max-w-none"
         >
-          <Link
-            href="/download"
-            className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white bg-gradient-to-r from-violet-600 to-indigo-600 rounded-2xl hover:from-violet-500 hover:to-indigo-500 shadow-xl shadow-violet-600/25 hover:shadow-violet-600/40 border border-violet-400/25 transition-all duration-300 group"
+          <a
+            href="https://www.tryminime.com/downloads/MiniMe.exe"
+            className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white bg-gradient-to-r from-violet-600 to-indigo-600 rounded-2xl hover:from-violet-500 hover:to-indigo-500 shadow-xl shadow-violet-600/25 hover:shadow-violet-600/40 border border-violet-400/25 transition-all duration-300 group whitespace-nowrap shrink-0"
           >
             <svg
-              className="w-5 h-5 mr-3 text-white group-hover:scale-110 transition-transform duration-300"
+              className="w-5 h-5 mr-3 text-white group-hover:scale-110 transition-transform duration-300 shrink-0"
               viewBox="0 0 24 24"
               fill="currentColor"
             >
               <path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.951-1.801" />
             </svg>
             <span>Download for Windows (x64)</span>
-            <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-          </Link>
+            <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform shrink-0" />
+          </a>
 
           <a
             href="#studio-canvas"
-            className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-4 text-base font-semibold text-slate-800 dark:text-zinc-200 bg-white dark:bg-white/[0.04] hover:bg-slate-100 dark:hover:bg-white/[0.08] rounded-2xl border border-slate-300 dark:border-white/10 transition-all duration-200 shadow-sm"
+            className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-4 text-base font-semibold text-slate-800 dark:text-zinc-200 bg-white dark:bg-white/[0.04] hover:bg-slate-100 dark:hover:bg-white/[0.08] rounded-2xl border border-slate-300 dark:border-white/10 transition-all duration-200 shadow-sm whitespace-nowrap shrink-0"
           >
-            <Sparkles className="w-4 h-4 mr-2 text-violet-600 dark:text-violet-400" />
+            <Sparkles className="w-4 h-4 mr-2 text-violet-600 dark:text-violet-400 shrink-0" />
             <span>Explore Dual-Surface Studio</span>
           </a>
         </motion.div>
+
+        {/* Checksum & MSI secondary link */}
+        <div className="mt-3 text-xs text-slate-500 dark:text-zinc-400 font-mono">
+          <span>v0.1.0 Beta • </span>
+          <Link href="/download" className="underline hover:text-violet-600 dark:hover:text-violet-400 transition-colors">
+            View SHA-256 hashes, MSI package &amp; system specs &rarr;
+          </Link>
+        </div>
 
         {/* Real Proof Metric Bar */}
         <motion.div

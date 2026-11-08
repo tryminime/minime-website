@@ -12,14 +12,19 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
           {/* Brand Info & Mission (Cols 1-2) */}
           <div className="lg:col-span-2 space-y-4">
-            <Link href="/" className="inline-block">
-              <Image
-                src="/logo-lockup.svg"
-                alt="MiniMe"
-                width={150}
-                height={36}
-                className="h-8 w-auto object-contain dark:brightness-100 brightness-90"
-              />
+            <Link href="/" className="inline-flex items-center space-x-2.5 group">
+              <div className="relative flex items-center justify-center">
+                <Image
+                  src="/logo.svg"
+                  alt="MiniMe Logo"
+                  width={38}
+                  height={22}
+                  className="h-7 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                />
+              </div>
+              <span className="font-extrabold text-xl tracking-tight text-slate-900 dark:text-white transition-colors duration-200">
+                MiniMe
+              </span>
             </Link>
             <p className="text-slate-600 dark:text-zinc-400 text-xs sm:text-sm max-w-sm leading-relaxed">
               Your Operating System&apos;s Cognitive Digital Twin. Search &amp; chat with every
@@ -133,13 +138,13 @@ export function Footer() {
             </h4>
             <ul className="space-y-2 text-xs sm:text-sm">
               <li>
-                <Link
-                  href="/download"
+                <a
+                  href="https://www.tryminime.com/downloads/MiniMe.exe"
                   className="inline-flex items-center text-violet-700 dark:text-violet-400 font-bold hover:underline"
                 >
                   <Download className="w-3.5 h-3.5 mr-1.5" />
-                  <span>Download for Windows (x64)</span>
-                </Link>
+                  <span>Download MiniMe.exe (Windows)</span>
+                </a>
               </li>
               <li>
                 <Link href="/download" className="hover:text-slate-900 dark:hover:text-white transition-colors">

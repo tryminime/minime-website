@@ -23,8 +23,8 @@ export function Pricing() {
               Powerful for Teams.
             </span>
           </h2>
-          <p className="mt-4 text-base sm:text-lg text-slate-600 dark:text-zinc-300">
-            MiniMe is 100% free and sovereign for personal desktop use. Upgrade for zero-knowledge multi-device cloud sync, Universal MCP server tools, or enterprise governance.
+          <p className="mt-4 text-base sm:text-lg text-slate-700 dark:text-zinc-300">
+            MiniMe&apos;s core desktop engine—including BYOC zero-knowledge sync to your own Google Drive or OneDrive, on-device GGUF/ONNX AI, and the 8-tool MCP server—is 100% free and sovereign. Upgrade for managed relay presets or enterprise dual-vault governance.
           </p>
 
           {/* Monthly / Annual Toggle */}
@@ -78,61 +78,61 @@ export function Pricing() {
                 <span className="text-4xl font-extrabold text-slate-900 dark:text-white">$0</span>
                 <span className="text-slate-500 dark:text-zinc-400 text-sm font-medium">Free Forever</span>
               </div>
-              <p className="text-xs sm:text-sm text-slate-600 dark:text-zinc-400 mb-6 font-sans leading-relaxed">
-                Run MiniMe entirely on your personal machine with 0 cloud dependencies, zero telemetry, and 100% offline extractive intelligence.
+              <p className="text-xs sm:text-sm text-slate-700 dark:text-zinc-300 mb-6 font-sans leading-relaxed">
+                Full local-first desktop twin with optional zero-knowledge BYOC sync to your own Google Drive or OneDrive and local GGUF/extractive AI.
               </p>
 
               <div className="space-y-3 pt-4 border-t border-slate-200 dark:border-white/5 text-xs text-slate-700 dark:text-zinc-300">
                 <div className="flex items-start space-x-2.5">
-                  <Check className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
-                  <span>Pure-Rust Document &amp; AST Code Ingestion (&lt; 0.2% CPU)</span>
+                  <Check className="w-4 h-4 text-emerald-700 dark:text-emerald-400 shrink-0 mt-0.5" />
+                  <span>Pure-Rust Document, Diff &amp; Workspace Intel Ingestion (&lt; 0.2% CPU)</span>
                 </div>
                 <div className="flex items-start space-x-2.5">
-                  <Check className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
-                  <span>FastEmbed All-MiniLM-L6-v2 Int8 ONNX Quantization</span>
+                  <Check className="w-4 h-4 text-emerald-700 dark:text-emerald-400 shrink-0 mt-0.5" />
+                  <span>FastEmbed Int8 ONNX + CSR PageRank (837.4µs) + 6-Head TD-RRF</span>
                 </div>
                 <div className="flex items-start space-x-2.5">
-                  <Check className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
-                  <span>Compressed Sparse Row (CSR) PageRank in 837.4µs</span>
+                  <Check className="w-4 h-4 text-emerald-700 dark:text-emerald-400 shrink-0 mt-0.5" />
+                  <span>Personal BYOC Sync to Google Drive (appData) / OneDrive / NAS (22.12x zstd)</span>
                 </div>
                 <div className="flex items-start space-x-2.5">
-                  <Check className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
-                  <span>Global Alt + Space Floating Spotlight HUD</span>
+                  <Check className="w-4 h-4 text-emerald-700 dark:text-emerald-400 shrink-0 mt-0.5" />
+                  <span>Universal rmcp 3.8.0 stdio server (all 8 tools incl. record_decision)</span>
                 </div>
                 <div className="flex items-start space-x-2.5">
-                  <Check className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
-                  <span>Unlimited local SQLite storage with BLAKE3 deduplication</span>
+                  <Check className="w-4 h-4 text-emerald-700 dark:text-emerald-400 shrink-0 mt-0.5" />
+                  <span>Global Alt + Space Spotlight HUD &amp; Dual-Surface Studio (58% / 42%)</span>
                 </div>
                 <div className="flex items-start space-x-2.5">
-                  <Check className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
+                  <Check className="w-4 h-4 text-emerald-700 dark:text-emerald-400 shrink-0 mt-0.5" />
                   <span>Zero screenshots, 0 video frames, 0 keyloggers installed</span>
                 </div>
               </div>
             </div>
 
             <div className="mt-8 pt-4">
-              <a
-                href="https://www.tryminime.com/downloads/MiniMe.exe"
-                className="w-full inline-flex items-center justify-center px-4 py-3 text-xs sm:text-sm font-semibold text-slate-800 dark:text-zinc-200 bg-slate-100 dark:bg-white/5 hover:bg-slate-200 dark:hover:bg-white/10 rounded-xl border border-slate-300 dark:border-white/10 transition-colors whitespace-nowrap"
+              <Link
+                href="/download"
+                className="w-full inline-flex items-center justify-center px-4 py-3 text-xs sm:text-sm font-semibold text-slate-900 dark:text-zinc-200 bg-slate-100 dark:bg-white/5 hover:bg-slate-200 dark:hover:bg-white/10 rounded-xl border border-slate-300 dark:border-white/10 transition-colors whitespace-nowrap"
               >
                 <span>Download Sovereign Free</span>
-              </a>
+              </Link>
             </div>
           </div>
 
           {/* TIER 2: PRO BYOC ($8/MO ANNUALLY OR $10/MO MONTHLY) - HIGHLIGHTED */}
           <div className="rounded-2xl p-8 bg-gradient-to-b from-violet-500/10 via-white/95 to-white/90 dark:from-violet-950/30 dark:via-zinc-950/90 dark:to-zinc-950 border-2 border-violet-500/50 backdrop-blur-xl flex flex-col justify-between shadow-2xl shadow-violet-500/10 dark:shadow-violet-950/40 relative">
             <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full text-[11px] font-mono font-bold bg-violet-600 text-white shadow-md">
-              MOST POPULAR • POWER USER
+              MULTI-DEVICE &amp; POWER WORKFLOWS
             </div>
 
             <div>
               <div className="flex items-center justify-between mb-4">
-                <span className="text-xs font-mono font-bold uppercase tracking-wider text-violet-700 dark:text-violet-400">
-                  Pro BYOC
+                <span className="text-xs font-mono font-bold uppercase tracking-wider text-violet-800 dark:text-violet-300">
+                  Pro Power Tier
                 </span>
                 <span className="px-2.5 py-0.5 rounded-full text-xs font-mono bg-violet-500/15 text-violet-800 dark:text-violet-300 border border-violet-500/30 font-semibold">
-                  Multi-Device
+                  Priority Cloud &amp; Support
                 </span>
               </div>
 
@@ -140,36 +140,36 @@ export function Pricing() {
                 <span className="text-4xl font-extrabold text-slate-900 dark:text-white">
                   {annual ? "$8" : "$10"}
                 </span>
-                <span className="text-slate-500 dark:text-zinc-400 text-sm font-medium">/ month</span>
+                <span className="text-slate-700 dark:text-zinc-300 text-sm font-medium">/ month</span>
               </div>
-              <p className="text-xs sm:text-sm text-slate-600 dark:text-zinc-400 mb-6 font-sans leading-relaxed">
-                Connect your devices with zero-knowledge encrypted sync and control MiniMe directly in Cursor and Claude Desktop.
+              <p className="text-xs sm:text-sm text-slate-700 dark:text-zinc-300 mb-6 font-sans leading-relaxed">
+                Optional upgrade for automated multi-device conflict presets, curated GGUF model mirrors, and priority beta builds—while core BYOC stays free.
               </p>
 
               <div className="space-y-3 pt-4 border-t border-violet-500/20 text-xs text-slate-700 dark:text-zinc-300">
                 <div className="flex items-start space-x-2.5">
-                  <Check className="w-4 h-4 text-violet-600 dark:text-violet-400 shrink-0 mt-0.5" />
-                  <span className="font-semibold text-slate-900 dark:text-white">Everything in Sovereign Free, plus:</span>
+                  <Check className="w-4 h-4 text-violet-700 dark:text-violet-400 shrink-0 mt-0.5" />
+                  <span className="font-semibold text-slate-900 dark:text-white">Everything in Sovereign Free (incl. BYOC &amp; 8 MCP Tools), plus:</span>
                 </div>
                 <div className="flex items-start space-x-2.5">
-                  <Check className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
-                  <span>Multi-Device Zero-Knowledge Sync to Google Drive / OneDrive</span>
+                  <Check className="w-4 h-4 text-emerald-700 dark:text-emerald-400 shrink-0 mt-0.5" />
+                  <span>Multi-device HLC sync scheduling &amp; automated rolling snapshot compaction</span>
                 </div>
                 <div className="flex items-start space-x-2.5">
-                  <Check className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
-                  <span>22.12x zstd columnar compression (1.54 MB/year projected)</span>
+                  <Check className="w-4 h-4 text-emerald-700 dark:text-emerald-400 shrink-0 mt-0.5" />
+                  <span>Priority signed Windows updates &amp; early cross-platform previews</span>
                 </div>
                 <div className="flex items-start space-x-2.5">
-                  <Check className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
-                  <span>Universal rmcp 3.8.0 stdio server (7 tools for Cursor &amp; Claude)</span>
+                  <Check className="w-4 h-4 text-emerald-700 dark:text-emerald-400 shrink-0 mt-0.5" />
+                  <span>Curated GGUF model weights mirror &amp; automated fallback tuning</span>
                 </div>
                 <div className="flex items-start space-x-2.5">
-                  <Check className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
-                  <span>Dual-Surface Desktop Studio (58% Chat + 42% Sidecar Canvas)</span>
+                  <Check className="w-4 h-4 text-emerald-700 dark:text-emerald-400 shrink-0 mt-0.5" />
+                  <span>Governed BYOK Cloud Synthesis behind AI Compliance Firewall</span>
                 </div>
                 <div className="flex items-start space-x-2.5">
-                  <Check className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
-                  <span>Governed BYOK Cloud Synthesis with automatic 18-PHI scrubber</span>
+                  <Check className="w-4 h-4 text-emerald-700 dark:text-emerald-400 shrink-0 mt-0.5" />
+                  <span>Direct priority engineering support channel</span>
                 </div>
               </div>
             </div>

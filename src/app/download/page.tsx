@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import Link from "next/link";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import {
@@ -10,14 +9,9 @@ import {
   Check,
   Copy,
   Terminal,
-  Cpu,
-  HardDrive,
   Monitor,
   Building2,
   FileCheck,
-  ExternalLink,
-  ArrowRight,
-  Sparkles,
 } from "lucide-react";
 
 export default function DownloadPage() {
@@ -26,17 +20,17 @@ export default function DownloadPage() {
   const [waitlistEmail, setWaitlistEmail] = useState("");
   const [waitlistSubmitted, setWaitlistSubmitted] = useState(false);
 
-  const exeSha256 = "e82f710a394bc8d748f3992b814a0293a8d4b31a892df9108b3941a82f3b9201";
-  const msiSha256 = "c4109fa8b1209384bc1920384a8bc9281a8c9284ba09281983ba029384bca819";
+  const exeVerifyCommand = "Get-FileHash <MiniMe-x64-setup>.exe -Algorithm SHA256";
+  const msiVerifyCommand = "Get-FileHash <MiniMe-x64>.msi -Algorithm SHA256";
 
   const handleCopyExe = () => {
-    navigator.clipboard.writeText(exeSha256);
+    navigator.clipboard.writeText(exeVerifyCommand);
     setCopiedExeHash(true);
     setTimeout(() => setCopiedExeHash(false), 2000);
   };
 
   const handleCopyMsi = () => {
-    navigator.clipboard.writeText(msiSha256);
+    navigator.clipboard.writeText(msiVerifyCommand);
     setCopiedMsiHash(true);
     setTimeout(() => setCopiedMsiHash(false), 2000);
   };
@@ -81,28 +75,28 @@ export default function DownloadPage() {
                   <span className="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-violet-500/15 text-violet-800 dark:text-violet-300 border border-violet-500/30">
                     Recommended for Most Users
                   </span>
-                  <span className="text-xs font-mono text-slate-500 dark:text-zinc-400 font-semibold">42.1 MB</span>
+                  <span className="text-xs font-mono text-slate-700 dark:text-zinc-300 font-semibold">NSIS Setup • Day 14</span>
                 </div>
 
                 <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">
                   MiniMe Setup (x64)
                 </h2>
-                <p className="text-xs sm:text-sm text-slate-600 dark:text-zinc-300 leading-relaxed mb-6 font-sans">
-                  Standard Windows per-user installer with automatic background updates,
-                  Mica blur window integration, and seamless system tray resident background mode.
+                <p className="text-xs sm:text-sm text-slate-700 dark:text-zinc-300 leading-relaxed mb-6 font-sans">
+                  Standard Windows per-user NSIS installer target with Tauri desktop integration,
+                  Mica blur window styling, and system tray resident background mode.
                 </p>
 
                 <div className="space-y-2.5 text-xs text-slate-700 dark:text-zinc-300 mb-6">
                   <div className="flex items-center space-x-2">
-                    <Check className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
-                    <span>Single-click installation • No admin rights required</span>
+                    <Check className="w-4 h-4 text-emerald-700 dark:text-emerald-400 shrink-0" />
+                    <span>Single-click NSIS installation • No admin rights required</span>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <Check className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
-                    <span>Auto-registers global hotkey <kbd className="px-1.5 py-0.5 bg-slate-200 dark:bg-white/10 rounded font-mono text-[10px] text-slate-800 dark:text-white font-bold">Alt + Space</kbd></span>
+                    <Check className="w-4 h-4 text-emerald-700 dark:text-emerald-400 shrink-0" />
+                    <span>Auto-registers global hotkey <kbd className="px-1.5 py-0.5 bg-slate-200 dark:bg-white/10 rounded font-mono text-[10px] text-slate-900 dark:text-white font-bold">Alt + Space</kbd></span>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <Check className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
+                    <Check className="w-4 h-4 text-emerald-700 dark:text-emerald-400 shrink-0" />
                     <span>Includes pure-Rust parsers for PDF, Word, Excel &amp; Code</span>
                   </div>
                 </div>
@@ -110,23 +104,23 @@ export default function DownloadPage() {
 
               <div>
                 <a
-                  href="https://www.tryminime.com/downloads/MiniMe.exe"
+                  href="#source-build-verify"
                   className="w-full inline-flex items-center justify-center py-4 px-6 rounded-xl text-base font-semibold text-white bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 shadow-xl shadow-violet-600/30 border border-violet-400/30 transition-all group mb-4 whitespace-nowrap"
                 >
-                  <Download className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
-                  <span>Download MiniMe.exe (x64)</span>
+                  <ShieldCheck className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
+                  <span>NSIS Release Pending (Build &amp; Verify)</span>
                 </a>
 
-                {/* SHA-256 Checksum Box */}
-                <div className="p-3 rounded-lg bg-slate-100 dark:bg-black/50 border border-slate-200 dark:border-white/5 flex items-center justify-between text-[11px] font-mono text-slate-600 dark:text-zinc-400">
+                {/* SHA-256 Verification Command Box */}
+                <div className="p-3 rounded-lg bg-slate-100 dark:bg-black/50 border border-slate-200 dark:border-white/5 flex items-center justify-between text-[11px] font-mono text-slate-700 dark:text-zinc-300">
                   <div className="truncate mr-2">
-                    <span className="text-slate-500 dark:text-zinc-500 mr-1">SHA-256:</span>
-                    <span className="text-slate-900 dark:text-zinc-300 font-bold">{exeSha256.slice(0, 18)}...</span>
+                    <span className="text-slate-700 dark:text-zinc-400 mr-1">Verify:</span>
+                    <span className="text-slate-900 dark:text-zinc-200 font-bold">{exeVerifyCommand}</span>
                   </div>
                   <button
                     onClick={handleCopyExe}
                     className="p-1 hover:text-slate-900 dark:hover:text-white transition-colors shrink-0 flex items-center space-x-1"
-                    title="Copy SHA-256"
+                    title="Copy SHA-256 verification command"
                   >
                     {copiedExeHash ? (
                       <span className="text-emerald-700 dark:text-emerald-400 text-[10px] font-bold">Copied!</span>
@@ -148,53 +142,52 @@ export default function DownloadPage() {
                   <span className="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-cyan-500/10 text-cyan-800 dark:text-cyan-300 border border-cyan-500/20">
                     Enterprise &amp; IT Admins
                   </span>
-                  <span className="text-xs font-mono text-slate-500 dark:text-zinc-400 font-semibold">48.5 MB</span>
+                  <span className="text-xs font-mono text-slate-700 dark:text-zinc-300 font-semibold">WiX MSI • Day 14</span>
                 </div>
 
                 <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">
                   MiniMe Enterprise MSI (x64)
                 </h2>
-                <p className="text-xs sm:text-sm text-slate-600 dark:text-zinc-300 leading-relaxed mb-6 font-sans">
-                  Standard Windows Installer package for silent per-machine mass deployments via
+                <p className="text-xs sm:text-sm text-slate-700 dark:text-zinc-300 leading-relaxed mb-6 font-sans">
+                  Standard Windows Installer package target for silent per-machine deployments via
                   Microsoft Intune, SCCM, or Active Directory Group Policy (GPO).
                 </p>
 
                 <div className="space-y-2.5 text-xs text-slate-700 dark:text-zinc-300 mb-6">
                   <div className="flex items-center space-x-2">
-                    <Check className="w-4 h-4 text-cyan-600 dark:text-cyan-400 shrink-0" />
+                    <Check className="w-4 h-4 text-cyan-700 dark:text-cyan-400 shrink-0" />
                     <span>Supports silent deployment: <code className="bg-slate-100 dark:bg-white/5 px-1 py-0.5 rounded text-[11px] font-mono text-slate-900 dark:text-zinc-200">msiexec /i MiniMe.msi /qn</code></span>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <Check className="w-4 h-4 text-cyan-600 dark:text-cyan-400 shrink-0" />
-                    <span>Pre-configurable with signed OrgPolicyManifest file</span>
+                    <Check className="w-4 h-4 text-cyan-700 dark:text-cyan-400 shrink-0" />
+                    <span>Policy-managed exclusions &amp; HIPAA Safe Harbor scrubbing</span>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <Check className="w-4 h-4 text-cyan-600 dark:text-cyan-400 shrink-0" />
-                    <span>Enterprise SAML/OIDC SSO &amp; HIPAA Strict lock presets</span>
+                    <Check className="w-4 h-4 text-cyan-700 dark:text-cyan-400 shrink-0" />
+                    <span>Hardware DPAPI keys, SOC 2 BLAKE3 ledger &amp; &lt; 50ms crypto-shred</span>
                   </div>
                 </div>
               </div>
 
               <div>
                 <a
-                  href="/MiniMe-x64.msi"
-                  download
+                  href="#source-build-verify"
                   className="w-full inline-flex items-center justify-center py-4 px-6 rounded-xl text-base font-semibold text-slate-900 dark:text-white bg-slate-100 hover:bg-slate-200 dark:bg-white/[0.06] dark:hover:bg-white/[0.12] border border-cyan-500/30 hover:border-cyan-500/50 transition-all group mb-4"
                 >
-                  <Building2 className="w-5 h-5 mr-2 text-cyan-600 dark:text-cyan-400 group-hover:scale-110 transition-transform" />
-                  <span>Download MiniMe-x64.msi</span>
+                  <Building2 className="w-5 h-5 mr-2 text-cyan-700 dark:text-cyan-400 group-hover:scale-110 transition-transform" />
+                  <span>MSI Release Pending (Build &amp; Verify)</span>
                 </a>
 
-                {/* SHA-256 Checksum Box */}
-                <div className="p-3 rounded-lg bg-slate-100 dark:bg-black/50 border border-slate-200 dark:border-white/5 flex items-center justify-between text-[11px] font-mono text-slate-600 dark:text-zinc-400">
+                {/* SHA-256 Verification Command Box */}
+                <div className="p-3 rounded-lg bg-slate-100 dark:bg-black/50 border border-slate-200 dark:border-white/5 flex items-center justify-between text-[11px] font-mono text-slate-700 dark:text-zinc-300">
                   <div className="truncate mr-2">
-                    <span className="text-slate-500 dark:text-zinc-500 mr-1">SHA-256:</span>
-                    <span className="text-slate-900 dark:text-zinc-300 font-bold">{msiSha256.slice(0, 18)}...</span>
+                    <span className="text-slate-700 dark:text-zinc-400 mr-1">Verify:</span>
+                    <span className="text-slate-900 dark:text-zinc-200 font-bold">{msiVerifyCommand}</span>
                   </div>
                   <button
                     onClick={handleCopyMsi}
                     className="p-1 hover:text-slate-900 dark:hover:text-white transition-colors shrink-0 flex items-center space-x-1"
-                    title="Copy SHA-256"
+                    title="Copy SHA-256 verification command"
                   >
                     {copiedMsiHash ? (
                       <span className="text-emerald-700 dark:text-emerald-400 text-[10px] font-bold">Copied!</span>
@@ -203,6 +196,29 @@ export default function DownloadPage() {
                     )}
                   </button>
                 </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Release Provenance & Local Verification */}
+          <div
+            id="source-build-verify"
+            className="max-w-5xl mx-auto mb-16 rounded-2xl border border-amber-500/30 bg-amber-500/10 dark:bg-amber-950/20 p-6 sm:p-8 backdrop-blur-xl"
+          >
+            <div className="flex items-start space-x-3">
+              <Terminal className="w-5 h-5 text-amber-800 dark:text-amber-300 shrink-0 mt-0.5" />
+              <div className="space-y-2">
+                <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">
+                  Signed Installer Release Provenance &amp; Local Tauri Build
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-800 dark:text-zinc-200 leading-relaxed font-sans">
+                  Pre-built signed <code className="font-mono font-bold">.exe</code> (NSIS) and{" "}
+                  <code className="font-mono font-bold">.msi</code> (WiX) installers belong to Day 14 release packaging and are published alongside their SHA-256 manifest upon GA signing—no placeholder checksums or binary sizes are advertised before artifacts are emitted. To compile installers directly from the verified Rust + Tauri v2 workspace:
+                </p>
+                <pre className="p-3 rounded-xl bg-slate-900 text-emerald-300 text-xs font-mono overflow-x-auto border border-slate-700">
+{`cargo tauri build --bundles nsis,msi
+Get-FileHash src-tauri\\target\\release\\bundle\\nsis\\*.exe -Algorithm SHA256`}
+                </pre>
               </div>
             </div>
           </div>
@@ -255,8 +271,9 @@ export default function DownloadPage() {
                     1
                   </div>
                   <div>
-                    <strong className="text-slate-900 dark:text-white">Run the Installer:</strong> Launch{" "}
-                    <code>MiniMe.exe</code>. Setup completes in under 5 seconds.
+                    <strong className="text-slate-900 dark:text-white">Run the Installer (or Build from Source):</strong> Launch the signed Windows{" "}
+                    <code>.exe</code> / <code>.msi</code> installer once GA Day 14 bundles are published, or build locally with{" "}
+                    <code className="font-mono">cargo tauri build</code>.
                   </div>
                 </div>
 
@@ -265,8 +282,8 @@ export default function DownloadPage() {
                     2
                   </div>
                   <div>
-                    <strong className="text-slate-900 dark:text-white">Windows Defender SmartScreen:</strong> If prompted
-                    by SmartScreen on new releases, click <em>&ldquo;More info&rdquo;</em> then{" "}
+                    <strong className="text-slate-900 dark:text-white">Windows Defender SmartScreen:</strong> On initial pre-release
+                    local builds, click <em>&ldquo;More info&rdquo;</em> then{" "}
                     <em>&ldquo;Run anyway&rdquo;</em>.
                   </div>
                 </div>
@@ -289,9 +306,9 @@ export default function DownloadPage() {
             <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-2">
               Looking for macOS or Linux?
             </h3>
-            <p className="text-xs sm:text-sm text-slate-600 dark:text-zinc-400 mb-6">
-              Our pure-Rust core is fully cross-platform. macOS (Apple Silicon native) and Linux
-              (AppImage / Flatpak) builds are targeted for Q2 2026. Join the early access queue:
+            <p className="text-xs sm:text-sm text-slate-700 dark:text-zinc-300 mb-6">
+              Our pure-Rust core is cross-platform, with macOS and Linux OS collector backends already implemented in{" "}
+              <code className="font-mono font-semibold">minime-collector</code> while signed Apple Silicon and Linux (AppImage / Flatpak) desktop packages follow the Windows release. Join the early access queue:
             </p>
 
             {waitlistSubmitted ? (

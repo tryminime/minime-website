@@ -171,13 +171,13 @@ function VerifyContent() {
       </div>
 
       {/* Footer Info */}
-      <div className="pt-4 border-t border-slate-200 dark:border-white/5 text-xs text-slate-500 dark:text-zinc-400 space-y-2">
+      <div className="pt-4 border-t border-slate-200 dark:border-white/5 text-xs text-slate-700 dark:text-zinc-300 space-y-2">
         <p>This verification link expires in 15 minutes and can only be used once.</p>
         <p>
           Don&apos;t have the desktop client?{" "}
-          <a href="https://www.tryminime.com/downloads/MiniMe.exe" className="text-violet-700 dark:text-violet-400 font-semibold hover:underline">
-            Download MiniMe.exe for Windows
-          </a>
+          <Link href="/download" className="text-violet-700 dark:text-violet-300 font-semibold hover:underline">
+            Get MiniMe for Windows (Setup &amp; Verification)
+          </Link>
         </p>
       </div>
     </div>

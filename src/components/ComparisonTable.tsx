@@ -130,7 +130,7 @@ export function ComparisonTable() {
       dimension: "Cryptographic Security",
       tooltip: "Encryption guarantees protecting your private data",
       minime: {
-        text: "Zero-Knowledge BYOC, Hardware DPAPI, Argon2id, <50ms GDPR shred",
+        text: "Zero-Knowledge BYOC, DPAPI, Argon2id + XChaCha20/ChaCha20 AEAD, <50ms shred",
         status: "best",
       },
       recall: {
@@ -158,7 +158,7 @@ export function ComparisonTable() {
       dimension: "Universal MCP Protocol",
       tooltip: "Support for Model Context Protocol stdio server",
       minime: {
-        text: "Official rmcp 3.8.0 stdio server with 7 tools (Cursor/Claude)",
+        text: "Official rmcp 3.8.0 stdio server with 8 tools incl. record_decision",
         status: "best",
       },
       recall: {
@@ -179,6 +179,34 @@ export function ComparisonTable() {
       },
       notion: {
         text: "Cloud webhook / REST API only",
+        status: "neutral",
+      },
+    },
+    {
+      dimension: "Workspace Intel & Decisions",
+      tooltip: "Autonomous project mapping and persistent architectural decision tracking",
+      minime: {
+        text: "5-Min Scheduled AST Analyzer + Decisions CRUD (UI, Chat & MCP)",
+        status: "best",
+      },
+      recall: {
+        text: "None — Passive timeline screenshots only",
+        status: "bad",
+      },
+      rewind: {
+        text: "None — Linear meeting transcripts only",
+        status: "bad",
+      },
+      pieces: {
+        text: "Manual snippet saves only",
+        status: "neutral",
+      },
+      activityWatch: {
+        text: "None — Window category rules only",
+        status: "bad",
+      },
+      notion: {
+        text: "Manual wiki pages",
         status: "neutral",
       },
     },
@@ -267,7 +295,7 @@ export function ComparisonTable() {
             <table className="w-full text-left border-collapse min-w-[900px]">
               <thead>
                 <tr className="border-b border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/[0.02]">
-                  <th className="p-4 sm:p-5 text-xs font-mono font-bold uppercase tracking-wider text-slate-600 dark:text-zinc-400 w-1/4">
+                  <th className="p-4 sm:p-5 text-xs font-mono font-bold uppercase tracking-wider text-slate-700 dark:text-zinc-300 w-1/4">
                     Architectural Dimension
                   </th>
                   {competitors.map((c) => (
@@ -276,7 +304,7 @@ export function ComparisonTable() {
                       className={`p-4 sm:p-5 text-xs font-mono font-bold uppercase tracking-wider ${
                         c.highlight
                           ? "bg-violet-600/10 dark:bg-violet-600/20 text-violet-800 dark:text-violet-300 border-x border-violet-500/30"
-                          : "text-slate-700 dark:text-zinc-400"
+                          : "text-slate-700 dark:text-zinc-300"
                       }`}
                     >
                       <div className="flex items-center space-x-1.5">
@@ -295,7 +323,7 @@ export function ComparisonTable() {
                   >
                     <td className="p-4 sm:p-5 font-semibold text-slate-900 dark:text-white">
                       <div>{row.dimension}</div>
-                      <div className="text-[11px] font-normal text-slate-500 dark:text-zinc-400 mt-0.5">
+                      <div className="text-[11px] font-normal text-slate-700 dark:text-zinc-300 mt-0.5">
                         {row.tooltip}
                       </div>
                     </td>
@@ -303,7 +331,7 @@ export function ComparisonTable() {
                     {/* MINIME COLUMN */}
                     <td className="p-4 sm:p-5 bg-violet-600/[0.04] dark:bg-violet-600/[0.07] border-x border-violet-500/20 font-medium text-slate-900 dark:text-zinc-100">
                       <div className="flex items-start space-x-2">
-                        <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
+                        <CheckCircle2 className="w-4 h-4 text-emerald-700 dark:text-emerald-400 shrink-0 mt-0.5" />
                         <span className="font-semibold text-violet-900 dark:text-violet-200">
                           {row.minime.text}
                         </span>
@@ -311,64 +339,64 @@ export function ComparisonTable() {
                     </td>
 
                     {/* RECALL COLUMN */}
-                    <td className="p-4 sm:p-5 text-slate-600 dark:text-zinc-400">
+                    <td className="p-4 sm:p-5 text-slate-700 dark:text-zinc-300">
                       <div className="flex items-start space-x-2">
                         {row.recall.status === "bad" ? (
-                          <X className="w-4 h-4 text-red-500 shrink-0 mt-0.5" />
+                          <X className="w-4 h-4 text-red-600 dark:text-red-400 shrink-0 mt-0.5" />
                         ) : (
-                          <Minus className="w-4 h-4 text-slate-400 shrink-0 mt-0.5" />
+                          <Minus className="w-4 h-4 text-slate-500 dark:text-zinc-400 shrink-0 mt-0.5" />
                         )}
                         <span>{row.recall.text}</span>
                       </div>
                     </td>
 
                     {/* REWIND COLUMN */}
-                    <td className="p-4 sm:p-5 text-slate-600 dark:text-zinc-400">
+                    <td className="p-4 sm:p-5 text-slate-700 dark:text-zinc-300">
                       <div className="flex items-start space-x-2">
                         {row.rewind.status === "bad" ? (
-                          <X className="w-4 h-4 text-red-500 shrink-0 mt-0.5" />
+                          <X className="w-4 h-4 text-red-600 dark:text-red-400 shrink-0 mt-0.5" />
                         ) : (
-                          <Minus className="w-4 h-4 text-slate-400 shrink-0 mt-0.5" />
+                          <Minus className="w-4 h-4 text-slate-500 dark:text-zinc-400 shrink-0 mt-0.5" />
                         )}
                         <span>{row.rewind.text}</span>
                       </div>
                     </td>
 
                     {/* PIECES COLUMN */}
-                    <td className="p-4 sm:p-5 text-slate-600 dark:text-zinc-400">
+                    <td className="p-4 sm:p-5 text-slate-700 dark:text-zinc-300">
                       <div className="flex items-start space-x-2">
                         {row.pieces.status === "bad" ? (
-                          <X className="w-4 h-4 text-red-500 shrink-0 mt-0.5" />
+                          <X className="w-4 h-4 text-red-600 dark:text-red-400 shrink-0 mt-0.5" />
                         ) : row.pieces.status === "good" ? (
-                          <Check className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                          <Check className="w-4 h-4 text-emerald-700 dark:text-emerald-400 shrink-0 mt-0.5" />
                         ) : (
-                          <Minus className="w-4 h-4 text-slate-400 shrink-0 mt-0.5" />
+                          <Minus className="w-4 h-4 text-slate-500 dark:text-zinc-400 shrink-0 mt-0.5" />
                         )}
                         <span>{row.pieces.text}</span>
                       </div>
                     </td>
 
                     {/* ACTIVITYWATCH COLUMN */}
-                    <td className="p-4 sm:p-5 text-slate-600 dark:text-zinc-400">
+                    <td className="p-4 sm:p-5 text-slate-700 dark:text-zinc-300">
                       <div className="flex items-start space-x-2">
                         {row.activityWatch.status === "bad" ? (
-                          <X className="w-4 h-4 text-red-500 shrink-0 mt-0.5" />
+                          <X className="w-4 h-4 text-red-600 dark:text-red-400 shrink-0 mt-0.5" />
                         ) : row.activityWatch.status === "good" ? (
-                          <Check className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                          <Check className="w-4 h-4 text-emerald-700 dark:text-emerald-400 shrink-0 mt-0.5" />
                         ) : (
-                          <Minus className="w-4 h-4 text-slate-400 shrink-0 mt-0.5" />
+                          <Minus className="w-4 h-4 text-slate-500 dark:text-zinc-400 shrink-0 mt-0.5" />
                         )}
                         <span>{row.activityWatch.text}</span>
                       </div>
                     </td>
 
                     {/* NOTION AI COLUMN */}
-                    <td className="p-4 sm:p-5 text-slate-600 dark:text-zinc-400">
+                    <td className="p-4 sm:p-5 text-slate-700 dark:text-zinc-300">
                       <div className="flex items-start space-x-2">
                         {row.notion.status === "bad" ? (
-                          <X className="w-4 h-4 text-red-500 shrink-0 mt-0.5" />
+                          <X className="w-4 h-4 text-red-600 dark:text-red-400 shrink-0 mt-0.5" />
                         ) : (
-                          <Minus className="w-4 h-4 text-slate-400 shrink-0 mt-0.5" />
+                          <Minus className="w-4 h-4 text-slate-500 dark:text-zinc-400 shrink-0 mt-0.5" />
                         )}
                         <span>{row.notion.text}</span>
                       </div>

@@ -7,7 +7,7 @@ import { ShieldCheck, Terminal, Download, Sparkles, ExternalLink, Cpu } from "lu
 
 export function Footer() {
   return (
-    <footer className="relative border-t border-slate-300 dark:border-white/10 bg-slate-100/90 dark:bg-black/80 backdrop-blur-2xl text-slate-600 dark:text-zinc-400 text-xs sm:text-sm transition-colors">
+    <footer className="relative border-t border-slate-300 dark:border-white/10 bg-slate-100/90 dark:bg-black/80 backdrop-blur-2xl text-slate-700 dark:text-zinc-300 text-xs sm:text-sm transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
           {/* Brand Info & Mission (Cols 1-2) */}
@@ -26,7 +26,7 @@ export function Footer() {
                 MiniMe
               </span>
             </Link>
-            <p className="text-slate-600 dark:text-zinc-400 text-xs sm:text-sm max-w-sm leading-relaxed">
+            <p className="text-slate-700 dark:text-zinc-300 text-xs sm:text-sm max-w-sm leading-relaxed">
               Your Operating System&apos;s Cognitive Digital Twin. Search &amp; chat with every
               document, code file, and web page you&apos;ve ever touched—without creepy screenshots
               or centralized corporate databases.
@@ -47,8 +47,8 @@ export function Footer() {
               <span className="px-2.5 py-1 rounded-md bg-white dark:bg-white/5 border border-slate-300 dark:border-white/10 text-xs font-mono text-slate-700 dark:text-zinc-300 font-medium">
                 Win32 Native Pure-Rust
               </span>
-              <span className="px-2.5 py-1 rounded-md bg-white dark:bg-white/5 border border-slate-300 dark:border-white/10 text-xs font-mono text-slate-700 dark:text-zinc-300 font-medium">
-                84/84 Tests Passing
+              <span className="px-2.5 py-1 rounded-md bg-white dark:bg-white/5 border border-slate-300 dark:border-white/10 text-xs font-mono text-slate-800 dark:text-zinc-200 font-medium">
+                240 Automated Rust Tests
               </span>
             </div>
           </div>
@@ -61,7 +61,7 @@ export function Footer() {
             <ul className="space-y-2 text-xs sm:text-sm">
               <li>
                 <a href="#features" className="hover:text-slate-900 dark:hover:text-white transition-colors">
-                  8 Architectural Pillars
+                  9 Architectural Pillars
                 </a>
               </li>
               <li>
@@ -138,16 +138,16 @@ export function Footer() {
             </h4>
             <ul className="space-y-2 text-xs sm:text-sm">
               <li>
-                <a
-                  href="https://www.tryminime.com/downloads/MiniMe.exe"
-                  className="inline-flex items-center text-violet-700 dark:text-violet-400 font-bold hover:underline"
+                <Link
+                  href="/download"
+                  className="inline-flex items-center text-violet-700 dark:text-violet-300 font-bold hover:underline"
                 >
                   <Download className="w-3.5 h-3.5 mr-1.5" />
-                  <span>Download MiniMe.exe (Windows)</span>
-                </a>
+                  <span>Windows Setup &amp; Verification</span>
+                </Link>
               </li>
               <li>
-                <Link href="/download" className="hover:text-slate-900 dark:hover:text-white transition-colors">
+                <Link href="/download#enterprise" className="hover:text-slate-900 dark:hover:text-white transition-colors">
                   Enterprise MSI Package
                 </Link>
               </li>
@@ -166,7 +166,7 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-12 mt-12 border-t border-slate-200 dark:border-white/10 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 dark:text-zinc-500 gap-4">
+        <div className="pt-12 mt-12 border-t border-slate-200 dark:border-white/10 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-700 dark:text-zinc-300 gap-4">
           <div>
             &copy; 2026 MiniMe Inc. All rights reserved. 100% Zero-Knowledge &amp; Anti-Recall Architecture.
           </div>

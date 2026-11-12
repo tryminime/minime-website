@@ -166,9 +166,13 @@ export default function PrivacyPage() {
                 2. Enterprise Cryptography &amp; Key Storage
               </h2>
               <p>
-                Master encryption keys are derived on your computer using Argon2id with 64 MiB RAM, 3 iterations, and 4 parallel threads.
-                Keys are wrapped using the hardware-enforced Windows Data Protection API (DPAPI) and stored in your user profile.
-                When your computer is locked (Win + L), volatile memory is immediately sanitized using Rust <code className="text-violet-700 dark:text-violet-300 font-mono font-bold">Zeroizing&lt;T&gt;</code> primitives.
+                Passphrase-protected master Data Encryption Keys (DEKs) are derived on your computer using Argon2id
+                (64 MiB RAM, 3 iterations, 4 parallel threads) and wrapped via XChaCha20-Poly1305. Keys and cloud sync tokens
+                are protected via the OS hardware enclave (Windows DPAPI) and stored locally. Sensitive SQLite columns
+                (<code className="text-violet-700 dark:text-violet-300 font-mono font-bold">enc:v1:</code> with vault/row AAD) and{" "}
+                <code className="text-violet-700 dark:text-violet-300 font-mono font-bold">.mmz</code> cloud bundles are encrypted with ChaCha20-Poly1305 AEAD,
+                and when your computer locks (Win + L), volatile key material is immediately wiped in &lt; 1ms using Rust{" "}
+                <code className="text-violet-700 dark:text-violet-300 font-mono font-bold">Zeroizing&lt;T&gt;</code> primitives.
               </p>
             </section>
 
@@ -179,9 +183,9 @@ export default function PrivacyPage() {
               </h2>
               <p>
                 MiniMe incorporates an automated 18-identifier HIPAA Safe Harbor de-identification engine.
-                Names, Medical Record Numbers (MRNs), Social Security Numbers, addresses, and dates are redacted
-                before document passages are embedded or stored in SQLite. Clinical EHR window titles (Epic, Cerner, AthenaHealth)
-                are blocked by default.
+                Names, Medical Record Numbers (MRNs), Luhn-validated identifiers, Social Security Numbers, addresses, and dates
+                are redacted before document passages are embedded or stored in SQLite. 18 built-in clinical EHR portal
+                window patterns (Epic, Cerner, AthenaHealth, NextGen, eClinicalWorks, and more) are excluded by default.
               </p>
             </section>
 
@@ -191,8 +195,10 @@ export default function PrivacyPage() {
                 4. GDPR Article 17 Cryptographic Shredding
               </h2>
               <p>
-                Under GDPR Article 17, you have the right to erasure. MiniMe implements instant cryptographic shredding in &lt; 50ms:
-                destroying the Data Encryption Keys renders all local database rows and cloud .mmz backup bundles mathematically undecodable forever.
+                Under GDPR Article 17, you have the right to erasure. MiniMe rotates volatile key material in &lt; 1ms and executes
+                full vault cryptographic shredding (<code className="text-violet-700 dark:text-violet-300 font-mono font-bold">crypto_shred_vault</code>)
+                in &lt; 50ms: rotating the DPAPI-protected DEK, cascading SQLite deletes, truncating the WAL, and writing a domain-separated BLAKE3 audit receipt
+                so local rows and cloud .mmz backup bundles are permanently unrecoverable.
               </p>
             </section>
 

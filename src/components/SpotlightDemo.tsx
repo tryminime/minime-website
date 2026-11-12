@@ -94,10 +94,10 @@ export function SpotlightDemo() {
               <div className="w-3 h-3 rounded-full bg-red-500/60" />
               <div className="w-3 h-3 rounded-full bg-yellow-500/60" />
               <div className="w-3 h-3 rounded-full bg-green-500/60" />
-              <span className="text-slate-600 dark:text-zinc-500 text-xs ml-2">crates/minime-core/src/rag/ppr.rs — Visual Studio Code</span>
+              <span className="text-slate-700 dark:text-zinc-400 text-xs ml-2">crates/minime-core/src/rag/ppr.rs — Visual Studio Code</span>
             </div>
-            <p className="text-slate-600 dark:text-zinc-500">1  use crate::graph::csr::CompressedSparseRowGraph;</p>
-            <p className="text-slate-600 dark:text-zinc-500">2  // CSR Personalized PageRank forward power iterations: 837.4µs on 25k nodes &amp; 75k edges</p>
+            <p className="text-slate-700 dark:text-zinc-400">1  use crate::rag::SparseGraphPpr;</p>
+            <p className="text-slate-700 dark:text-zinc-400">2  // CSR Personalized PageRank power iterations: 837.4µs on 25k nodes &amp; 75k edges</p>
             <p className="text-slate-600 dark:text-zinc-500">3  pub fn compute_ppr(graph: &amp;CSRGraph, seeds: &amp;[u32], alpha: f32) -&gt; Vec&lt;f32&gt; &#123;</p>
             <p className="text-slate-600 dark:text-zinc-500">4      let (scores, iterations) = graph.power_iterate(seeds, alpha, 20);</p>
             <p className="text-slate-600 dark:text-zinc-500">5      scores</p>
@@ -225,17 +225,17 @@ export function SpotlightDemo() {
                             <span className="p-1 rounded bg-cyan-500/10 text-cyan-700 dark:text-cyan-400 border border-cyan-500/20 text-xs font-mono font-bold">
                               RUST
                             </span>
-                            <span className="text-sm font-semibold text-slate-900 dark:text-white group-hover:text-cyan-600 dark:group-hover:text-cyan-300 transition-colors">
-                              crates/minime-core/src/auth/token_refresh.rs
+                            <span className="text-sm font-semibold text-slate-900 dark:text-white group-hover:text-cyan-700 dark:group-hover:text-cyan-300 transition-colors">
+                              crates/minime-core/src/auth/manager.rs
                             </span>
                           </div>
-                          <span className="text-xs font-mono text-emerald-700 dark:text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
-                            +48 / -4 lines
+                          <span className="text-xs font-mono text-emerald-800 dark:text-emerald-300 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
+                            +28 / -4 lines
                           </span>
                         </div>
-                        <p className="text-xs font-mono text-slate-700 dark:text-zinc-400 leading-relaxed bg-slate-100 dark:bg-black/40 p-2 rounded border border-slate-200 dark:border-white/5">
-                          + pub async fn handle_notice_expiry(claims: &amp;JwtClaims) -&gt; Result&lt;()&gt; &#123; <br />
-                          + &nbsp;&nbsp;log_termination_event(&quot;breach_notice_acknowledged&quot;).await?;
+                        <p className="text-xs font-mono text-slate-800 dark:text-zinc-300 leading-relaxed bg-slate-100 dark:bg-black/40 p-2 rounded border border-slate-200 dark:border-white/5">
+                          + pub fn wrap_active_vault_key(&amp;self, passphrase: &amp;str) -&gt; Result&lt;(), AuthError&gt; &#123; <br />
+                          + &nbsp;&nbsp;self.db.clear_unwrapped_vault_dek(&amp;vault_id)?;
                         </p>
                       </div>
 
@@ -295,8 +295,8 @@ export function SpotlightDemo() {
                             [Vendor_Agreement.pdf • Page 7]
                           </span>
                           <span className="inline-flex items-center px-2.5 py-1 rounded-lg bg-violet-100 dark:bg-violet-950/60 border border-violet-300 dark:border-violet-500/30 text-violet-900 dark:text-violet-300 font-mono">
-                            <Code2 className="w-3.5 h-3.5 mr-1.5 text-violet-600 dark:text-violet-400" />
-                            [token_refresh.rs:142]
+                            <Code2 className="w-3.5 h-3.5 mr-1.5 text-violet-700 dark:text-violet-300" />
+                            [auth/manager.rs • DPAPI Wrap]
                           </span>
                           <span className="ml-auto text-xs text-slate-500 dark:text-zinc-400 flex items-center space-x-1 font-mono">
                             <span>Score: 0.942</span>
@@ -363,11 +363,11 @@ export function SpotlightDemo() {
                         </div>
 
                         <div>
-                          <span className="text-red-700 dark:text-red-400 font-bold block mb-1">
+                          <span className="text-red-800 dark:text-red-300 font-bold block mb-1">
                             🛑 Blockers:
                           </span>
-                          <p className="text-slate-600 dark:text-zinc-400 pl-1">
-                            None. All 84/84 automated Rust workspace tests passing (100% green).
+                          <p className="text-slate-700 dark:text-zinc-300 pl-1">
+                            None. 240 automated Rust workspace tests passing (182/182 unit + 58 integration tests).
                           </p>
                         </div>
                       </div>
@@ -420,15 +420,15 @@ export function SpotlightDemo() {
                       <div className="p-3.5 rounded-xl bg-slate-50 dark:bg-white/[0.03] border border-amber-500/30 space-y-2">
                         <div className="flex items-center justify-between text-xs">
                           <span className="font-bold text-slate-900 dark:text-white flex items-center space-x-1.5">
-                            <ShieldCheck className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+                            <ShieldCheck className="w-4 h-4 text-emerald-700 dark:text-emerald-400" />
                             <span>Zero-Pixel Inspection Stream</span>
                           </span>
-                          <span className="font-mono text-[11px] text-slate-500 dark:text-zinc-400">
-                            BLAKE3: c4109fa8...819
+                          <span className="font-mono text-[11px] text-slate-700 dark:text-zinc-300">
+                            Domain: minime.compliance.audit.v1
                           </span>
                         </div>
-                        <p className="text-xs text-slate-700 dark:text-zinc-300 leading-relaxed font-mono">
-                          Extracted active AST function: `CompressedSparseRowGraph::power_iterate(alpha=0.85)` in `crates/minime-core/src/graph/csr.rs#L84-L126`. 0 screenshots taken, 0 video buffers allocated.
+                        <p className="text-xs text-slate-800 dark:text-zinc-300 leading-relaxed font-mono">
+                          Active workspace diff inspected: `SparseGraphPpr::compute_ppr_raw(seed_ids, alpha=0.85, max_iterations=10)` in `crates/minime-core/src/rag/ppr.rs#L157-L238`. 0 screenshots taken, 0 video frames allocated.
                         </p>
                       </div>
                     </motion.div>

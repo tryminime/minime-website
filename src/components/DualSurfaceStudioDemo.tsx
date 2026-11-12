@@ -53,14 +53,14 @@ const presets: QueryPreset[] = [
   },
   {
     id: "code",
-    label: "AST Git Refactor",
-    question: "How did we implement pure-Rust CSR Personalized PageRank forward power iterations?",
+    label: "Workspace Git Diff",
+    question: "How did we implement pure-Rust CSR Personalized PageRank power iterations?",
     answerLead:
-      "The forward power iterations are implemented in pure-Rust over Compressed Sparse Row (CSR) storage, achieving 837.4µs execution over 25,000 nodes and 75,000 edges without memory reallocations.",
+      "The sparse CSR PageRank engine is implemented in pure Rust inside SparseGraphPpr, executing 10 power iterations over 25,000 nodes and 75,000 edges in 837.4µs (< 1ms) with pre-allocated ping-pong buffers.",
     quote:
-      "pub fn power_iterate(&self, seeds: &[u32], alpha: f32, max_iter: usize) -> (Vec<f32>, usize) { let mut p = vec![0.0f32; self.num_nodes]; for &s in seeds { p[s as usize] = 1.0 / seeds.len() as f32; } ... }",
-    source: "crates/minime-core/src/graph/csr.rs#L84-L126",
-    byteOffset: "AST Node #42 • fn power_iterate",
+      "pub fn compute_ppr_raw(&self, seed_ids: &[String], alpha: f32, max_iterations: usize) -> Vec<f32> { let mut p = vec![0.0f32; n]; let mut next_p = vec![0.0f32; n]; ... }",
+    source: "crates/minime-core/src/rag/ppr.rs#L157-L238",
+    byteOffset: "WorkAction • fn compute_ppr_raw",
     rougeRecall: 0.95,
     attrScore: 0.96,
     mode: "diffs",
@@ -229,10 +229,10 @@ export function DualSurfaceStudioDemo() {
                     {/* LongCite Attribution Metric Badge */}
                     <div className="pt-2 flex flex-wrap items-center gap-3 text-xs">
                       <div className="inline-flex items-center px-2.5 py-1 rounded-md bg-emerald-500/10 text-emerald-800 dark:text-emerald-300 border border-emerald-500/20 font-mono text-[11px]">
-                        <CheckCircle2 className="w-3.5 h-3.5 mr-1 text-emerald-600 dark:text-emerald-400" />
-                        <span>Sentence Attribution: γ={selectedPreset.attrScore} (τ &ge; 0.72)</span>
+                        <CheckCircle2 className="w-3.5 h-3.5 mr-1 text-emerald-700 dark:text-emerald-400" />
+                        <span>Attribution Score: {selectedPreset.attrScore} (γ=0.65, τ &ge; 0.72)</span>
                       </div>
-                      <div className="inline-flex items-center px-2 py-1 rounded-md bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-zinc-400 border border-slate-200 dark:border-white/10 font-mono text-[11px]">
+                      <div className="inline-flex items-center px-2 py-1 rounded-md bg-slate-100 dark:bg-white/5 text-slate-700 dark:text-zinc-300 border border-slate-200 dark:border-white/10 font-mono text-[11px]">
                         <span>ROUGE-1 Recall: {selectedPreset.rougeRecall}</span>
                       </div>
                     </div>
@@ -351,25 +351,25 @@ export function DualSurfaceStudioDemo() {
                     >
                       <div className="p-3 rounded-xl bg-slate-100 dark:bg-white/[0.04] border border-slate-200 dark:border-white/10 flex items-center justify-between text-xs">
                         <div className="flex items-center space-x-2">
-                          <Code2 className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
+                          <Code2 className="w-4 h-4 text-cyan-700 dark:text-cyan-400" />
                           <span className="font-semibold text-slate-900 dark:text-white">
-                            crates/minime-core/src/graph/csr.rs
+                            crates/minime-core/src/rag/ppr.rs
                           </span>
                         </div>
-                        <span className="text-[11px] text-emerald-700 dark:text-emerald-400 font-bold">
-                          +42 / -6 lines
+                        <span className="text-[11px] text-emerald-800 dark:text-emerald-300 font-bold">
+                          WorkAction • +14 / -4 lines
                         </span>
                       </div>
 
                       <div className="p-3.5 rounded-xl bg-slate-900 text-slate-100 dark:bg-black/60 dark:text-zinc-300 border border-slate-800 dark:border-white/10 space-y-1 overflow-x-auto text-[11px]">
-                        <div className="text-slate-400 font-bold pb-1">@@ -84,12 +84,24 @@ AST fn power_iterate</div>
-                        <div className="text-slate-400">  pub fn power_iterate(&amp;self, seeds: &amp;[u32], alpha: f32) -&gt; Vec&lt;f32&gt; &#123;</div>
-                        <div className="text-emerald-400 bg-emerald-950/40 px-1">+     let mut p = vec![0.0f32; self.num_nodes];</div>
-                        <div className="text-emerald-400 bg-emerald-950/40 px-1">+     for &amp;s in seeds &#123; p[s as usize] = 1.0 / seeds.len() as f32; &#125;</div>
-                        <div className="text-emerald-400 bg-emerald-950/40 px-1">+     // Forward power iteration with Cormack-Clarke dampening</div>
-                        <div className="text-emerald-400 bg-emerald-950/40 px-1">+     for _ in 0..20 &#123; self.spmv_forward(&amp;mut p, alpha); &#125;</div>
-                        <div className="text-slate-400">      p</div>
-                        <div className="text-slate-400">  &#125;</div>
+                        <div className="text-slate-300 font-bold pb-1">@@ -157,10 +157,18 @@ SparseGraphPpr::compute_ppr_raw</div>
+                        <div className="text-slate-300">  pub fn compute_ppr_raw(&amp;self, seed_ids: &amp;[String], alpha: f32, max_iterations: usize) -&gt; Vec&lt;f32&gt; &#123;</div>
+                        <div className="text-emerald-300 bg-emerald-950/40 px-1">+     let mut p = vec![0.0f32; n];</div>
+                        <div className="text-emerald-300 bg-emerald-950/40 px-1">+     let mut next_p = vec![0.0f32; n];</div>
+                        <div className="text-emerald-300 bg-emerald-950/40 px-1">+     for &amp;seed in &amp;seed_indices &#123; p[seed] = restart_prob_per_seed; &#125;</div>
+                        <div className="text-emerald-300 bg-emerald-950/40 px-1">+     // CSR Sparse Matrix-Vector Power Iteration (837.4µs @ 25k nodes)</div>
+                        <div className="text-slate-300">      next_p</div>
+                        <div className="text-slate-300">  &#125;</div>
                       </div>
                     </motion.div>
                   )}
@@ -401,24 +401,24 @@ export function DualSurfaceStudioDemo() {
                           <div className="font-semibold text-slate-900 dark:text-white">
                             Document Read &amp; Grounding
                           </div>
-                          <div className="text-[11px] text-slate-500 dark:text-zinc-400 font-mono">
+                          <div className="text-[11px] text-slate-700 dark:text-zinc-300 font-mono">
                             14:22 • Adobe Acrobat • Dwell: 18m
                           </div>
-                          <div className="text-xs text-slate-600 dark:text-zinc-300 mt-1">
-                            Extracted byte coordinates [24192..24460] with γ=0.92 attribution.
+                          <div className="text-xs text-slate-700 dark:text-zinc-300 mt-1">
+                            Extracted byte coordinates [24192..24460] with LongCite score 0.92 (γ=0.65).
                           </div>
                         </div>
 
                         <div className="relative">
                           <span className="absolute -left-[31px] top-1 w-3 h-3 rounded-full bg-cyan-500 border-2 border-white dark:border-zinc-950" />
                           <div className="font-semibold text-slate-900 dark:text-white">
-                            AST Code Chunk Generated
+                            WorkAction Unified Diff Logged
                           </div>
-                          <div className="text-[11px] text-slate-500 dark:text-zinc-400 font-mono">
-                            15:40 • VS Code • +42 lines
+                          <div className="text-[11px] text-slate-700 dark:text-zinc-300 font-mono">
+                            15:40 • VS Code • +14 / -4 lines
                           </div>
-                          <div className="text-xs text-slate-600 dark:text-zinc-300 mt-1">
-                            CSR Personalized PageRank forward iteration committed to branch.
+                          <div className="text-xs text-slate-700 dark:text-zinc-300 mt-1">
+                            SparseGraphPpr CSR forward power iteration committed to branch.
                           </div>
                         </div>
                       </div>
@@ -428,7 +428,7 @@ export function DualSurfaceStudioDemo() {
               </div>
 
               {/* Sidecar Footer Status */}
-              <div className="mt-6 pt-4 border-t border-slate-200 dark:border-white/10 flex items-center justify-between text-xs text-slate-500 dark:text-zinc-500 font-mono">
+              <div className="mt-6 pt-4 border-t border-slate-200 dark:border-white/10 flex items-center justify-between text-xs text-slate-700 dark:text-zinc-300 font-mono">
                 <span className="flex items-center">
                   <ShieldCheck className="w-3.5 h-3.5 mr-1 text-emerald-600 dark:text-emerald-400" />
                   Deterministic Source Proof

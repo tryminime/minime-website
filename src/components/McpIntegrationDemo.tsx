@@ -30,13 +30,9 @@ export function McpIntegrationDemo() {
       config: JSON.stringify(
         {
           mcpServers: {
-            minime: {
+            "minime-workstream": {
               command: "C:\\Users\\<username>\\AppData\\Local\\MiniMe\\minime-mcp.exe",
-              args: ["--stdio"],
-              env: {
-                MINIME_VAULT: "personal",
-                MINIME_LOG_LEVEL: "info",
-              },
+              args: [],
             },
           },
         },
@@ -49,9 +45,9 @@ export function McpIntegrationDemo() {
       config: JSON.stringify(
         {
           mcpServers: {
-            minime: {
+            "minime-workstream": {
               command: "C:\\Users\\<username>\\AppData\\Local\\MiniMe\\minime-mcp.exe",
-              args: ["--stdio"],
+              args: [],
             },
           },
         },
@@ -64,9 +60,9 @@ export function McpIntegrationDemo() {
       config: JSON.stringify(
         {
           mcpServers: {
-            minime: {
+            "minime-workstream": {
               command: "C:\\Users\\<username>\\AppData\\Local\\MiniMe\\minime-mcp.exe",
-              args: ["--stdio"],
+              args: [],
             },
           },
         },
@@ -79,52 +75,63 @@ export function McpIntegrationDemo() {
   const tools = [
     {
       name: "ask_memory",
-      signature: 'ask_memory(query: string, scope?: "@doc" | "@file" | "@today", tier?: string)',
+      signature:
+        'ask_memory(query: string, scope?: "@doc:<title> | @file:<path> | @project:<name> | @active | @today", vault_id?: string, tier?: "local" | "cloud" | "extractive")',
       description:
-        "Ask natural language questions about your digital memory, documents, code files, and activity history. Powered by vault-scoped Hybrid RAG (FTS5 + ONNX Int8 vector cosine + recency decay).",
-      returns: "Synthesized markdown answer with verifiable LongCite document citations.",
+        "Ask natural language questions about your digital memory, documents, code files, work actions, and recorded decisions. Powered by vault-scoped 6-Head TD-RRF Hybrid RAG (FTS5 BM25 + Int8 vector cosine + CSR Graph PPR + temporal decay). Defaults to offline 'extractive' tier.",
+      returns: "Grounded markdown synthesis with verifiable LongCite document citations & byte offsets.",
     },
     {
       name: "search_workstream",
       signature: "search_workstream(query: string, limit?: number, vault_id?: string)",
       description:
-        "Search past application window titles, visited browser URLs, terminal commands, and developer tools using full-text BM25 index.",
-      returns: "Chronological array of matching window events and dwell intervals.",
+        "Search past application window titles, visited browser URLs, terminal sessions, and developer tools using the SQLite FTS5 BM25 index (limit default: 15, max: 50).",
+      returns: "Markdown table of matching workstream sessions, projects, and dwell durations.",
     },
     {
       name: "search_documents",
-      signature: "search_documents(query: string, source_kind?: string, limit?: number)",
+      signature:
+        'search_documents(query: string, source_kind?: "pdf" | "docx" | "pptx" | "xlsx" | "csv" | "code" | "markdown" | "uia_viewport" | "plain_text", limit?: number, vault_id?: string)',
       description:
-        "Search inside the contents of all ingested documents, PDFs, Word docs, spreadsheets, presentations, code files, and browser viewports using FTS5 BM25 passage search.",
-      returns: "Ranked document text chunks with source file paths and byte offsets.",
+        "Search inside the contents of ingested PDFs, Word docs, presentations, spreadsheets, CSVs, code files, Markdown, and UIA viewports via FTS5 BM25 passage search (limit default: 10, max: 30).",
+      returns: "Ranked document text chunks with artifact UUIDs, source paths, and locator labels.",
     },
     {
       name: "get_document_chunks",
       signature: "get_document_chunks(artifact_id: string, vault_id?: string)",
       description:
         "Retrieve all structured text chunks and page/slide/sheet citations for a specific document artifact by artifact UUID.",
-      returns: "Full segmented artifact passages with BLAKE3 hashes and page bounds.",
+      returns: "Ordered artifact chunks with locator labels (Page, Slide, Sheet, Section) and byte lengths.",
     },
     {
       name: "get_daily_standup",
-      signature: "get_daily_standup(vault_id?: string, format?: 'markdown' | 'json')",
+      signature: 'get_daily_standup(vault_id?: string, format?: "markdown" | "json")',
       description:
         "Generate a comprehensive daily standup report summarizing today's focus blocks, completed work actions, Git commits, top applications, and dwell time.",
-      returns: "Formatted markdown or structured JSON report ready for Slack or Jira.",
+      returns: "Formatted Markdown (default) or structured JSON standup report ready for Slack or Jira.",
     },
     {
       name: "get_project_context",
       signature: "get_project_context(project_name?: string, vault_id?: string)",
       description:
-        "Inspect a workspace project's active Git repository state, current branch, HEAD SHA, staged changes, recent commits, touched files, and associated document artifacts.",
-      returns: "Live repository manifest, active branch name, and line-level diff summary.",
+        "Inspect a workspace project's active Git repository state, current branch, HEAD SHA, staged changes, recent commits, touched files, and associated document artifacts (defaults to active foreground workspace).",
+      returns: "Live repository manifest, active branch & commit state, diffs, and linked artifacts.",
     },
     {
       name: "get_active_context",
       signature: "get_active_context(vault_id?: string)",
       description:
-        "Get instant real-time context about the user's current foreground application, window title, active URL/document, current project, Git branch, and idle state.",
-      returns: "Foreground window metadata, active process ID, and dwell duration.",
+        "Get instant real-time context about the user's current foreground application, window title, active URL/document, current project, Git branch, dwell time, idle state, and active focus block.",
+      returns: "Live foreground window metadata, project/branch state, idle status, and focus block info.",
+    },
+    {
+      name: "record_decision",
+      signature:
+        'record_decision(title: string, content: string, project_name?: string, category?: "decision" | "architecture" | "note" | "bugfix" | "task", tags?: string[], vault_id?: string)',
+      description:
+        "Record an architectural decision, developer note, task, or bugfix rationale into MiniMe's persistent SQLite decisions_and_notes ledger, optionally linking to a workspace project.",
+      returns:
+        "Sanitized JSON receipt (status, decision_id, vault_id, project_name, category, tags, created_at) with BLAKE3 audit logging.",
     },
   ];
 
@@ -150,9 +157,9 @@ export function McpIntegrationDemo() {
               Supercharge Cursor, Claude &amp; Windsurf.
             </span>
           </h2>
-          <p className="mt-4 text-base sm:text-lg text-slate-600 dark:text-zinc-300">
+          <p className="mt-4 text-base sm:text-lg text-slate-700 dark:text-zinc-300">
             MiniMe includes an official <code className="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-white/10 font-mono text-xs text-slate-900 dark:text-white font-bold">rmcp 3.8.0</code> stdio server binary (<code>minime-mcp.exe</code>).
-            Connect your favorite coding agent to your local memory with 7 deterministic tools.
+            Connect your favorite coding agent to your local memory and decision ledger with 8 deterministic tools.
           </p>
         </div>
 
@@ -238,14 +245,14 @@ export function McpIntegrationDemo() {
             </div>
           </div>
 
-          {/* Right: 7 Official Tools Explorer (Cols 7-12) */}
+          {/* Right: 8 Official Tools Explorer (Cols 7-12) */}
           <div className="lg:col-span-6 space-y-3">
             <div className="flex items-center justify-between pb-2">
               <h3 className="text-sm font-mono font-bold uppercase tracking-wider text-slate-800 dark:text-zinc-200 flex items-center space-x-2">
-                <Code2 className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
-                <span>7 Official rmcp Tools Included</span>
+                <Code2 className="w-4 h-4 text-cyan-700 dark:text-cyan-400" />
+                <span>8 Official rmcp Tools Included</span>
               </h3>
-              <span className="text-xs font-mono text-slate-500 dark:text-zinc-400">
+              <span className="text-xs font-mono text-slate-700 dark:text-zinc-300">
                 Pure-Rust stdio daemon
               </span>
             </div>

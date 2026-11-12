@@ -43,13 +43,13 @@ export function FlowRibbonVisualizer() {
       category: "Coding",
       device: "Office Desktop",
       title: "Core Rust Daemon Architecture & CSR PageRank",
-      details: "Implemented Win32 dwell-gated accessibility reader and Compressed Sparse Row (CSR) forward power iterations running in 837.4µs on 25k nodes.",
+      details: "Implemented Win32 dwell-gated accessibility reader and Compressed Sparse Row (CSR) forward power iterations running in 837.4µs on 25k nodes & 75k edges.",
       files: [
-        { name: "crates/minime-core/src/graph/csr.rs", type: "rust", diff: "+142 / -18" },
+        { name: "crates/minime-core/src/graph/extractor.rs", type: "rust", diff: "+142 / -18" },
         { name: "crates/minime-core/src/rag/ppr.rs", type: "rust", diff: "+89 / -4" },
       ],
       branch: "feat/csr-pagerank-pow-iter",
-      stats: "2h 15m Focus • 4 Commits • 84/84 Tests Passing",
+      stats: "2h 15m Focus • 4 Commits • 240 Tests Passing",
     },
     {
       id: "b2",
@@ -87,8 +87,8 @@ export function FlowRibbonVisualizer() {
       hour: 17,
       category: "Design",
       device: "ThinkPad X1 Laptop",
-      title: "Dual-Surface Studio & Universal MCP Server Testing",
-      details: "Validated 58% LiveChat and 42% ArtifactCanvas split, testing rmcp 3.8.0 stdio server with all 7 tools in Cursor and Claude Desktop.",
+      title: "Dual-Surface Studio & 8-Tool MCP Server",
+      details: "Validated 58% LiveChat and 42% ArtifactCanvas split, testing rmcp 3.8.0 stdio server with all 8 tools (including record_decision) in Cursor and Claude Desktop.",
       files: [
         { name: "crates/minime-mcp/src/tools.rs", type: "rust", diff: "+76 / -12" },
         { name: "src/components/ArtifactCanvas.tsx", type: "tsx", diff: "+94 / -5" },

@@ -108,9 +108,10 @@ const jsonLd = {
         "Pure-Rust Compressed Sparse Row (CSR) Personalized PageRank (< 1ms)",
         "Zero-Knowledge BYOC Cloud Sync with zstd compression (1.54 MB/year)",
         "Int8 FastEmbed ONNX Vector Quantization (>99.5% fidelity)",
-        "Tri-Modal TD-RRF Retrieval (BM25 + Int8 Cosine + CSR PPR)",
-        "Universal rmcp 3.8.0 Model Context Protocol stdio server",
-        "Hardware DPAPI Keychain & 18-ID HIPAA Safe Harbor Scrubber"
+        "6-Head TD-RRF Retrieval (BM25 + Int8 Cosine + CSR PPR + Actions + Intel + Decisions)",
+        "Autonomous 5-Min Workspace Intelligence & Decisions CRUD Ledger",
+        "Universal rmcp 3.8.0 Model Context Protocol stdio server (8 tools incl. record_decision)",
+        "Hardware DPAPI Keychain, Argon2id + XChaCha20/ChaCha20 AEAD & 18-ID HIPAA Safe Harbor Scrubber"
       ]
     },
     {

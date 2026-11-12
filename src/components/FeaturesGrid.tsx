@@ -21,6 +21,7 @@ import {
   SplitSquareVertical,
   Activity,
   Zap,
+  BookmarkCheck,
 } from "lucide-react";
 
 export function FeaturesGrid() {
@@ -33,16 +34,16 @@ export function FeaturesGrid() {
       icon: FileCode2,
       tag: "Pure-Rust Engine",
       color: "from-violet-500/20 to-purple-500/10",
-      accent: "text-violet-600 dark:text-violet-400 border-violet-500/30",
-      title: "Deep Document & AST Ingestion",
+      accent: "text-violet-700 dark:text-violet-300 border-violet-500/30",
+      title: "Deep Document & Diff Ingestion",
       subtitle: "0 Screenshots • 0 Video Frames • 0 Keyloggers",
       description:
-        "MiniMe parses the actual structured text, headings, functions, pages, slides, and sheets of local files you work in. Pure-Rust extractors parse PDFs, Word (.docx), PowerPoint (.pptx), Excel (.xlsx), Markdown, and 45+ code languages with semantic line-level AST diffs (+lines / -lines) using < 0.2% CPU and < 35 MB RAM.",
+        "MiniMe parses the actual structured text, headings, pages, slides, and sheets of local files you work in via pure Win32 OS hooks (SetWinEventHook + IUIAutomation). Pure-Rust extractors parse PDFs (with ToUnicode CMap & Form XObjects), Word (.docx), PowerPoint (.pptx), Excel (.xlsx), CSV, Markdown, and 45+ code languages with working-tree Git numstat diffs using < 0.2% CPU and < 35 MB RAM.",
       specs: [
-        "Native PDF, Word (.docx), PowerPoint (.pptx) & Excel (.xlsx) parsers",
-        "45+ programming languages with AST function & diff tracking",
-        "Dwell-gated accessibility viewport reader (≤16KB text, zero pixels)",
-        "BLAKE3 content hashing & cryptographic deduplication",
+        "Native PDF (lopdf + ToUnicode CMap), Word (.docx), PowerPoint (.pptx) & Excel (.xlsx) parsers",
+        "Live working-tree & non-Git unified diff tracking across 45+ programming languages",
+        "Dwell-gated UIA viewport reader (<=16 KB text, password exclusion, zero pixels)",
+        "BLAKE3 content hashing, Firefox XUL depth-12 URLs, and .lnk shell resolution",
       ],
       previewBadge: "Zero Pixels Processed",
       metric: "< 0.2% CPU • < 35 MB RAM",
@@ -53,16 +54,16 @@ export function FeaturesGrid() {
       icon: BrainCircuit,
       tag: "Graph Algorithms",
       color: "from-indigo-500/20 to-blue-500/10",
-      accent: "text-indigo-600 dark:text-indigo-400 border-indigo-500/30",
+      accent: "text-indigo-700 dark:text-indigo-300 border-indigo-500/30",
       title: "CSR Personalized PageRank",
       subtitle: "837.4µs Forward Iterations on 25k Nodes",
       description:
-        "MiniMe maintains an in-memory knowledge graph of interconnected documents, functions, authors, and workstream sessions. Compressed Sparse Row (CSR) storage enables forward power iterations with Cormack-Clarke dampening to complete in 837.4µs on 25,000 nodes & 75,000 edges (< 1ms) with zero allocations in the inner loop.",
+        "MiniMe maintains a temporal SQLite Knowledge Graph (kg_entities & kg_relations) of interconnected documents, functions, people, and projects. Compressed Sparse Row (CSR) storage in SparseGraphPpr executes 10 power iterations with damping alpha=0.85 in 837.4µs on 25,000 nodes & 75,000 edges (< 1ms) with zero inner-loop heap allocations.",
       specs: [
-        "Pure-Rust Compressed Sparse Row (CSR) graph storage",
-        "Forward power iterations execute in 837.4µs on 25k nodes & 75k edges",
-        "Cormack-Clarke dampening (alpha=0.85) without dynamic allocations",
-        "Contextual query seed projection for graph-aware document ranking",
+        "Pure-Rust Compressed Sparse Row (CSR) graph storage with per-vault caching",
+        "10 power iterations execute in 837.4µs on 25k nodes & 75k edges (< 1ms)",
+        "Temporal edge validity (valid_from / valid_to) & dangling mass redistribution (alpha=0.85)",
+        "Entity harvesting for Person, Document, Project, Function, Concept & Dependency",
       ],
       previewBadge: "Sub-Millisecond Graph Traversal",
       metric: "837.4µs (< 1ms)",
@@ -73,16 +74,16 @@ export function FeaturesGrid() {
       icon: Cpu,
       tag: "Quantized AI",
       color: "from-cyan-500/20 to-teal-500/10",
-      accent: "text-cyan-600 dark:text-cyan-400 border-cyan-500/30",
+      accent: "text-cyan-800 dark:text-cyan-300 border-cyan-500/30",
       title: "Int8 Vector Quantization",
       subtitle: "FastEmbed ONNX Generating 384-Byte Vectors",
       description:
-        "High-dimensional vectors typically consume gigabytes of memory. MiniMe executes FastEmbed All-MiniLM-L6-v2 directly on the CPU via ONNX Runtime, generating 384-byte symmetric Int8 vectors that maintain >99.5% cosine fidelity compared to standard 1,536-byte f32 matrices at 4x memory savings.",
+        "High-dimensional vectors typically consume gigabytes of memory. MiniMe executes FastEmbed All-MiniLM-L6-v2 directly on CPU via ONNX Runtime (zero Python runtime), quantizing 384-dim f32 embeddings (1,536 bytes) into 384-byte symmetric Int8 vectors that preserve >99.5% cosine similarity fidelity at 4x memory compression.",
       specs: [
-        "On-device All-MiniLM-L6-v2 ONNX model (0 Python dependencies)",
-        "384-byte symmetric Int8 quantized vectors",
-        ">99.5% cosine fidelity vs 1,536-byte f32 floats",
-        "Sub-millisecond quantized dot product CPU kernels",
+        "On-device All-MiniLM-L6-v2 ONNX model cached locally (0 Python dependencies)",
+        "384-byte symmetric Int8 quantized vectors (4.0x compression vs 1,536B f32)",
+        ">99.5% cosine similarity fidelity verified against unquantized f32 matrices",
+        "Pure-Rust i32 integer dot product cosine similarity CPU kernels",
       ],
       previewBadge: ">99.5% Cosine Fidelity",
       metric: "384-Byte Symmetric Int8",
@@ -91,21 +92,21 @@ export function FeaturesGrid() {
       id: "tri-modal-rrf",
       number: "04",
       icon: Layers,
-      tag: "TD-RRF Retrieval",
+      tag: "6-Head TD-RRF",
       color: "from-emerald-500/20 to-green-500/10",
-      accent: "text-emerald-600 dark:text-emerald-400 border-emerald-500/30",
-      title: "Tri-Modal TD-RRF Retrieval",
-      subtitle: "BM25 + Int8 Cosine + CSR Graph PageRank",
+      accent: "text-emerald-800 dark:text-emerald-300 border-emerald-500/30",
+      title: "6-Head TD-RRF Retrieval",
+      subtitle: "BM25 + Int8 Cosine + CSR PPR + Actions + Intel + Decisions",
       description:
-        "Single-modal search fails across diverse desktop work. MiniMe fuses three independent retrieval modalities: SQLite FTS5 BM25 keyword matching, Int8 vector semantic cosine similarity, and CSR Personalized PageRank using Cormack-Clarke Reciprocal Rank Fusion (k=60.0) with diurnal exponential decay (λ=0.0693, 24h half-life).",
+        "Single-modal search fails across heterogeneous desktop memory. HybridRagEngine fuses 6 memory heads (FTS5 BM25 w=1.0, Int8 Cosine w=1.25, CSR Graph PPR w=1.50, WorkActions, Project Intelligence, and Decisions) using Temporal-Decayed Reciprocal Rank Fusion (k=60.0) with exponential recency decay (lambda=0.0693, 24h diurnal scale / 10-day half-life; 7-day tau for actions & decisions).",
       specs: [
-        "Tri-Modal fusion: FTS5 BM25 + Int8 Cosine + CSR Graph PPR",
-        "Cormack-Clarke Reciprocal Rank Fusion (k=60.0)",
-        "Diurnal exponential decay (λ=0.0693, 24h half-life)",
-        "Calibrated query scopes: @active, @doc, @today, @project",
+        "6-Head Fusion: FTS5 BM25 + Int8 Cosine + CSR PPR + WorkActions + Project Intel + Decisions",
+        "Cormack-Clarke RRF (k=60.0) with exponential temporal decay (lambda=0.0693, 10d half-life)",
+        "Active working memory injection (1.8x boost) with strict anti-bleed isolation",
+        "Calibrated scope multipliers: @active (3.0x), @doc (2.5x), @today (2.3x), @project",
       ],
-      previewBadge: "Tri-Modal Cormack-Clarke",
-      metric: "k=60.0 • λ=0.0693",
+      previewBadge: "6-Head TD-RRF Engine",
+      metric: "k=60.0 • 6 Retrieval Heads",
     },
     {
       id: "longcite",
@@ -113,16 +114,16 @@ export function FeaturesGrid() {
       icon: CheckCircle2,
       tag: "Verifiable Citations",
       color: "from-amber-500/20 to-yellow-500/10",
-      accent: "text-amber-600 dark:text-amber-400 border-amber-500/30",
+      accent: "text-amber-800 dark:text-amber-300 border-amber-500/30",
       title: "LongCite Grounding & Quote Extraction",
-      subtitle: "Attribution Score γ=0.65 ROUGE-1 + Cosine (τ ≥ 0.72)",
+      subtitle: "Attribution Score (γ=0.65 ROUGE-1 + Cosine, τ >= 0.72)",
       description:
-        "Every claim generated by MiniMe is verified against real document source coordinates. MiniMe computes sentence attribution scores combining ROUGE-1 recall and semantic cosine similarity with a strict threshold (τ_attr=0.72). Exact quotes (|Q| ≥ 24 chars) are anchored to document byte coordinates, and hallucinated sentences have tags stripped.",
+        "Every claim generated by MiniMe is verified against real document coordinates in LongCiteVerifier. Sentence attribution blends ROUGE-1 recall (gamma=0.65 weight) and cosine similarity against a strict threshold (tau_attr=0.72). Exact UTF-8 safe quotes (|Q| >= 24 chars) anchor to document chunk coordinates, while ungrounded citation tags are stripped.",
       specs: [
-        "Sentence attribution score (γ=0.65 ROUGE-1 recall + cosine similarity)",
-        "Strict attribution threshold τ_attr = 0.72",
-        "Exact quote extraction (|Q| ≥ 24 chars) with document byte offsets",
-        "Hallucinated sentences have citation tags automatically stripped",
+        "Blended attribution scoring (gamma=0.65 ROUGE-1 weight + dense similarity)",
+        "Strict attribution threshold tau_attr = 0.72 filtering weak claims",
+        "UTF-8 boundary-safe exact quote extraction (|Q| >= 24 chars) & byte offsets",
+        "Post-generation out-of-range & ungrounded citation tag stripping",
       ],
       previewBadge: "Zero Hallucination Proof",
       metric: "τ_attr = 0.72 • |Q| ≥ 24 chars",
@@ -131,18 +132,18 @@ export function FeaturesGrid() {
       id: "speculative",
       number: "06",
       icon: Zap,
-      tag: "Sub-15ms TTFT",
+      tag: "Local GGUF & TTFT",
       color: "from-rose-500/20 to-red-500/10",
-      accent: "text-rose-600 dark:text-rose-400 border-rose-500/30",
-      title: "Speculative 2-Stage Drafting",
-      subtitle: "< 5ms Stage 1 MMR • < 15ms TTFT Stage 3",
+      accent: "text-rose-800 dark:text-rose-300 border-rose-500/30",
+      title: "Speculative Synthesis & Local GGUF",
+      subtitle: "< 5ms Stage 1 MMR • < 15ms TTFT Stage 3 • On-Device GGUF",
       description:
-        "Never wait for slow cloud APIs. MiniMe executes a speculative multi-stage pipeline: Stage 1 produces Maximal Marginal Relevance (MMR) extractive drafts in under 5ms, followed by Stage 3 offline speculative synthesis delivering Time-To-First-Token (TTFT) in < 15ms with zero cloud dependencies.",
+        "Never wait for cloud rate limits. SpeculativeSynthesizer executes Stage 1 Maximal Marginal Relevance (MMR, lambda=0.70) drafting in < 5ms, Stage 2 streaming verification, and Stage 3 offline speculative synthesis (< 15ms TTFT), paired with an embedded LocalGgufRuntime (Qwen 2.5 3B, Llama 3.2 3B, SmolLM2 1.7B) or governed BYOK cloud behind AI Compliance Firewall.",
       specs: [
-        "Stage 1 MMR extractive drafting in < 5ms",
-        "Stage 3 offline speculative execution in < 15ms TTFT",
-        "100% offline synthesis via local Ollama, LM Studio, or pure extractive rules",
-        "Zero-Dead-End graceful fallback: Local → Governed BYOK → Extractive RAG",
+        "Stage 1 MMR extractive drafting in < 5ms; Stage 3 offline execution in < 15ms TTFT",
+        "Embedded local GGUF engine + Ollama / LM Studio discovery with seamless auto-fallback",
+        "3-Tier Brain: Local GGUF/Ollama -> Governed BYOK Cloud -> Extractive Offline RAG",
+        "AI Compliance Firewall blocks HIPAA-Strict vaults from cloud inference",
       ],
       previewBadge: "< 15ms Time-To-First-Token",
       metric: "< 5ms MMR • < 15ms TTFT",
@@ -151,21 +152,21 @@ export function FeaturesGrid() {
       id: "surfaces",
       number: "07",
       icon: SplitSquareVertical,
-      tag: "Dual-Surface Desktop",
+      tag: "Dual-Surface & MCP",
       color: "from-blue-500/20 to-cyan-500/10",
-      accent: "text-blue-600 dark:text-blue-400 border-blue-500/30",
-      title: "Dual-Surface Studio & Universal MCP",
+      accent: "text-blue-800 dark:text-blue-300 border-blue-500/30",
+      title: "Dual-Surface Studio & 8-Tool MCP",
       subtitle: "58% LiveChat : 42% Sidecar Canvas + rmcp 3.8.0",
       description:
-        "Interact with your digital twin through the desktop client featuring a 58% Conversational Control Room (LiveChat.tsx) and 42% Cybernetic Glass Artifact Sidecar Canvas (ArtifactCanvas.tsx) supporting Document, Diffs, and Timeline modes. Includes the official rmcp 3.8.0 stdio server (minime-mcp.exe) with 7 standard tools for Cursor and Claude Desktop.",
+        "Interact with your digital twin via a 58% Conversational Control Room (LiveChat.tsx with modality-coded citation pills for WorkAction, Project Intel, Decision, PDF, Code, Viewport) and 42% Artifact Sidecar Canvas (ArtifactCanvas.tsx), an expandable Compliance Center Navigation Rail, Global Alt+Space Spotlight HUD, and the 8-tool rmcp 3.8.0 stdio server.",
       specs: [
-        "58% LiveChat conversational control room + 42% ArtifactCanvas sidecar",
-        "Three sidecar modes: Document viewer, AST Diffs, and Chronological Timeline",
-        "Global Alt + Space Spotlight HUD with instant Win32 hotkey response",
-        "Official rmcp 3.8.0 stdio server with 7 tools for Cursor & Claude Desktop",
+        "58% LiveChat control room + 42% ArtifactCanvas (Document, Unified Diffs, Timeline)",
+        "Color-coded citation badges & Cybernetic Glass Left Navigation Rail in ComplianceCenter",
+        "Global Alt + Space Spotlight HUD with inline '?' Quick-Ask & keyboard navigation",
+        "Official rmcp 3.8.0 stdio server (minime-mcp.exe) with 8 tools incl. record_decision",
       ],
-      previewBadge: "Universal rmcp 3.8.0",
-      metric: "58% / 42% Split • 7 MCP Tools",
+      previewBadge: "8-Tool rmcp 3.8.0 Server",
+      metric: "58% / 42% Split • 8 MCP Tools",
     },
     {
       id: "sync-crypto",
@@ -173,19 +174,39 @@ export function FeaturesGrid() {
       icon: Lock,
       tag: "Zero-Knowledge BYOC",
       color: "from-emerald-500/20 to-teal-500/10",
-      accent: "text-emerald-600 dark:text-emerald-400 border-emerald-500/30",
+      accent: "text-emerald-800 dark:text-emerald-300 border-emerald-500/30",
       title: "Zero-Knowledge BYOC & Cryptography",
-      subtitle: "22.12x Compression • 1.54 MB/Year • Hardware DPAPI",
+      subtitle: "22.12x Compression • 1.54 MB/Year • DPAPI + Argon2id",
       description:
-        "No centralized company database can be hacked or subpoenaed. Your memories sync conflict-free as Hybrid Logical Clock deltas compressed with columnar string-interning + zstd level 7/9 achieving 22.12x compression and 1.54 MB/year projected footprint (< 5 MB/year requirement) into sandboxed Google Drive (appdata) or OneDrive (approot). Protected by Hardware DPAPI, Argon2id, XChaCha20, HIPAA 18-PHI scrubber, and <50ms GDPR crypto-shredding.",
+        "No vendor database holds your memory. HLC CRDT deltas compress with columnar string-interning + Zstandard (.mmz) at 22.12x compression (1.54 MB/year projected) into your personal Google Drive (appDataFolder), OneDrive (approot), or NAS. Protected by Windows DPAPI, Argon2id (m=64MiB, t=3, p=4) + XChaCha20-Poly1305 passphrase DEK wrapping, ChaCha20-Poly1305 AAD column encryption, 18-ID HIPAA scrubber, and BLAKE3 audit chains.",
       specs: [
-        "Columnar string-interning + zstd 7/9 achieving 22.12x compression ratio",
-        "1.54 MB/year projected sync footprint (< 5 MB/year requirement)",
-        "Hardware DPAPI key wrapping + Argon2id (m=64MiB, t=3, p=4) + XChaCha20-Poly1305",
-        "18-ID HIPAA Safe Harbor PHI scrubber, <50ms GDPR shredding, SOC 2 BLAKE3 ledger",
+        "Columnar string-interning + zstd level 7/9 achieving 22.12x ratio (1.54 MB/yr)",
+        "DPAPI key enclave, Argon2id + XChaCha20-Poly1305 DEK wrap & ChaCha20-Poly1305 column AEAD",
+        "Dual-Vault Split-Horizon routing (personal vs org:<tenant_id> via Ed25519 manifest)",
+        "18-ID HIPAA Safe Harbor scrubber, <1ms volatile DEK wipe, <50ms GDPR shred, BLAKE3 ledger",
       ],
       previewBadge: "1.54 MB/Year Sync",
       metric: "22.12x Ratio • 1.54 MB/yr",
+    },
+    {
+      id: "workspace-decisions",
+      number: "09",
+      icon: BookmarkCheck,
+      tag: "Workspace & Decisions",
+      color: "from-indigo-500/20 to-violet-500/10",
+      accent: "text-indigo-800 dark:text-indigo-300 border-indigo-500/30",
+      title: "Autonomous Workspace Intel & Decisions",
+      subtitle: "5-Min Scheduled AST Analyzer • Decisions CRUD Ledger",
+      description:
+        "MiniMe builds living architectural maps of every validated project without manual tagging. Every 5 minutes (loop_ticks % 300 == 0), a background daemon scheduler triggers analyze_workspace_intelligence() into SQLite project_intelligence, while the persistent decisions_and_notes ledger captures architectural decisions from desktop UI, direct 'Record decision:' chat prompts, or MCP Tool #8 record_decision.",
+      specs: [
+        "5-minute autonomous scheduler (project_intelligence: architecture, stack, key modules)",
+        "Strict classification gatekeeper filtering OS shell folders, terminals, and noise",
+        "Full CRUD Decisions & Architecture Notes ledger stored with AAD encryption & CRDT oplog",
+        "Direct 'Record decision:' chat interception + instant '[Decision]' citation badges",
+      ],
+      previewBadge: "Modules 5.1 & 5.2",
+      metric: "5-Min Scheduler • Full CRUD",
     },
   ];
 
@@ -194,25 +215,25 @@ export function FeaturesGrid() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-violet-500/10 border border-violet-500/20 text-xs font-mono text-violet-700 dark:text-violet-400 mb-4">
+          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-violet-500/10 border border-violet-500/20 text-xs font-mono text-violet-800 dark:text-violet-300 mb-4">
             <Cpu className="w-3.5 h-3.5 mr-1" />
-            <span>Audited Production Architecture • 84/84 Tests Passing</span>
+            <span>Audited Production Architecture • 240 Rust Tests Passing</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-            8 Architectural Pillars.
+            9 Architectural Pillars.
             <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 via-indigo-600 to-cyan-600 dark:from-violet-400 dark:via-cyan-400 dark:to-emerald-400">
               Deterministic. Verifiable. Local-First.
             </span>
           </h2>
-          <p className="mt-4 text-base sm:text-lg text-slate-600 dark:text-zinc-300">
+          <p className="mt-4 text-base sm:text-lg text-slate-700 dark:text-zinc-300">
             MiniMe is built in pure-Rust from the ground up without bloatware, invasive screen captures,
-            or ungrounded hallucination loops. Every benchmark is mathematically verified.
+            or ungrounded hallucination loops. Every metric is verified against crate implementations.
           </p>
         </div>
 
-        {/* 8 Feature Tabs Selector */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2 p-1.5 rounded-2xl bg-white/80 dark:bg-white/[0.02] border border-slate-300 dark:border-white/10 backdrop-blur-xl mb-12 shadow-sm">
+        {/* 9 Feature Tabs Selector */}
+        <div className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-9 gap-2 p-1.5 rounded-2xl bg-white/80 dark:bg-white/[0.02] border border-slate-300 dark:border-white/10 backdrop-blur-xl mb-12 shadow-sm">
           {features.map((feat, idx) => {
             const isSelected = selectedFeature === idx;
             const Icon = feat.icon;
@@ -223,7 +244,7 @@ export function FeaturesGrid() {
                 className={`p-3 rounded-xl flex flex-col items-center justify-center text-center transition-all ${
                   isSelected
                     ? "bg-violet-600 text-white shadow-md shadow-violet-600/25 scale-[1.02]"
-                    : "text-slate-600 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5"
+                    : "text-slate-700 dark:text-zinc-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5"
                 }`}
               >
                 <Icon className="w-4 h-4 mb-1.5 shrink-0" />
@@ -310,17 +331,17 @@ export function FeaturesGrid() {
                       </div>
 
                       <div className="pt-2 border-t border-slate-200 dark:border-white/10 space-y-2 text-xs font-mono">
-                        <div className="flex items-center justify-between text-slate-600 dark:text-zinc-400">
-                          <span>Compiler Suite:</span>
-                          <span className="text-slate-900 dark:text-white font-semibold">Rust 1.83+ Stable</span>
+                        <div className="flex items-center justify-between text-slate-700 dark:text-zinc-300">
+                          <span>Workspace Runtime:</span>
+                          <span className="text-slate-900 dark:text-white font-semibold">4-Crate Rust + Tauri</span>
                         </div>
-                        <div className="flex items-center justify-between text-slate-600 dark:text-zinc-400">
-                          <span>Clippy Lint Status:</span>
-                          <span className="text-emerald-700 dark:text-emerald-400 font-semibold">0 Warnings (-D warnings)</span>
+                        <div className="flex items-center justify-between text-slate-700 dark:text-zinc-300">
+                          <span>Unit Test Suite:</span>
+                          <span className="text-emerald-800 dark:text-emerald-300 font-semibold">182 / 182 Crate Unit Passing</span>
                         </div>
-                        <div className="flex items-center justify-between text-slate-600 dark:text-zinc-400">
-                          <span>Test Coverage:</span>
-                          <span className="text-emerald-700 dark:text-emerald-400 font-semibold">84 / 84 Tests Passing (100%)</span>
+                        <div className="flex items-center justify-between text-slate-700 dark:text-zinc-300">
+                          <span>Workspace Suite:</span>
+                          <span className="text-emerald-800 dark:text-emerald-300 font-semibold">240 Passing (incl. 58 Integration)</span>
                         </div>
                       </div>
                     </div>

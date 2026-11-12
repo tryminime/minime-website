@@ -129,13 +129,13 @@ export function SecurityDeepDive() {
                     <div className="text-violet-700 dark:text-violet-400 font-bold">1. User Logon Session</div>
                     <div className="text-[11px] text-slate-600 dark:text-zinc-400">CryptProtectData() calls Windows LSA security subsystem</div>
                   </div>
-                  <div className="p-3 rounded-lg bg-white dark:bg-zinc-900/80 border border-slate-200 dark:border-white/5 space-y-1 text-slate-800 dark:text-zinc-300">
-                    <div className="text-cyan-700 dark:text-cyan-400 font-bold">2. XChaCha20-Poly1305 DEK</div>
-                    <div className="text-[11px] text-slate-600 dark:text-zinc-400">256-bit symmetric AEAD keys encrypt local SQLite database &amp; .mmz payloads</div>
+                    <div className="p-3 rounded-lg bg-white dark:bg-zinc-900/80 border border-slate-200 dark:border-white/5 space-y-1 text-slate-800 dark:text-zinc-300">
+                    <div className="text-cyan-800 dark:text-cyan-300 font-bold">2. Argon2id + XChaCha20 &amp; Column AEAD</div>
+                    <div className="text-[11px] text-slate-700 dark:text-zinc-300">Argon2id + XChaCha20-Poly1305 wraps DEKs; ChaCha20-Poly1305 (enc:v1: AAD) encrypts SQLite columns &amp; .mmz payloads</div>
                   </div>
                   <div className="p-3 rounded-lg bg-white dark:bg-zinc-900/80 border border-slate-200 dark:border-white/5 space-y-1 text-slate-800 dark:text-zinc-300">
-                    <div className="text-rose-700 dark:text-rose-400 font-bold">3. Win32 Session Lock Event</div>
-                    <div className="text-[11px] text-slate-600 dark:text-zinc-400">WTSRegisterSessionNotification → volatile RAM wiped in &lt; 2ms</div>
+                    <div className="text-rose-800 dark:text-rose-300 font-bold">3. Win32 Session Lock Event</div>
+                    <div className="text-[11px] text-slate-700 dark:text-zinc-300">Workstation lock triggers Zeroizing&lt;T&gt; volatile DEK wipe (&lt; 1ms rotate_and_shred_dek)</div>
                   </div>
                 </div>
               </motion.div>
@@ -246,26 +246,26 @@ export function SecurityDeepDive() {
                       <span>Deterministic EHR blockers: Epic, Cerner, AthenaHealth window suppression</span>
                     </div>
                     <div className="flex items-center space-x-2">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
-                      <span>Reversible pseudonymization salt for clinical trials and audit tracking</span>
+                      <CheckCircle2 className="w-4 h-4 text-emerald-700 dark:text-emerald-400" />
+                      <span>18-pattern Safe Harbor scrubber + Luhn validation (excluding Unix ms timestamps)</span>
                     </div>
                   </div>
                 </div>
 
                 <div className="rounded-xl p-5 sm:p-6 bg-slate-50 dark:bg-black/50 border border-slate-200 dark:border-white/10 space-y-3 font-mono text-xs">
-                  <div className="text-xs text-slate-500 dark:text-zinc-400 font-bold pb-2 border-b border-slate-200 dark:border-white/10">
-                    Live PHI Redaction Simulator
+                  <div className="text-xs text-slate-700 dark:text-zinc-300 font-bold pb-2 border-b border-slate-200 dark:border-white/10">
+                    phi.rs Redaction Output Preview
                   </div>
                   <div className="space-y-2">
-                    <div className="text-[11px] text-slate-500 dark:text-zinc-400 uppercase">Input Text (Clinical EHR Note):</div>
-                    <div className="p-3 rounded-lg bg-red-500/10 border border-red-500/20 text-red-900 dark:text-red-300 text-[11px]">
-                      Patient John Doe (MRN: 8492019, DOB: 04/12/1982) was evaluated at St. Jude Hospital for cardiac arrhythmia.
+                    <div className="text-[11px] text-slate-700 dark:text-zinc-300 uppercase">Input Text (Clinical Note):</div>
+                    <div className="p-3 rounded-lg bg-red-500/10 border border-red-500/20 text-red-900 dark:text-red-200 text-[11px]">
+                      Patient: John Doe (MRN: 8492019, DOB: 04/12/1982, Email: j.doe@clinic.org) evaluated for arrhythmia.
                     </div>
                   </div>
                   <div className="space-y-2 pt-1">
-                    <div className="text-[11px] text-slate-500 dark:text-zinc-400 uppercase">Sanitized Embed Stream (Safe Harbor Compliant):</div>
-                    <div className="p-3 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-900 dark:text-emerald-300 text-[11px]">
-                      Patient [NAME_REDACTED_#1] (MRN: [MRN_REDACTED], DOB: [DATE_REDACTED]) was evaluated at [FACILITY_REDACTED] for cardiac arrhythmia.
+                    <div className="text-[11px] text-slate-700 dark:text-zinc-300 uppercase">Sanitized Embed Stream (Safe Harbor Compliant):</div>
+                    <div className="p-3 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-900 dark:text-emerald-200 text-[11px]">
+                      [REDACTED_PHI_PATIENT] (MRN: [REDACTED_MRN], DOB: [REDACTED_PHI_DATE], Email: [REDACTED_EMAIL]) evaluated for arrhythmia.
                     </div>
                   </div>
                 </div>

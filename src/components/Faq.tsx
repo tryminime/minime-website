@@ -41,17 +41,17 @@ export function Faq() {
     {
       question: "6. Can MiniMe work completely offline with no internet connection?",
       answer:
-        "Yes, 100%. MiniMe includes a built-in Offline Extractive RAG Synthesizer that ranks and surfaces exact document passages, code diffs, and page citations in < 15ms Time-To-First-Token (TTFT) with zero network connectivity. You can also connect auto-discovered local Ollama or LM Studio models (like qwen2.5:3b or llama3.2:3b) for full conversational intelligence at $0 cost without a single packet leaving your PC.",
+        "Yes, 100%. MiniMe includes a built-in Offline Extractive RAG Synthesizer delivering grounded citations in < 15ms Time-To-First-Token (TTFT), an embedded LocalGgufRuntime (supporting Qwen 2.5 3B, Llama 3.2 3B, and SmolLM2 1.7B weights locally), plus auto-discovery for local Ollama or LM Studio servers at $0 cost without a single packet leaving your PC.",
     },
     {
       question: "7. How does the Universal MCP Server integrate with Cursor, Claude Desktop, and Windsurf?",
       answer:
-        "MiniMe ships with an official rmcp 3.8.0 stdio server binary (minime-mcp.exe). When added to your MCP config file (e.g. ~/.cursor/mcp.json or claude_desktop_config.json), coding agents gain access to 7 standard tools: ask_memory, search_workstream, search_documents, get_document_chunks, get_daily_standup, get_project_context, and get_active_context. All tool outputs are automatically sanitized through a 5-stage secret scrubber and 18-PHI redaction filter.",
+        "MiniMe ships with an official rmcp 3.8.0 stdio server binary (minime-mcp.exe). When added to your MCP config file (e.g. ~/.cursor/mcp.json, claude_desktop_config.json, or ~/.codeium/windsurf/mcp_config.json), coding agents gain access to 8 official tools: ask_memory, search_workstream, search_documents, get_document_chunks, get_daily_standup, get_project_context, get_active_context, and record_decision. All tool outputs are sanitized through our 5-stage secret scrubber and 18-identifier HIPAA Safe Harbor filter.",
     },
     {
       question: "8. How does MiniMe protect confidential medical, legal, or financial information?",
       answer:
-        "MiniMe enforces enterprise cryptography: master keys are derived via Argon2id (m=64MiB, t=3, p=4) and wrapped in native Windows DPAPI. Local databases and sync archives are encrypted with XChaCha20-Poly1305. When your workstation is locked (Win + L), volatile RAM is wiped via Rust Zeroizing<T>. For clinical compliance, an automated 18-identifier HIPAA Safe Harbor scrubber redacts MRNs, names, and dates, while EHR window blockers immediately suppress capture for Epic, Cerner, and AthenaHealth.",
+        "MiniMe enforces multi-layered local cryptography: passphrase-locked master DEKs are wrapped with Argon2id (m=64MiB, t=3, p=4) + XChaCha20-Poly1305 and protected by the hardware Windows DPAPI enclave. Sensitive SQLite columns (enc:v1: with per-row AAD) and .mmz sync bundles are encrypted with ChaCha20-Poly1305 AEAD. On workstation lock, volatile DEKs are sanitized via Rust Zeroizing<T> (<1ms wipe). For clinical safety, an automated 18-identifier HIPAA Safe Harbor scrubber and EHR blockers suppress capture across Epic, Cerner, AthenaHealth, and 18 clinical portal patterns.",
     },
     {
       question: "9. What happens if I want to delete my data under GDPR Article 17?",

@@ -45,9 +45,9 @@ export function Hero() {
       detail: "< 35 MB RAM resident footprint • 0 screenshots captured",
     },
     {
-      value: "84 / 84",
-      label: "Automated Rust Tests",
-      detail: "100% green suite • 0 clippy warnings (-D warnings)",
+      value: "240 Tests",
+      label: "Automated Rust Suite",
+      detail: "182/182 crate unit + 58 integration tests passing",
     },
   ];
 
@@ -55,12 +55,13 @@ export function Hero() {
     {
       icon: FileCode2,
       title: "For Developers",
-      example: "Instantly recover yesterday's uncommitted AST refactor across 8 Git branches with line-level diffs.",
+      example:
+        "Recover working-tree Git diffs across branches and persist architectural decisions via the 8-tool MCP server.",
     },
     {
       icon: BookOpen,
       title: "For Researchers",
-      example: "Query citations and exact claims across 50 open PDF papers without hallucinated footnotes.",
+      example: "Query citations and exact claims across PDFs and papers without hallucinated footnotes.",
     },
     {
       icon: Stethoscope,
@@ -123,7 +124,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-6 text-base sm:text-xl text-slate-600 dark:text-zinc-300 max-w-3xl mx-auto leading-relaxed"
+          className="mt-6 text-base sm:text-xl text-slate-700 dark:text-zinc-300 max-w-3xl mx-auto leading-relaxed"
         >
           While invasive tools like Microsoft Recall capture millions of intrusive desktop screenshots
           that leak passwords and violate privacy, MiniMe runs a deterministic pure-Rust engine that
@@ -138,8 +139,8 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto sm:max-w-none"
         >
-          <a
-            href="https://www.tryminime.com/downloads/MiniMe.exe"
+          <Link
+            href="/download"
             className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white bg-gradient-to-r from-violet-600 to-indigo-600 rounded-2xl hover:from-violet-500 hover:to-indigo-500 shadow-xl shadow-violet-600/25 hover:shadow-violet-600/40 border border-violet-400/25 transition-all duration-300 group whitespace-nowrap shrink-0"
           >
             <svg
@@ -151,7 +152,7 @@ export function Hero() {
             </svg>
             <span>Download for Windows (x64)</span>
             <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform shrink-0" />
-          </a>
+          </Link>
 
           <a
             href="#studio-canvas"
@@ -163,10 +164,10 @@ export function Hero() {
         </motion.div>
 
         {/* Checksum & MSI secondary link */}
-        <div className="mt-3 text-xs text-slate-500 dark:text-zinc-400 font-mono">
+        <div className="mt-3 text-xs text-slate-700 dark:text-zinc-300 font-mono">
           <span>v0.1.0 Beta • </span>
-          <Link href="/download" className="underline hover:text-violet-600 dark:hover:text-violet-400 transition-colors">
-            View SHA-256 hashes, MSI package &amp; system specs &rarr;
+          <Link href="/download" className="underline hover:text-violet-700 dark:hover:text-violet-300 transition-colors">
+            View installer packages, SHA-256 verification &amp; system specs &rarr;
           </Link>
         </div>
 
@@ -186,10 +187,10 @@ export function Hero() {
                 <div className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight">
                   {m.value}
                 </div>
-                <div className="text-xs font-semibold text-violet-700 dark:text-violet-400 mt-0.5">
+                <div className="text-xs font-semibold text-violet-700 dark:text-violet-300 mt-0.5">
                   {m.label}
                 </div>
-                <div className="text-[11px] text-slate-600 dark:text-zinc-400 mt-1 leading-snug">
+                <div className="text-[11px] text-slate-700 dark:text-zinc-300 mt-1 leading-snug">
                   {m.detail}
                 </div>
               </div>
@@ -211,13 +212,13 @@ export function Hero() {
                 key={idx}
                 className="p-5 rounded-2xl bg-white/80 dark:bg-zinc-950/70 border border-slate-200 dark:border-white/10 backdrop-blur-xl shadow-sm hover:shadow-md transition-shadow"
               >
-                <div className="w-8 h-8 rounded-lg bg-violet-500/10 dark:bg-violet-500/20 text-violet-600 dark:text-violet-400 flex items-center justify-center mb-3">
+                <div className="w-8 h-8 rounded-lg bg-violet-500/10 dark:bg-violet-500/20 text-violet-700 dark:text-violet-300 flex items-center justify-center mb-3">
                   <Icon className="w-4 h-4" />
                 </div>
                 <h3 className="text-sm font-bold text-slate-900 dark:text-white mb-1.5">
                   {persona.title}
                 </h3>
-                <p className="text-xs text-slate-600 dark:text-zinc-400 leading-relaxed">
+                <p className="text-xs text-slate-700 dark:text-zinc-300 leading-relaxed">
                   {persona.example}
                 </p>
               </div>

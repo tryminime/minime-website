@@ -119,7 +119,14 @@ const jsonLd = {
       "name": "MiniMe Inc.",
       "url": "https://www.tryminime.com",
       "logo": "https://www.tryminime.com/app-icon.png",
-      "sameAs": ["https://twitter.com/tryminime", "https://github.com/tryminime"]
+      "sameAs": [
+        "https://x.com/tryminime",
+        "https://github.com/tryminime/",
+        "https://www.linkedin.com/company/minimeinc",
+        "https://www.youtube.com/@tryminime",
+        "https://www.instagram.com/tryminimeai/",
+        "https://www.facebook.com/tryminime"
+      ]
     }
   ]
 };

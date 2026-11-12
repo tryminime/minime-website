@@ -55,3 +55,12 @@ npm install
 npx tsc --noEmit
 npm run build
 ```
+
+## Official Channels
+
+- **GitHub**: https://github.com/tryminime/
+- **X**: https://x.com/tryminime
+- **YouTube**: https://www.youtube.com/@tryminime
+- **LinkedIn**: https://www.linkedin.com/company/minimeinc
+- **Instagram**: https://www.instagram.com/tryminimeai/
+- **Facebook**: https://www.facebook.com/tryminime

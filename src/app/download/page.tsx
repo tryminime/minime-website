@@ -215,7 +215,16 @@ export default function DownloadPage() {
             </summary>
             <div className="mt-4 pt-4 border-t border-slate-200 dark:border-white/10 space-y-3">
               <p className="text-xs sm:text-sm text-slate-700 dark:text-zinc-300 leading-relaxed font-sans">
-                Verify your downloaded Windows installer checksum in PowerShell or build reproducible binaries directly from the Rust + Tauri v2 workspace:
+                Verify your downloaded Windows installer checksum in PowerShell or inspect source packages on{" "}
+                <a
+                  href="https://github.com/tryminime/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-violet-700 dark:text-violet-300 font-semibold underline hover:text-violet-600"
+                >
+                  MiniMe GitHub
+                </a>{" "}
+                to build reproducible binaries from the Rust + Tauri v2 workspace:
               </p>
               <pre className="p-3 rounded-xl bg-slate-900 text-emerald-300 text-xs font-mono overflow-x-auto border border-slate-700">
 {`Get-FileHash MiniMe.exe -Algorithm SHA256
@@ -334,6 +343,36 @@ cargo tauri build --bundles nsis,msi`}
                 </button>
               </form>
             )}
+            <p className="text-xs text-slate-600 dark:text-zinc-400 mt-5">
+              Watch product demos and follow release updates on{" "}
+              <a
+                href="https://www.youtube.com/@tryminime"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-violet-700 dark:text-violet-300 font-semibold hover:underline"
+              >
+                YouTube
+              </a>
+              ,{" "}
+              <a
+                href="https://x.com/tryminime"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-violet-700 dark:text-violet-300 font-semibold hover:underline"
+              >
+                X
+              </a>
+              , and{" "}
+              <a
+                href="https://www.linkedin.com/company/minimeinc"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-violet-700 dark:text-violet-300 font-semibold hover:underline"
+              >
+                LinkedIn
+              </a>
+              .
+            </p>
           </div>
         </div>
       </main>

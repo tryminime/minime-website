@@ -222,9 +222,17 @@ export function McpIntegrationDemo() {
                 <Code2 className="w-4 h-4 text-cyan-700 dark:text-cyan-400" />
                 <span>8 Built-In MCP Tools</span>
               </h3>
-              <span className="text-xs font-mono text-slate-700 dark:text-zinc-300">
-                Local stdio server (rmcp 3.8.0)
-              </span>
+              <div className="flex items-center space-x-3 text-xs font-mono text-slate-700 dark:text-zinc-300">
+                <span>Local stdio server (rmcp 3.8.0)</span>
+                <a
+                  href="https://github.com/tryminime/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-violet-700 dark:text-violet-300 font-semibold hover:underline"
+                >
+                  GitHub ↗
+                </a>
+              </div>
             </div>
 
             <div className="space-y-2">

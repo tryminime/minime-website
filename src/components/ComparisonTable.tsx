@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Check, X, ShieldAlert, Sparkles, CheckCircle2, AlertTriangle, Minus } from "lucide-react";
+import { Check, X, Sparkles, CheckCircle2, Minus } from "lucide-react";
 
 export function ComparisonTable() {
   const competitors = [
@@ -15,288 +15,111 @@ export function ComparisonTable() {
 
   const rows = [
     {
-      dimension: "Observation Method",
-      tooltip: "How digital workflows are observed on your machine",
+      dimension: "How It Captures Work",
+      tooltip: "Privacy & capture method on your PC",
       minime: {
-        text: "Win32 OS Metadata + Pure-Rust Document Parsers (0 Screenshots)",
+        text: "Reads open docs & diffs directly (0 screenshots)",
         status: "best",
       },
-      recall: {
-        text: "Continuous 3s Screenshots + invasive OCR",
-        status: "bad",
-      },
-      rewind: {
-        text: "Screen recording + microphone audio recording",
-        status: "bad",
-      },
-      pieces: {
-        text: "IDE extensions + clipboard & OCR snapshots",
-        status: "neutral",
-      },
-      activityWatch: {
-        text: "Window titles & URLs only (completely blind to docs)",
-        status: "bad",
-      },
-      notion: {
-        text: "Cloud wiki only (blind to local desktop & code)",
-        status: "bad",
-      },
+      recall: { text: "Continuous desktop screenshots", status: "bad" },
+      rewind: { text: "Screen video + microphone recording", status: "bad" },
+      pieces: { text: "IDE extensions + clipboard OCR", status: "neutral" },
+      activityWatch: { text: "Window titles & URLs only", status: "neutral" },
+      notion: { text: "Cloud pages only (blind to PC)", status: "bad" },
     },
     {
-      dimension: "Understands Document Content?",
-      tooltip: "Ability to extract headings, pages, code diffs, and slides",
+      dimension: "Understands Docs & Code?",
+      tooltip: "PDF pages, Office files & code changes",
       minime: {
-        text: "Yes — Exact Page, Slide, Heading Text & Line AST Diffs",
+        text: "Exact PDF pages, Office docs & working-tree diffs",
         status: "best",
       },
-      recall: {
-        text: "Yes, but via invasive pixel OCR",
-        status: "neutral",
-      },
-      rewind: {
-        text: "Yes, via heavy video OCR & audio transcripts",
-        status: "neutral",
-      },
-      pieces: {
-        text: "Code snippets only (no office docs or spreadsheets)",
-        status: "neutral",
-      },
-      activityWatch: {
-        text: "No — Window titles only",
-        status: "bad",
-      },
-      notion: {
-        text: "Only pages typed directly into Notion",
-        status: "neutral",
-      },
+      recall: { text: "Via screenshot pixel OCR", status: "neutral" },
+      rewind: { text: "Via video OCR & transcripts", status: "neutral" },
+      pieces: { text: "Code snippets only", status: "neutral" },
+      activityWatch: { text: "No document reading", status: "bad" },
+      notion: { text: "Only notes typed in Notion", status: "neutral" },
     },
     {
-      dimension: "Conversational Chat Surfaces",
-      tooltip: "Where and how you can query your work memory",
+      dimension: "Where Your Data Lives",
+      tooltip: "Ownership & backup control",
       minime: {
-        text: "4 Surfaces (Studio Canvas, Spotlight HUD, Active-Doc, Universal MCP)",
+        text: "On your PC + your encrypted Drive / OneDrive",
         status: "best",
       },
-      recall: {
-        text: "Windows Copilot lock-in only",
-        status: "neutral",
-      },
-      rewind: {
-        text: "App-only cloud chat",
-        status: "neutral",
-      },
-      pieces: {
-        text: "In-IDE copilot only",
-        status: "neutral",
-      },
-      activityWatch: {
-        text: "None — Raw dashboard charts only",
-        status: "bad",
-      },
-      notion: {
-        text: "Notion app sidebar only",
-        status: "neutral",
-      },
+      recall: { text: "Local image store; Copilot tied", status: "neutral" },
+      rewind: { text: "Vendor cloud infrastructure", status: "bad" },
+      pieces: { text: "Local + vendor cloud sync", status: "neutral" },
+      activityWatch: { text: "Unencrypted local SQLite", status: "neutral" },
+      notion: { text: "Vendor cloud servers", status: "bad" },
     },
     {
-      dimension: "Annual Storage Footprint",
-      tooltip: "Disk and sync storage consumed per year of daily use",
+      dimension: "Storage & System Load",
+      tooltip: "CPU, RAM & annual sync size",
       minime: {
-        text: "1.54 MB / year (22.12x zstd columnar compression)",
+        text: "< 0.2% CPU • < 35 MB RAM • ~1.54 MB/yr sync",
         status: "best",
       },
-      recall: {
-        text: "50 GB – 100 GB (bloats disk with raw images)",
-        status: "bad",
-      },
-      rewind: {
-        text: "100+ GB (massive video & audio compression buffers)",
-        status: "bad",
-      },
-      pieces: {
-        text: "1 GB – 5 GB (local SQLite snippet cache)",
-        status: "neutral",
-      },
-      activityWatch: {
-        text: "50 MB – 200 MB (local SQLite time tracking)",
-        status: "good",
-      },
-      notion: {
-        text: "Hosted on Notion cloud servers",
-        status: "neutral",
-      },
+      recall: { text: "50 – 100 GB screenshots + NPU load", status: "bad" },
+      rewind: { text: "100+ GB video files & battery drain", status: "bad" },
+      pieces: { text: "~150 – 300 MB RAM • 1 – 5 GB cache", status: "neutral" },
+      activityWatch: { text: "~20 – 50 MB RAM • 50 – 200 MB/yr", status: "good" },
+      notion: { text: "Cloud hosted • Electron/browser memory", status: "neutral" },
     },
     {
-      dimension: "Cryptographic Security",
-      tooltip: "Encryption guarantees protecting your private data",
+      dimension: "Search, Projects & AI Agents",
+      tooltip: "Studio, Alt+Space, Decisions & MCP",
       minime: {
-        text: "Zero-Knowledge BYOC, DPAPI, Argon2id + XChaCha20/ChaCha20 AEAD, <50ms shred",
+        text: "Studio chat, Alt+Space, project intel & 8-tool MCP",
         status: "best",
       },
-      recall: {
-        text: "Plaintext SQLite historically; CISO banned",
-        status: "bad",
-      },
-      rewind: {
-        text: "Proprietary cloud servers (centralized target)",
-        status: "bad",
-      },
-      pieces: {
-        text: "Local/cloud hybrid with proprietary sync",
-        status: "neutral",
-      },
-      activityWatch: {
-        text: "Unencrypted local SQLite database",
-        status: "neutral",
-      },
-      notion: {
-        text: "Standard cloud encryption (Notion holds keys)",
-        status: "bad",
-      },
+      recall: { text: "Windows timeline search only", status: "bad" },
+      rewind: { text: "In-app search only", status: "bad" },
+      pieces: { text: "IDE copilot & snippets", status: "neutral" },
+      activityWatch: { text: "Time charts only (no AI)", status: "bad" },
+      notion: { text: "Workspace Q&A only", status: "neutral" },
     },
     {
-      dimension: "Universal MCP Protocol",
-      tooltip: "Support for Model Context Protocol stdio server",
+      dimension: "Healthcare & Compliance",
+      tooltip: "PHI redaction, keys & erasure",
       minime: {
-        text: "Official rmcp 3.8.0 stdio server with 8 tools incl. record_decision",
+        text: "18-ID HIPAA scrubber, DPAPI keys, < 50ms wipe",
         status: "best",
       },
-      recall: {
-        text: "No MCP support (Microsoft ecosystem lock-in)",
-        status: "bad",
-      },
-      rewind: {
-        text: "No MCP support",
-        status: "bad",
-      },
-      pieces: {
-        text: "Proprietary plugin extensions only",
-        status: "neutral",
-      },
-      activityWatch: {
-        text: "REST API only (no MCP server)",
-        status: "neutral",
-      },
-      notion: {
-        text: "Cloud webhook / REST API only",
-        status: "neutral",
-      },
-    },
-    {
-      dimension: "Workspace Intel & Decisions",
-      tooltip: "Autonomous project mapping and persistent architectural decision tracking",
-      minime: {
-        text: "5-Min Scheduled AST Analyzer + Decisions CRUD (UI, Chat & MCP)",
-        status: "best",
-      },
-      recall: {
-        text: "None — Passive timeline screenshots only",
-        status: "bad",
-      },
-      rewind: {
-        text: "None — Linear meeting transcripts only",
-        status: "bad",
-      },
-      pieces: {
-        text: "Manual snippet saves only",
-        status: "neutral",
-      },
-      activityWatch: {
-        text: "None — Window category rules only",
-        status: "bad",
-      },
-      notion: {
-        text: "Manual wiki pages",
-        status: "neutral",
-      },
-    },
-    {
-      dimension: "Resource Footprint",
-      tooltip: "CPU and memory consumed while running in the background",
-      minime: {
-        text: "< 0.2% CPU • < 35 MB RAM (Pure-Rust Daemon)",
-        status: "best",
-      },
-      recall: {
-        text: "High NPU/GPU & CPU load for continuous OCR",
-        status: "bad",
-      },
-      rewind: {
-        text: "High CPU & battery drain (continuous video encoding)",
-        status: "bad",
-      },
-      pieces: {
-        text: "Moderate (~150 MB – 300 MB RAM)",
-        status: "neutral",
-      },
-      activityWatch: {
-        text: "Low (~20 MB – 50 MB RAM, Python/Rust)",
-        status: "good",
-      },
-      notion: {
-        text: "Heavy Electron / Chromium tab consumption",
-        status: "bad",
-      },
-    },
-    {
-      dimension: "HIPAA & Healthcare Readiness",
-      tooltip: "Protection for Protected Health Information (PHI)",
-      minime: {
-        text: "18-ID Safe Harbor Scrubber + EHR Window Blockers",
-        status: "best",
-      },
-      recall: {
-        text: "Prohibited by hospital CISOs (captures patient charts)",
-        status: "bad",
-      },
-      rewind: {
-        text: "Violates HIPAA (records medical audio/screens to cloud)",
-        status: "bad",
-      },
-      pieces: {
-        text: "No built-in HIPAA Safe Harbor scrubbing",
-        status: "bad",
-      },
-      activityWatch: {
-        text: "No scrubbing (records EHR window titles verbatim)",
-        status: "neutral",
-      },
-      notion: {
-        text: "Requires enterprise BAA contract",
-        status: "neutral",
-      },
+      recall: { text: "Frequently restricted by security teams", status: "bad" },
+      rewind: { text: "Captures screen/audio to cloud", status: "bad" },
+      pieces: { text: "No HIPAA Safe Harbor redaction", status: "bad" },
+      activityWatch: { text: "Logs raw window titles unredacted", status: "neutral" },
+      notion: { text: "Requires enterprise BAA tier", status: "neutral" },
     },
   ];
 
   return (
-    <section id="comparison" className="py-24 md:py-36 relative">
+    <section id="comparison" className="py-16 md:py-24 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-violet-500/10 border border-violet-500/20 text-xs font-mono text-violet-700 dark:text-violet-400 mb-4">
+        <div className="text-center max-w-3xl mx-auto mb-12">
+          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-violet-500/10 border border-violet-500/20 text-xs font-mono text-violet-800 dark:text-violet-300 mb-4 font-semibold">
             <Sparkles className="w-3.5 h-3.5 mr-1" />
-            <span>Competitive Architectural Matrix</span>
+            <span>Side-by-Side Comparison</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-            How MiniMe Outclasses
-            <br />
+            Why MiniMe Beats{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 via-indigo-600 to-cyan-600 dark:from-violet-400 dark:via-cyan-400 dark:to-emerald-400">
-              Invasive &amp; Screenshot-Based Tools.
+              Screen Recorders.
             </span>
           </h2>
-          <p className="mt-4 text-base sm:text-lg text-slate-600 dark:text-zinc-300">
-            A direct, honest comparison across architecture, privacy, multi-device sync, and system efficiency.
+          <p className="mt-4 text-base sm:text-lg text-slate-700 dark:text-zinc-300">
+            Get better answers from your actual files and code without sacrificing gigabytes of storage or exposing sensitive screens.
           </p>
         </div>
 
-        {/* Comparison Table Container */}
         <div className="rounded-2xl border border-slate-300 dark:border-white/10 bg-white/90 dark:bg-zinc-950/80 backdrop-blur-2xl shadow-xl shadow-slate-200/50 dark:shadow-2xl overflow-hidden">
           <div className="overflow-x-auto">
-            <table className="w-full text-left border-collapse min-w-[900px]">
+            <table className="w-full text-left border-collapse min-w-[860px]">
               <thead>
                 <tr className="border-b border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/[0.02]">
                   <th className="p-4 sm:p-5 text-xs font-mono font-bold uppercase tracking-wider text-slate-700 dark:text-zinc-300 w-1/4">
-                    Architectural Dimension
+                    What Matters
                   </th>
                   {competitors.map((c) => (
                     <th
@@ -317,10 +140,7 @@ export function ComparisonTable() {
               </thead>
               <tbody className="divide-y divide-slate-200 dark:divide-white/5 text-xs sm:text-sm">
                 {rows.map((row, idx) => (
-                  <tr
-                    key={idx}
-                    className="hover:bg-slate-50 dark:hover:bg-white/[0.02] transition-colors"
-                  >
+                  <tr key={idx} className="hover:bg-slate-50 dark:hover:bg-white/[0.02] transition-colors">
                     <td className="p-4 sm:p-5 font-semibold text-slate-900 dark:text-white">
                       <div>{row.dimension}</div>
                       <div className="text-[11px] font-normal text-slate-700 dark:text-zinc-300 mt-0.5">
@@ -328,7 +148,6 @@ export function ComparisonTable() {
                       </div>
                     </td>
 
-                    {/* MINIME COLUMN */}
                     <td className="p-4 sm:p-5 bg-violet-600/[0.04] dark:bg-violet-600/[0.07] border-x border-violet-500/20 font-medium text-slate-900 dark:text-zinc-100">
                       <div className="flex items-start space-x-2">
                         <CheckCircle2 className="w-4 h-4 text-emerald-700 dark:text-emerald-400 shrink-0 mt-0.5" />
@@ -338,69 +157,20 @@ export function ComparisonTable() {
                       </div>
                     </td>
 
-                    {/* RECALL COLUMN */}
-                    <td className="p-4 sm:p-5 text-slate-700 dark:text-zinc-300">
-                      <div className="flex items-start space-x-2">
-                        {row.recall.status === "bad" ? (
-                          <X className="w-4 h-4 text-red-600 dark:text-red-400 shrink-0 mt-0.5" />
-                        ) : (
-                          <Minus className="w-4 h-4 text-slate-500 dark:text-zinc-400 shrink-0 mt-0.5" />
-                        )}
-                        <span>{row.recall.text}</span>
-                      </div>
-                    </td>
-
-                    {/* REWIND COLUMN */}
-                    <td className="p-4 sm:p-5 text-slate-700 dark:text-zinc-300">
-                      <div className="flex items-start space-x-2">
-                        {row.rewind.status === "bad" ? (
-                          <X className="w-4 h-4 text-red-600 dark:text-red-400 shrink-0 mt-0.5" />
-                        ) : (
-                          <Minus className="w-4 h-4 text-slate-500 dark:text-zinc-400 shrink-0 mt-0.5" />
-                        )}
-                        <span>{row.rewind.text}</span>
-                      </div>
-                    </td>
-
-                    {/* PIECES COLUMN */}
-                    <td className="p-4 sm:p-5 text-slate-700 dark:text-zinc-300">
-                      <div className="flex items-start space-x-2">
-                        {row.pieces.status === "bad" ? (
-                          <X className="w-4 h-4 text-red-600 dark:text-red-400 shrink-0 mt-0.5" />
-                        ) : row.pieces.status === "good" ? (
-                          <Check className="w-4 h-4 text-emerald-700 dark:text-emerald-400 shrink-0 mt-0.5" />
-                        ) : (
-                          <Minus className="w-4 h-4 text-slate-500 dark:text-zinc-400 shrink-0 mt-0.5" />
-                        )}
-                        <span>{row.pieces.text}</span>
-                      </div>
-                    </td>
-
-                    {/* ACTIVITYWATCH COLUMN */}
-                    <td className="p-4 sm:p-5 text-slate-700 dark:text-zinc-300">
-                      <div className="flex items-start space-x-2">
-                        {row.activityWatch.status === "bad" ? (
-                          <X className="w-4 h-4 text-red-600 dark:text-red-400 shrink-0 mt-0.5" />
-                        ) : row.activityWatch.status === "good" ? (
-                          <Check className="w-4 h-4 text-emerald-700 dark:text-emerald-400 shrink-0 mt-0.5" />
-                        ) : (
-                          <Minus className="w-4 h-4 text-slate-500 dark:text-zinc-400 shrink-0 mt-0.5" />
-                        )}
-                        <span>{row.activityWatch.text}</span>
-                      </div>
-                    </td>
-
-                    {/* NOTION AI COLUMN */}
-                    <td className="p-4 sm:p-5 text-slate-700 dark:text-zinc-300">
-                      <div className="flex items-start space-x-2">
-                        {row.notion.status === "bad" ? (
-                          <X className="w-4 h-4 text-red-600 dark:text-red-400 shrink-0 mt-0.5" />
-                        ) : (
-                          <Minus className="w-4 h-4 text-slate-500 dark:text-zinc-400 shrink-0 mt-0.5" />
-                        )}
-                        <span>{row.notion.text}</span>
-                      </div>
-                    </td>
+                    {[row.recall, row.rewind, row.pieces, row.activityWatch, row.notion].map((cell, cIdx) => (
+                      <td key={cIdx} className="p-4 sm:p-5 text-slate-700 dark:text-zinc-300">
+                        <div className="flex items-start space-x-2">
+                          {cell.status === "bad" ? (
+                            <X className="w-4 h-4 text-red-600 dark:text-red-400 shrink-0 mt-0.5" />
+                          ) : cell.status === "good" ? (
+                            <Check className="w-4 h-4 text-emerald-700 dark:text-emerald-400 shrink-0 mt-0.5" />
+                          ) : (
+                            <Minus className="w-4 h-4 text-slate-500 dark:text-zinc-400 shrink-0 mt-0.5" />
+                          )}
+                          <span>{cell.text}</span>
+                        </div>
+                      </td>
+                    ))}
                   </tr>
                 ))}
               </tbody>

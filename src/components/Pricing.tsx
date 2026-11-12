@@ -79,44 +79,44 @@ export function Pricing() {
                 <span className="text-slate-500 dark:text-zinc-400 text-sm font-medium">Free Forever</span>
               </div>
               <p className="text-xs sm:text-sm text-slate-700 dark:text-zinc-300 mb-6 font-sans leading-relaxed">
-                Full local-first desktop twin with optional zero-knowledge BYOC sync to your own Google Drive or OneDrive and local GGUF/extractive AI.
+                Full private desktop twin with optional encrypted backup to your own Google Drive or OneDrive and built-in offline AI.
               </p>
 
               <div className="space-y-3 pt-4 border-t border-slate-200 dark:border-white/5 text-xs text-slate-700 dark:text-zinc-300">
                 <div className="flex items-start space-x-2.5">
                   <Check className="w-4 h-4 text-emerald-700 dark:text-emerald-400 shrink-0 mt-0.5" />
-                  <span>Pure-Rust Document, Diff &amp; Workspace Intel Ingestion (&lt; 0.2% CPU)</span>
+                  <span>Quiet document, code &amp; workspace indexing (&lt; 0.2% CPU, &lt; 35 MB RAM)</span>
                 </div>
                 <div className="flex items-start space-x-2.5">
                   <Check className="w-4 h-4 text-emerald-700 dark:text-emerald-400 shrink-0 mt-0.5" />
-                  <span>FastEmbed Int8 ONNX + CSR PageRank (837.4µs) + 6-Head TD-RRF</span>
+                  <span>Instant hybrid local search across PDFs, Office docs, diffs &amp; active tabs</span>
                 </div>
                 <div className="flex items-start space-x-2.5">
                   <Check className="w-4 h-4 text-emerald-700 dark:text-emerald-400 shrink-0 mt-0.5" />
-                  <span>Personal BYOC Sync to Google Drive (appData) / OneDrive / NAS (22.12x zstd)</span>
+                  <span>Optional personal BYOC sync to Google Drive or OneDrive (~1.54 MB/year)</span>
                 </div>
                 <div className="flex items-start space-x-2.5">
                   <Check className="w-4 h-4 text-emerald-700 dark:text-emerald-400 shrink-0 mt-0.5" />
-                  <span>Universal rmcp 3.8.0 stdio server (all 8 tools incl. record_decision)</span>
+                  <span>Local MCP server (8 tools incl. record_decision) for Cursor &amp; Claude</span>
                 </div>
                 <div className="flex items-start space-x-2.5">
                   <Check className="w-4 h-4 text-emerald-700 dark:text-emerald-400 shrink-0 mt-0.5" />
-                  <span>Global Alt + Space Spotlight HUD &amp; Dual-Surface Studio (58% / 42%)</span>
+                  <span>Global Alt + Space Spotlight HUD, 24h Flow Ribbon &amp; Split Studio</span>
                 </div>
                 <div className="flex items-start space-x-2.5">
                   <Check className="w-4 h-4 text-emerald-700 dark:text-emerald-400 shrink-0 mt-0.5" />
-                  <span>Zero screenshots, 0 video frames, 0 keyloggers installed</span>
+                  <span>Zero screenshots, zero video frames, zero keyloggers installed</span>
                 </div>
               </div>
             </div>
 
             <div className="mt-8 pt-4">
-              <Link
-                href="/download"
+              <a
+                href="https://www.tryminime.com/downloads/MiniMe.exe"
                 className="w-full inline-flex items-center justify-center px-4 py-3 text-xs sm:text-sm font-semibold text-slate-900 dark:text-zinc-200 bg-slate-100 dark:bg-white/5 hover:bg-slate-200 dark:hover:bg-white/10 rounded-xl border border-slate-300 dark:border-white/10 transition-colors whitespace-nowrap"
               >
-                <span>Download Sovereign Free</span>
-              </Link>
+                <span>Download Free for Windows</span>
+              </a>
             </div>
           </div>
 
@@ -153,7 +153,7 @@ export function Pricing() {
                 </div>
                 <div className="flex items-start space-x-2.5">
                   <Check className="w-4 h-4 text-emerald-700 dark:text-emerald-400 shrink-0 mt-0.5" />
-                  <span>Multi-device HLC sync scheduling &amp; automated rolling snapshot compaction</span>
+                  <span>Automated multi-device sync scheduling &amp; rolling encrypted snapshots</span>
                 </div>
                 <div className="flex items-start space-x-2.5">
                   <Check className="w-4 h-4 text-emerald-700 dark:text-emerald-400 shrink-0 mt-0.5" />

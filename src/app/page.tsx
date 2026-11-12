@@ -18,11 +18,6 @@ const FeaturesGrid = dynamic(
   { ssr: true }
 );
 
-const FlowRibbonVisualizer = dynamic(
-  () => import("@/components/FlowRibbonVisualizer").then((mod) => mod.FlowRibbonVisualizer),
-  { ssr: true }
-);
-
 const McpIntegrationDemo = dynamic(
   () => import("@/components/McpIntegrationDemo").then((mod) => mod.McpIntegrationDemo),
   { ssr: true }
@@ -63,12 +58,11 @@ export default function HomePage() {
       <main className="flex-1">
         <Hero />
         <DualSurfaceStudioDemo />
-        <SpotlightDemo />
         <FeaturesGrid />
-        <FlowRibbonVisualizer />
-        <McpIntegrationDemo />
+        <SpotlightDemo />
         <ComparisonTable />
         <SecurityDeepDive />
+        <McpIntegrationDemo />
         <Pricing />
         <Faq />
       </main>

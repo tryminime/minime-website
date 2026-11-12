@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://www.tryminime.com"),
   title: "MiniMe | Your Operating System's Cognitive Digital Twin",
   description:
-    "Privacy-first, operating-system-level conversational Digital Twin and deep document memory layer. Zero screenshots, zero keyloggers, 100% zero-knowledge encrypted.",
+    "Private AI work memory for your Windows PC. Ask questions about your PDFs, Office docs, code, and tabs with verified quotes and exact sources — zero screenshots, zero keyloggers.",
   keywords: [
     "Digital Twin",
     "Operating System AI",
@@ -20,8 +20,8 @@ export const metadata: Metadata = {
     "Workstream Intelligence",
     "Model Context Protocol",
     "MCP Server",
-    "FastEmbed ONNX",
-    "Personalized PageRank",
+    "Offline Windows AI",
+    "Microsoft Recall Alternative",
   ],
   authors: [{ name: "MiniMe Team" }],
   creator: "MiniMe Inc.",
@@ -105,13 +105,12 @@ const jsonLd = {
       "description":
         "Privacy-first conversational digital twin and deep document memory engine for Windows. Zero screenshots, zero keyloggers, 100% zero-knowledge encrypted.",
       "featureList": [
-        "Pure-Rust Compressed Sparse Row (CSR) Personalized PageRank (< 1ms)",
-        "Zero-Knowledge BYOC Cloud Sync with zstd compression (1.54 MB/year)",
-        "Int8 FastEmbed ONNX Vector Quantization (>99.5% fidelity)",
-        "6-Head TD-RRF Retrieval (BM25 + Int8 Cosine + CSR PPR + Actions + Intel + Decisions)",
-        "Autonomous 5-Min Workspace Intelligence & Decisions CRUD Ledger",
-        "Universal rmcp 3.8.0 Model Context Protocol stdio server (8 tools incl. record_decision)",
-        "Hardware DPAPI Keychain, Argon2id + XChaCha20/ChaCha20 AEAD & 18-ID HIPAA Safe Harbor Scrubber"
+        "Local-first semantic search across PDFs, Office docs, code, and active tabs",
+        "Zero-knowledge BYOC Cloud Sync to personal Google Drive or OneDrive (~1.54 MB/year)",
+        "On-device offline AI Q&A with sentence-level verified quotes and citations",
+        "Automated workspace intelligence and architectural decision log",
+        "Universal Model Context Protocol (MCP) server with 8 local tools for Cursor, Claude, and Windsurf",
+        "Windows Credential Locker encryption, 18-identifier HIPAA redaction, and instant GDPR erase"
       ]
     },
     {

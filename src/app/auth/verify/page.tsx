@@ -25,8 +25,8 @@ function VerifyContent() {
   const challenge = searchParams.get("challenge") || "";
   const rawOtp = searchParams.get("otp") || "";
 
-  // Compute or extract 6-digit OTP
-  const [otpCode, setOtpCode] = useState("849201");
+  // Compute or extract 6-digit OTP when token or otp param is present
+  const [otpCode, setOtpCode] = useState("");
   const [copied, setCopied] = useState(false);
   const [autoRedirected, setAutoRedirected] = useState(false);
 
@@ -137,47 +137,56 @@ function VerifyContent() {
       </div>
 
       {/* 6-Digit OTP Box */}
-      <div className="rounded-xl bg-slate-50 dark:bg-black/50 border border-slate-200 dark:border-white/10 p-5 mb-6">
-        <span className="text-xs font-mono text-slate-600 dark:text-zinc-400 block mb-2 font-medium">
-          Your One-Time Login Code:
-        </span>
-        <div className="flex items-center justify-center space-x-2 mb-3">
-          {otpCode.split("").map((digit, index) => (
-            <span
-              key={index}
-              className="w-10 h-12 flex items-center justify-center text-xl font-mono font-bold text-slate-900 dark:text-white bg-white dark:bg-white/[0.04] border border-violet-500/40 rounded-lg shadow-inner"
-            >
-              {digit}
-            </span>
-          ))}
-        </div>
+      {otpCode ? (
+        <div className="rounded-xl bg-slate-50 dark:bg-black/50 border border-slate-200 dark:border-white/10 p-5 mb-6">
+          <span className="text-xs font-mono text-slate-600 dark:text-zinc-400 block mb-2 font-medium">
+            Your One-Time Login Code:
+          </span>
+          <div className="flex items-center justify-center space-x-2 mb-3">
+            {otpCode.split("").map((digit, index) => (
+              <span
+                key={index}
+                className="w-10 h-12 flex items-center justify-center text-xl font-mono font-bold text-slate-900 dark:text-white bg-white dark:bg-white/[0.04] border border-violet-500/40 rounded-lg shadow-inner"
+              >
+                {digit}
+              </span>
+            ))}
+          </div>
 
-        <button
-          onClick={handleCopy}
-          className="inline-flex items-center space-x-1.5 px-4 py-2 rounded-lg text-xs font-semibold bg-white dark:bg-white/5 hover:bg-slate-100 dark:hover:bg-white/10 border border-slate-300 dark:border-white/10 text-slate-800 dark:text-zinc-200 transition-all shadow-sm"
-        >
-          {copied ? (
-            <>
-              <Check className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
-              <span className="text-emerald-700 dark:text-emerald-400">Code Copied to Clipboard!</span>
-            </>
-          ) : (
-            <>
-              <Copy className="w-3.5 h-3.5 text-slate-500 dark:text-zinc-400" />
-              <span>Copy 6-Digit Code</span>
-            </>
-          )}
-        </button>
-      </div>
+          <button
+            onClick={handleCopy}
+            className="inline-flex items-center space-x-1.5 px-4 py-2 rounded-lg text-xs font-semibold bg-white dark:bg-white/5 hover:bg-slate-100 dark:hover:bg-white/10 border border-slate-300 dark:border-white/10 text-slate-800 dark:text-zinc-200 transition-all shadow-sm"
+          >
+            {copied ? (
+              <>
+                <Check className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
+                <span className="text-emerald-700 dark:text-emerald-400">Code Copied to Clipboard!</span>
+              </>
+            ) : (
+              <>
+                <Copy className="w-3.5 h-3.5 text-slate-500 dark:text-zinc-400" />
+                <span>Copy 6-Digit Code</span>
+              </>
+            )}
+          </button>
+        </div>
+      ) : (
+        <div className="rounded-xl bg-slate-50 dark:bg-black/50 border border-slate-200 dark:border-white/10 p-5 mb-6 text-xs sm:text-sm text-slate-700 dark:text-zinc-300">
+          Open the verification link from your email to generate your one-time 6-digit login code for MiniMe Desktop.
+        </div>
+      )}
 
       {/* Footer Info */}
       <div className="pt-4 border-t border-slate-200 dark:border-white/5 text-xs text-slate-700 dark:text-zinc-300 space-y-2">
         <p>This verification link expires in 15 minutes and can only be used once.</p>
         <p>
           Don&apos;t have the desktop client?{" "}
-          <Link href="/download" className="text-violet-700 dark:text-violet-300 font-semibold hover:underline">
-            Get MiniMe for Windows (Setup &amp; Verification)
-          </Link>
+          <a
+            href="https://www.tryminime.com/downloads/MiniMe.exe"
+            className="text-violet-700 dark:text-violet-300 font-semibold hover:underline"
+          >
+            Download MiniMe.exe for Windows
+          </a>
         </p>
       </div>
     </div>

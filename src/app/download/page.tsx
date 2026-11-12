@@ -5,7 +5,6 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import {
   Download,
-  ShieldCheck,
   Check,
   Copy,
   Terminal,
@@ -52,7 +51,7 @@ export default function DownloadPage() {
           <div className="text-center max-w-3xl mx-auto mb-16">
             <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-violet-500/10 border border-violet-500/20 text-xs font-mono text-violet-700 dark:text-violet-400 mb-4">
               <Download className="w-3.5 h-3.5 mr-1" />
-              <span>Native Win32 Distribution • v0.1.0 Beta</span>
+              <span>Windows 10 &amp; 11 (64-bit) • v0.1.0 Beta</span>
             </div>
             <h1 className="text-4xl sm:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight">
               Download MiniMe for{" "}
@@ -75,7 +74,7 @@ export default function DownloadPage() {
                   <span className="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-violet-500/15 text-violet-800 dark:text-violet-300 border border-violet-500/30">
                     Recommended for Most Users
                   </span>
-                  <span className="text-xs font-mono text-slate-700 dark:text-zinc-300 font-semibold">NSIS Setup • Day 14</span>
+                  <span className="text-xs font-mono text-slate-700 dark:text-zinc-300 font-semibold">Standard Installer (.exe)</span>
                 </div>
 
                 <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">
@@ -104,11 +103,11 @@ export default function DownloadPage() {
 
               <div>
                 <a
-                  href="#source-build-verify"
+                  href="https://www.tryminime.com/downloads/MiniMe.exe"
                   className="w-full inline-flex items-center justify-center py-4 px-6 rounded-xl text-base font-semibold text-white bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 shadow-xl shadow-violet-600/30 border border-violet-400/30 transition-all group mb-4 whitespace-nowrap"
                 >
-                  <ShieldCheck className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
-                  <span>NSIS Release Pending (Build &amp; Verify)</span>
+                  <Download className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
+                  <span>Download MiniMe.exe (x64)</span>
                 </a>
 
                 {/* SHA-256 Verification Command Box */}
@@ -142,7 +141,7 @@ export default function DownloadPage() {
                   <span className="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-cyan-500/10 text-cyan-800 dark:text-cyan-300 border border-cyan-500/20">
                     Enterprise &amp; IT Admins
                   </span>
-                  <span className="text-xs font-mono text-slate-700 dark:text-zinc-300 font-semibold">WiX MSI • Day 14</span>
+                  <span className="text-xs font-mono text-slate-700 dark:text-zinc-300 font-semibold">Enterprise Package (.msi)</span>
                 </div>
 
                 <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">
@@ -171,11 +170,11 @@ export default function DownloadPage() {
 
               <div>
                 <a
-                  href="#source-build-verify"
+                  href="mailto:enterprise@tryminime.com?subject=MiniMe%20Enterprise%20MSI%20Deployment"
                   className="w-full inline-flex items-center justify-center py-4 px-6 rounded-xl text-base font-semibold text-slate-900 dark:text-white bg-slate-100 hover:bg-slate-200 dark:bg-white/[0.06] dark:hover:bg-white/[0.12] border border-cyan-500/30 hover:border-cyan-500/50 transition-all group mb-4"
                 >
                   <Building2 className="w-5 h-5 mr-2 text-cyan-700 dark:text-cyan-400 group-hover:scale-110 transition-transform" />
-                  <span>MSI Release Pending (Build &amp; Verify)</span>
+                  <span>Request Enterprise MSI &amp; Intune Kit</span>
                 </a>
 
                 {/* SHA-256 Verification Command Box */}
@@ -200,28 +199,31 @@ export default function DownloadPage() {
             </div>
           </div>
 
-          {/* Release Provenance & Local Verification */}
-          <div
+          {/* Optional Developer Verification & Local Build */}
+          <details
             id="source-build-verify"
-            className="max-w-5xl mx-auto mb-16 rounded-2xl border border-amber-500/30 bg-amber-500/10 dark:bg-amber-950/20 p-6 sm:p-8 backdrop-blur-xl"
+            className="max-w-5xl mx-auto mb-16 rounded-2xl border border-slate-300 dark:border-white/10 bg-white/80 dark:bg-white/[0.02] p-5 sm:p-6 backdrop-blur-xl group"
           >
-            <div className="flex items-start space-x-3">
-              <Terminal className="w-5 h-5 text-amber-800 dark:text-amber-300 shrink-0 mt-0.5" />
-              <div className="space-y-2">
-                <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">
-                  Signed Installer Release Provenance &amp; Local Tauri Build
-                </h3>
-                <p className="text-xs sm:text-sm text-slate-800 dark:text-zinc-200 leading-relaxed font-sans">
-                  Pre-built signed <code className="font-mono font-bold">.exe</code> (NSIS) and{" "}
-                  <code className="font-mono font-bold">.msi</code> (WiX) installers belong to Day 14 release packaging and are published alongside their SHA-256 manifest upon GA signing—no placeholder checksums or binary sizes are advertised before artifacts are emitted. To compile installers directly from the verified Rust + Tauri v2 workspace:
-                </p>
-                <pre className="p-3 rounded-xl bg-slate-900 text-emerald-300 text-xs font-mono overflow-x-auto border border-slate-700">
-{`cargo tauri build --bundles nsis,msi
-Get-FileHash src-tauri\\target\\release\\bundle\\nsis\\*.exe -Algorithm SHA256`}
-                </pre>
-              </div>
+            <summary className="cursor-pointer list-none flex items-center justify-between text-sm font-bold text-slate-900 dark:text-white">
+              <span className="inline-flex items-center space-x-2.5">
+                <Terminal className="w-4 h-4 text-violet-700 dark:text-violet-400 shrink-0" />
+                <span>Developer &amp; IT Verification: SHA-256 Checksum &amp; Source Build</span>
+              </span>
+              <span className="text-xs font-mono text-slate-600 dark:text-zinc-400">
+                Click to expand
+              </span>
+            </summary>
+            <div className="mt-4 pt-4 border-t border-slate-200 dark:border-white/10 space-y-3">
+              <p className="text-xs sm:text-sm text-slate-700 dark:text-zinc-300 leading-relaxed font-sans">
+                Verify your downloaded Windows installer checksum in PowerShell or build reproducible binaries directly from the Rust + Tauri v2 workspace:
+              </p>
+              <pre className="p-3 rounded-xl bg-slate-900 text-emerald-300 text-xs font-mono overflow-x-auto border border-slate-700">
+{`Get-FileHash MiniMe.exe -Algorithm SHA256
+# Optional reproducible source build:
+cargo tauri build --bundles nsis,msi`}
+              </pre>
             </div>
-          </div>
+          </details>
 
           {/* System Requirements & Walkthrough */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto mb-20">
@@ -271,9 +273,8 @@ Get-FileHash src-tauri\\target\\release\\bundle\\nsis\\*.exe -Algorithm SHA256`}
                     1
                   </div>
                   <div>
-                    <strong className="text-slate-900 dark:text-white">Run the Installer (or Build from Source):</strong> Launch the signed Windows{" "}
-                    <code>.exe</code> / <code>.msi</code> installer once GA Day 14 bundles are published, or build locally with{" "}
-                    <code className="font-mono">cargo tauri build</code>.
+                    <strong className="text-slate-900 dark:text-white">Run the Windows Installer:</strong> Launch{" "}
+                    <code className="font-mono font-semibold">MiniMe.exe</code> (64-bit) &mdash; setup takes under 30 seconds with zero cloud telemetry.
                   </div>
                 </div>
 
@@ -307,8 +308,7 @@ Get-FileHash src-tauri\\target\\release\\bundle\\nsis\\*.exe -Algorithm SHA256`}
               Looking for macOS or Linux?
             </h3>
             <p className="text-xs sm:text-sm text-slate-700 dark:text-zinc-300 mb-6">
-              Our pure-Rust core is cross-platform, with macOS and Linux OS collector backends already implemented in{" "}
-              <code className="font-mono font-semibold">minime-collector</code> while signed Apple Silicon and Linux (AppImage / Flatpak) desktop packages follow the Windows release. Join the early access queue:
+              MiniMe&apos;s native engine is cross-platform, with Apple Silicon (macOS) and Linux (AppImage / Flatpak) desktop packages following the Windows release. Join the early access queue:
             </p>
 
             {waitlistSubmitted ? (

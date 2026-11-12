@@ -42,13 +42,13 @@ export function Footer() {
 
             <div className="flex flex-wrap items-center gap-2 pt-2 text-slate-600 dark:text-zinc-400">
               <span className="px-2.5 py-1 rounded-md bg-white dark:bg-white/5 border border-slate-300 dark:border-white/10 text-xs font-mono text-slate-700 dark:text-zinc-300 font-medium">
-                100% Zero-Knowledge E2EE
+                Zero-Knowledge E2EE
               </span>
               <span className="px-2.5 py-1 rounded-md bg-white dark:bg-white/5 border border-slate-300 dark:border-white/10 text-xs font-mono text-slate-700 dark:text-zinc-300 font-medium">
-                Win32 Native Pure-Rust
+                0 Screenshots
               </span>
               <span className="px-2.5 py-1 rounded-md bg-white dark:bg-white/5 border border-slate-300 dark:border-white/10 text-xs font-mono text-slate-800 dark:text-zinc-200 font-medium">
-                240 Automated Rust Tests
+                100% Offline AI
               </span>
             </div>
           </div>
@@ -61,7 +61,7 @@ export function Footer() {
             <ul className="space-y-2 text-xs sm:text-sm">
               <li>
                 <a href="#features" className="hover:text-slate-900 dark:hover:text-white transition-colors">
-                  9 Architectural Pillars
+                  Core Features
                 </a>
               </li>
               <li>
@@ -138,12 +138,17 @@ export function Footer() {
             </h4>
             <ul className="space-y-2 text-xs sm:text-sm">
               <li>
-                <Link
-                  href="/download"
+                <a
+                  href="https://www.tryminime.com/downloads/MiniMe.exe"
                   className="inline-flex items-center text-violet-700 dark:text-violet-300 font-bold hover:underline"
                 >
                   <Download className="w-3.5 h-3.5 mr-1.5" />
-                  <span>Windows Setup &amp; Verification</span>
+                  <span>Download MiniMe.exe (x64)</span>
+                </a>
+              </li>
+              <li>
+                <Link href="/download" className="hover:text-slate-900 dark:hover:text-white transition-colors">
+                  Enterprise MSI &amp; System Specs
                 </Link>
               </li>
               <li>

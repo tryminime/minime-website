@@ -57,7 +57,7 @@ export function ComparisonTable() {
       dimension: "Storage & System Load",
       tooltip: "CPU, RAM & annual sync size",
       minime: {
-        text: "< 0.2% CPU • < 35 MB RAM • ~1.54 MB/yr sync",
+        text: "< 0.2% CPU • < 35 MB daemon (~85 MB GUI) • ~1.54 MB/yr sync",
         status: "best",
       },
       recall: { text: "50 – 100 GB screenshots + NPU load", status: "bad" },

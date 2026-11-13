@@ -12,7 +12,7 @@ const FAQS: FaqItem[] = [
   {
     question: "How is MiniMe different from Microsoft Recall?",
     answer:
-      "Microsoft Recall captures periodic PNG screenshots of everything on your screen and runs heavy optical character recognition (OCR), consuming gigabytes of disk space and heavy GPU cycles. MiniMe takes zero screenshots and records zero keystrokes. Instead, it quietly reads active document text, code changes, and window context directly from OS events in under 35 MB of RAM and < 0.2% CPU.",
+      "Microsoft Recall captures periodic PNG screenshots of everything on your screen and runs heavy optical character recognition (OCR), consuming gigabytes of disk space and heavy GPU cycles. MiniMe takes zero screenshots and records zero keystrokes. Instead, it quietly reads active document text, code changes, and window context directly from OS events using under 35 MB of RAM in the background daemon (~85–120 MB full desktop GUI with WebView2) and < 0.2% CPU.",
   },
   {
     question: "Does MiniMe send my work history or files to your servers?",

@@ -22,9 +22,9 @@ export function Hero() {
       detail: "Reads structured text & code diffs—never takes screenshots or records your screen.",
     },
     {
-      value: "< 35 MB RAM",
+      value: "~85 MB RAM",
       label: "Runs Silently",
-      detail: "Uses under 0.2% CPU so your browser, IDE, and calls stay fast.",
+      detail: "< 35 MB background daemon (~85–120 MB desktop GUI). Uses under 0.2% CPU so your PC stays fast.",
     },
     {
       value: "< 1.6 MB / yr",

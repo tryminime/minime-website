@@ -258,7 +258,7 @@ cargo tauri build --bundles nsis,msi`}
                 <li className="flex items-start">
                   <span className="w-1.5 h-1.5 rounded-full bg-violet-600 dark:bg-violet-400 mr-2.5 mt-2 shrink-0" />
                   <span>
-                    <strong>Memory &amp; CPU Footprint:</strong> &lt; 0.2% background CPU, &lt; 35 MB resident RAM footprint.
+                    <strong>Memory &amp; CPU Footprint:</strong> &lt; 0.2% background CPU, &lt; 35 MB background daemon resident RAM (~85–120 MB full desktop GUI).
                   </span>
                 </li>
                 <li className="flex items-start">

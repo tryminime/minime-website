@@ -24,7 +24,7 @@ export function FeaturesGrid() {
       iconClass: "bg-emerald-500/10 text-emerald-700 dark:text-emerald-300",
       title: "Zero Screenshots. Zero Keyloggers.",
       description:
-        "MiniMe never snapshots your screen or records video frames. It reads only the structured text of PDFs, Word docs, slides, spreadsheets, and code files you actually spend time in—using under 0.2% CPU and 35 MB RAM.",
+        "MiniMe never snapshots your screen or records video frames. It reads only the structured text of PDFs, Word docs, slides, spreadsheets, and code files you actually spend time in—using under 0.2% CPU and 35 MB daemon RAM (~85–120 MB full GUI).",
       bullets: [
         "Parses PDFs, Word (.docx), PowerPoint (.pptx), Excel (.xlsx), Markdown & 45+ code languages",
         "Respects password fields and excludes private/incognito sessions automatically",
